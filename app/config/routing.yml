@@ -1,0 +1,7 @@
+edr_application:
+    resource: "@EDRApplicationBundle/Resources/config/routing.yml"
+    prefix:   /
+
+app:
+    resource: "@AppBundle/Controller/"
+    type:     annotation
