@@ -1,3 +1,7 @@
+edr_appli:
+    resource: "@EDRAppliBundle/Resources/config/routing.yml"
+    prefix:   /appli
+
 
 
 
