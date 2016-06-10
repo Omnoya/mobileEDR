@@ -1,6 +1,6 @@
 edr_application:
     resource: "@EDRApplicationBundle/Resources/config/routing.yml"
-    prefix:   /DEV
+    prefix:   /
 
 app:
     resource: "@AppBundle/Controller/"
