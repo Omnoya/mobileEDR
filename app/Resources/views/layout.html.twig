@@ -29,10 +29,12 @@
             <h3>Menu</h3>
             <ul class="nav nav-pills nav-stacked">
                 {# utilisation de la fonction {{ path() }} pour faire des liens vers d'autres routes #}
-                <li><a href="{{ path('edr_appli_home') }}">Accueil</a></li>
-                <li><a href="{{ path('edr_appli_home') }}">Rechercher un Restaurant</a></li>
+                <li><a href="{{ path('edr_appli_home', {'type' : 'famille'} ) }}">Accueil</a></li>
+                <li><a href="{{ path('edr_appli_home') }}">entre Amis</a></li>
+                <li><a href="{{ path('edr_appli_home') }}">Famille</a></li>
+                <li><a href="{{ path('edr_appli_home') }}">Cadre professionnel</a></li>
+                <li><a href="{{ path('edr_appli_home') }}">Date</a></li>
             </ul>
-
 
             {#<h4>Dernières annonces</h4>#}
             {# inclusion de la méthode menu du contrôleur Advert du bundle OCPlatformBundle, avec l'argument nombre défini à 3 #}
