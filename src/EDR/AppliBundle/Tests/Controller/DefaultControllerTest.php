@@ -1,6 +1,6 @@
 <?php
 
-namespace EDR\ApplicationBundle\Tests\Controller;
+namespace EDR\AppliBundle\Tests\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
 

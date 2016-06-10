@@ -1,3 +1,0 @@
-edr_application_homepage:
-    path:     /
-    defaults: { _controller: EDRApplicationBundle:Default:index }
