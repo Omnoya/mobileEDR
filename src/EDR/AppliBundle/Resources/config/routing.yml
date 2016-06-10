@@ -1,0 +1,11 @@
+edr_appli_home:
+    path:     /
+    defaults: { _controller: EDRAppliBundle:Appli:index }
+
+edr_appli_etablissement:
+    path:     /etablissements/{id}
+    defaults:
+        _controller: EDRAppliBundle:Appli:view
+    requirements:
+        id: \d+
+
