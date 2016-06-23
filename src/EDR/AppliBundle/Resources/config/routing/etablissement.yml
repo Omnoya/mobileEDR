@@ -1,0 +1,24 @@
+etablissement_index:
+    path:     /
+    defaults: { _controller: "EDRAppliBundle:Etablissement:index" }
+    methods:  GET
+
+etablissement_show:
+    path:     /{id}/show
+    defaults: { _controller: "EDRAppliBundle:Etablissement:show" }
+    methods:  GET
+
+etablissement_new:
+    path:     /new
+    defaults: { _controller: "EDRAppliBundle:Etablissement:new" }
+    methods:  [GET, POST]
+
+etablissement_edit:
+    path:     /{id}/edit
+    defaults: { _controller: "EDRAppliBundle:Etablissement:edit" }
+    methods:  [GET, POST]
+
+etablissement_delete:
+    path:     /{id}/delete
+    defaults: { _controller: "EDRAppliBundle:Etablissement:delete" }
+    methods:  DELETE
