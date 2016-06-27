@@ -3,9 +3,15 @@ edr_appli_home:
     defaults: { _controller: EDRAppliBundle:Appli:index }
 
 edr_appli_etablissement:
-    path:     /etablissements/{id}
-    defaults:
-        _controller: EDRAppliBundle:Appli:view
-    requirements:
-        id: \d+
+    prefix:   /etablissement
+    resource: "@EDRAppliBundle/Resources/config/routing/etablissement.yml"
+
+edr_appli_tag:
+    prefix:     /tag
+    resource: "@EDRAppliBundle/Resources/config/routing/tag.yml"
+
+
+edr_appli_avis:
+    resource: "@EDRAppliBundle/Resources/config/routing/avis.yml"
+    prefix:   /avis
 

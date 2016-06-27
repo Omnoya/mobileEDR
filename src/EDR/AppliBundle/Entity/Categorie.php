@@ -12,6 +12,11 @@ use Doctrine\ORM\Mapping as ORM;
  */
 class Categorie
 {
+    
+    public function __toString() {
+        return $this->nom;
+    }
+    //Code généré//
     /**
      * @var int
      *
