@@ -1,0 +1,44 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Avis</h1>
+
+    <table>
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ avi.id }}</td>
+            </tr>
+            <tr>
+                <th>Commentaire</th>
+                <td>{{ avi.commentaire }}</td>
+            </tr>
+            <tr>
+                <th>Note</th>
+                <td>{{ avi.note }}</td>
+            </tr>
+            <tr>
+                <th>Favoris</th>
+                <td>{% if avi.favoris %}Yes{% else %}No{% endif %}</td>
+            </tr>
+            <tr>
+                <th>Sauvegarde</th>
+                <td>{% if avi.sauvegarde %}Yes{% else %}No{% endif %}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('avis_index') }}">Back to the list</a>
+        </li>
+        <li>
+            <a href="{{ path('avis_edit', { 'id': avi.id }) }}">Edit</a>
+        </li>
+        <li>
+            {{ form_start(delete_form) }}
+                <input type="submit" value="Delete">
+            {{ form_end(delete_form) }}
+        </li>
+    </ul>
+{% endblock %}

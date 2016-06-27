@@ -24,7 +24,7 @@ class EtablissementController extends Controller
 
         $etablissements = $em->getRepository('EDRAppliBundle:Etablissement')->findAll();
 
-        return $this->render('etablissement/index.html.twig', array(
+        return $this->render('EDRAppliBundle:etablissement:index.html.twig', array(
             'etablissements' => $etablissements,
         ));
     }
@@ -47,7 +47,7 @@ class EtablissementController extends Controller
             return $this->redirectToRoute('etablissement_show', array('id' => $etablissement->getId()));
         }
 
-        return $this->render('etablissement/new.html.twig', array(
+        return $this->render('EDRAppliBundle:etablissement:new.html.twig', array(
             'etablissement' => $etablissement,
             'form' => $form->createView(),
         ));
@@ -61,7 +61,7 @@ class EtablissementController extends Controller
     {
         $deleteForm = $this->createDeleteForm($etablissement);
 
-        return $this->render('etablissement/show.html.twig', array(
+        return $this->render('EDRAppliBundle:etablissement:show.html.twig', array(
             'etablissement' => $etablissement,
             'delete_form' => $deleteForm->createView(),
         ));
@@ -85,10 +85,10 @@ class EtablissementController extends Controller
             return $this->redirectToRoute('etablissement_edit', array('id' => $etablissement->getId()));
         }
 
-        return $this->render('etablissement/edit.html.twig', array(
+        return $this->render('EDRAppliBundle:etablissement:edit.html.twig', array(
             'etablissement' => $etablissement,
             'edit_form' => $editForm->createView(),
-            'delete_form' => $deleteForm->createView(),
+            'delete_form' => $deleteForm->createView()
         ));
     }
 

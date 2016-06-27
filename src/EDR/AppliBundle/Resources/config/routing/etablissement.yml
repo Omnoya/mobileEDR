@@ -22,3 +22,4 @@ etablissement_delete:
     path:     /{id}/delete
     defaults: { _controller: "EDRAppliBundle:Etablissement:delete" }
     methods:  DELETE
+

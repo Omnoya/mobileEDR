@@ -1,8 +1,7 @@
-{#{% extends 'base.html.twig' %} #}
-{% extends "EDRAppliBundle::layout.html.twig" %}
+{% extends 'base.html.twig' %}
 
-{% block edrappli_body %}
-    <h1>Etablissement edit</h1>
+{% block body %}
+    <h1>Avis edit</h1>
 
     {{ form_start(edit_form) }}
         {{ form_widget(edit_form) }}
@@ -11,7 +10,7 @@
 
     <ul>
         <li>
-            <a href="{{ path('etablissement_index') }}">Back to the list</a>
+            <a href="{{ path('avis_index') }}">Back to the list</a>
         </li>
         <li>
             {{ form_start(delete_form) }}
