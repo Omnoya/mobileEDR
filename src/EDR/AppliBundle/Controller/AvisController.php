@@ -61,7 +61,7 @@ class AvisController extends Controller
     {
         $deleteForm = $this->createDeleteForm($avi);
 
-        return $this->render('avis/show.html.twig', array(
+        return $this->render('EDRAppliBundle:avis:show.html.twig', array(
             'avi' => $avi,
             'delete_form' => $deleteForm->createView(),
         ));
