@@ -13,6 +13,13 @@ use Doctrine\Common\Collections\ArrayCollection;
  */
 class Etablissement
 {
+
+
+    public function __toString() {
+        return $this->nom;
+    }
+    //Code généré//
+    
     /**
      * @ORM\ManyToMany(targetEntity="EDR\AppliBundle\Entity\Categorie", cascade={"persist"})
      */
