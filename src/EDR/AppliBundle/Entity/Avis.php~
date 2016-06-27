@@ -157,4 +157,27 @@ class Avis
     {
         return $this->sauvegarde;
     }
+
+    /**
+     * Set etablissement
+     *
+     * @param \EDR\AppliBundle\Entity\Etablissement $etablissement
+     * @return Avis
+     */
+    public function setEtablissement(Etablissement $etablissement)
+    {
+        $this->etablissement = $etablissement;
+
+        return $this;
+    }
+
+    /**
+     * Get etablissement
+     *
+     * @return \EDR\AppliBundle\Entity\Etablissement 
+     */
+    public function getEtablissement()
+    {
+        return $this->etablissement;
+    }
 }
