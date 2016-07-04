@@ -35,6 +35,12 @@ framework:
 twig:
     debug:            "%kernel.debug%"
     strict_variables: "%kernel.debug%"
+    form:
+        resources:
+            - "EDRAppliBundle:Form:bootstrap_3_layout.html.twig"
+#    form_themes:
+#        - 'bootstrap_3_layout.html.twig'
+
 
 # Doctrine Configuration
 doctrine:
@@ -71,3 +77,6 @@ fos_user:
     db_driver: orm # other valid values are 'mongodb', 'couchdb' and 'propel'
     firewall_name: main
     user_class: EDR\UserBundle\Entity\User
+
+
+

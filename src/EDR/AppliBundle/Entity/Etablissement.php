@@ -4,20 +4,89 @@ namespace EDR\AppliBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 use Doctrine\Common\Collections\ArrayCollection;
+use Symfony\Component\HttpFoundation\File\UploadedFile;
+
 
 /**
  * Etablissement
  *
  * @ORM\Table(name="etablissement")
  * @ORM\Entity(repositoryClass="EDR\AppliBundle\Repository\EtablissementRepository")
+ * @ORM\HasLifecycleCallbacks
  */
 class Etablissement
 {
 
+    /**
+     * @var UploadedFile uploadPhoto
+     */
+    public $uploadPhoto;
 
     public function __toString() {
         return $this->nom;
     }
+
+    protected function getUploadDir()
+    {
+        return 'uploads/photos';
+    }
+
+    protected function getUploadRootDir()
+    {
+        return __DIR__.'/../../../../web/'.$this->getUploadDir();
+    }
+
+    public function getWebPath()
+    {
+        return null === $this->photo ? null : $this->getUploadDir().'/'.$this->photo;
+    }
+
+    public function getAbsolutePath()
+    {
+        return null === $this->photo ? null : $this->getUploadRootDir().'/'.$this->photo;
+    }
+
+    /**
+     * @ORM\PrePersist
+     * @ORM\PreUpdate
+     */
+    public function preUpload()
+    {
+        if (null !== $this->uploadPhoto) {
+            // do whatever you want to generate a unique name
+            $this->photo = uniqid().'.'.$this->uploadPhoto->guessExtension();
+        }
+    }
+
+    /**
+     * @ORM\PostPersist
+     * @ORM\PostUpdate
+     */
+    public function upload()
+    {
+        // Add your code here
+        if (null === $this->uploadPhoto) {
+            return;
+        }
+        // if there is an error when moving the file, an exception will
+        // be automatically thrown by move(). This will properly prevent
+        // the entity from being persisted to the database on error
+
+        $this->uploadPhoto->move($this->getUploadRootDir(), $this->photo);
+
+        unset($this->uploadPhoto);
+    }
+    /**
+     * @ORM\PostRemove
+     */
+    public function removeUpload()
+    {
+        // Add your code here
+        if ($uploadPhoto = $this->getAbsolutePath()) {
+            unlink($uploadPhoto);
+        }
+    }
+
     //Code généré//
     
     /**

@@ -1,0 +1,4 @@
+EDR\AppliBundle\Entity\Etablissement:
+    properties:
+        uploadPhoto:
+            - Image: ~
