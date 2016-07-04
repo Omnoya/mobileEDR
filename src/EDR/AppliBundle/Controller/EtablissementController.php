@@ -78,7 +78,17 @@ class EtablissementController extends Controller
         $editForm->handleRequest($request);
 
         if ($editForm->isSubmitted() && $editForm->isValid()) {
+
             $em = $this->getDoctrine()->getManager();
+
+            if($editForm->get('uploadPhoto')->getData() != null) {
+                //unlink(__DIR__.'/../../../../web/uploads/photos/'.$etablissement->getPhoto());
+                $etablissement->removeUpload();
+                //$etablissement->setPhoto(null);
+            }
+
+            $etablissement->preUpload();
+
             $em->persist($etablissement);
             $em->flush();
 
