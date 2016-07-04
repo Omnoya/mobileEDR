@@ -5,56 +5,70 @@
     <h1>Etablissement</h1>
 
     <table>
-        <tbody>
-            <tr>
-                <th>Id</th>
-                <td>{{ etablissement.id }}</td>
-            </tr>
-            <tr>
-                <th>Nom</th>
-                <td>{{ etablissement.nom }}</td>
-            </tr>
-            <tr>
-                <th>Photo</th>
-                <td>{{ etablissement.photo }}</td>
-            </tr>
-            <tr>
-                <th>Adresse</th>
-                <td>{{ etablissement.adresse }}</td>
-            </tr>
-            <tr>
-                <th>Adresse2</th>
-                <td>{{ etablissement.adresse2 }}</td>
-            </tr>
-            <tr>
-                <th>Codepostal</th>
-                <td>{{ etablissement.codePostal }}</td>
-            </tr>
-            <tr>
-                <th>Ville</th>
-                <td>{{ etablissement.ville }}</td>
-            </tr>
-            <tr>
-                <th>Longitude</th>
-                <td>{{ etablissement.longitude }}</td>
-            </tr>
-            <tr>
-                <th>Latitude</th>
-                <td>{{ etablissement.latitude }}</td>
-            </tr>
-            <tr>
-                <th>Telephone</th>
-                <td>{{ etablissement.telephone }}</td>
-            </tr>
-            <tr>
-                <th>Email</th>
-                <td>{{ etablissement.email }}</td>
-            </tr>
-            <tr>
-                <th>Publier</th>
-                <td>{% if etablissement.publier %}Yes{% else %}No{% endif %}</td>
-            </tr>
-        </tbody>
+
+
+
+
+                    {% for avis  in avis_etablissement %}
+                        <ul class="collapsible" data-collapsible="expandable">note : {{ avis.note }}
+                                commentaire : {{ avis.commentaire }}</ul>
+                        {% endfor %}
+
+        <tr>
+            <th>Id</th>
+            <td>{{ etablissement.id }}</td>
+        </tr>
+        <tr>
+            <th>Nom</th>
+            <td>{{ etablissement.nom }}</td>
+        </tr>
+        <tr>
+            <th>Photo</th>
+            <td>{{ etablissement.photo }}</td>
+        </tr>
+        <tr>
+            <th>Adresse</th>
+            <td>{{ etablissement.adresse }}</td>
+        </tr>
+        <tr>
+            <th>Adresse2</th>
+            <td>{{ etablissement.adresse2 }}</td>
+        </tr>
+        <tr>
+            <th>Codepostal</th>
+            <td>{{ etablissement.codePostal }}</td>
+        </tr>
+        <tr>
+            <th>Ville</th>
+            <td>{{ etablissement.ville }}</td>
+        </tr>
+        <tr>
+            <th>Longitude</th>
+            <td>{{ etablissement.longitude }}</td>
+        </tr>
+        <tr>
+            <th>Latitude</th>
+            <td>{{ etablissement.latitude }}</td>
+        </tr>
+        <tr>
+            <th>Telephone</th>
+            <td>{{ etablissement.telephone }}</td>
+        </tr>
+        <tr>
+            <th>Email</th>
+            <td>{{ etablissement.email }}</td>
+        </tr>
+        <tr>
+            <th>Publier</th>
+            <td>{% if etablissement.publier %}Yes{% else %}No{% endif %}</td>
+        </tr>
+
+
+        <tr>
+
+    </table>
+    </tbody>
+
     </table>
 
     <ul>
@@ -66,8 +80,10 @@
         </li>
         <li>
             {{ form_start(delete_form) }}
-                <input type="submit" value="Delete">
+            <input type="submit" value="Delete">
             {{ form_end(delete_form) }}
         </li>
     </ul>
+
+
 {% endblock %}

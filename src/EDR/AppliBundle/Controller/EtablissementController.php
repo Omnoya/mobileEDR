@@ -59,10 +59,18 @@ class EtablissementController extends Controller
      */
     public function showAction(Etablissement $etablissement)
     {
+        $em = $this->getDoctrine()->getManager();
+
         $deleteForm = $this->createDeleteForm($etablissement);
+
+        $id_etab = $etablissement->getId();
+
+        $Avis_etablissement = $em->getRepository('EDRAppliBundle:Avis')->getAvis_etablissement($id_etab);
+
 
         return $this->render('EDRAppliBundle:etablissement:show.html.twig', array(
             'etablissement' => $etablissement,
+            'avis_etablissement' => $Avis_etablissement,
             'delete_form' => $deleteForm->createView(),
         ));
     }

@@ -7,23 +7,23 @@
         <tbody>
             <tr>
                 <th>Id</th>
-                <td>{{ avi.id }}</td>
+                <td>{{ avis.id }}</td>
             </tr>
             <tr>
                 <th>Commentaire</th>
-                <td>{{ avi.commentaire }}</td>
+                <td>{{ avis.commentaire }}</td>
             </tr>
             <tr>
                 <th>Note</th>
-                <td>{{ avi.note }}</td>
+                <td>{{ avis.note }}</td>
             </tr>
             <tr>
                 <th>Favoris</th>
-                <td>{% if avi.favoris %}Yes{% else %}No{% endif %}</td>
+                <td>{% if avis.favoris %}Yes{% else %}No{% endif %}</td>
             </tr>
             <tr>
                 <th>Sauvegarde</th>
-                <td>{% if avi.sauvegarde %}Yes{% else %}No{% endif %}</td>
+                <td>{% if avis.sauvegarde %}Yes{% else %}No{% endif %}</td>
             </tr>
         </tbody>
     </table>
@@ -33,7 +33,7 @@
             <a href="{{ path('avis_index') }}">Back to the list</a>
         </li>
         <li>
-            <a href="{{ path('avis_edit', { 'id': avi.id }) }}">Edit</a>
+            <a href="{{ path('avis_edit', { 'id': avis.id }) }}">Edit</a>
         </li>
         <li>
             {{ form_start(delete_form) }}

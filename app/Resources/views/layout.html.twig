@@ -10,55 +10,62 @@
     <title>{% block title %}EDR{% endblock %}</title>
 
     {% block stylesheets %}
-        {# On charge le CSS de bootstrap depuis le site directement #}
-        <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css" />
+        <link rel="stylesheet" type="text/css" href="{{ asset('bundles/edrappli/css/jTinder.css') }}" type="text/css">
+
     {% endblock %}
+
+
 </head>
-
 <body>
-<div class="container">
-    <div id="header" class="jumbotron">
-        <h1>EDR Application</h1>
-        <p>
-            Ce projet est créé par Paola, Elodie, Timothée & Omar.
-        </p>
+<!-- start padding container -->
+
+
+<div class="row">
+    <div id="menu" class="col-md-3">
+        <h3>Menu</h3>
+        <ul class="nav nav-pills nav-stacked">
+            {# utilisation de la fonction {{ path() }} pour faire des liens vers d'autres routes #}
+            <li><a href="{{ path('edr_appli_home', {'type' : 'famille'} ) }}">Accueil</a></li>
+            <li><a href="{{ path('edr_appli_home') }}">entre Amis</a></li>
+            <li><a href="{{ path('edr_appli_home') }}">Famille</a></li>
+            <li><a href="{{ path('edr_appli_home') }}">Cadre professionnel</a></li>
+            <li><a href="{{ path('edr_appli_home') }}">Date</a></li>
+        </ul>
+
+        {#<h4>Dernières annonces</h4>#}
+        {# inclusion de la méthode menu du contrôleur Advert du bundle OCPlatformBundle, avec l'argument nombre défini à 3 #}
+        {#{{ render(controller("OCPlatformBundle:Advert:menu", {'limit':3})) }}#}
+
     </div>
-
-    <div class="row">
-        <div id="menu" class="col-md-3">
-            <h3>Menu</h3>
-            <ul class="nav nav-pills nav-stacked">
-                {# utilisation de la fonction {{ path() }} pour faire des liens vers d'autres routes #}
-                <li><a href="{{ path('edr_appli_home', {'type' : 'famille'} ) }}">Accueil</a></li>
-                <li><a href="{{ path('edr_appli_home') }}">entre Amis</a></li>
-                <li><a href="{{ path('edr_appli_home') }}">Famille</a></li>
-                <li><a href="{{ path('edr_appli_home') }}">Cadre professionnel</a></li>
-                <li><a href="{{ path('edr_appli_home') }}">Date</a></li>
-            </ul>
-
-            {#<h4>Dernières annonces</h4>#}
-            {# inclusion de la méthode menu du contrôleur Advert du bundle OCPlatformBundle, avec l'argument nombre défini à 3 #}
-            {#{{ render(controller("OCPlatformBundle:Advert:menu", {'limit':3})) }}#}
-
-        </div>
-        <div id="content" class="col-md-9">
-            {# création du bloc « body » sans contenu par défaut #}
-            {% block body %}
-            {% endblock %}
-        </div>
+    <div id="content" class="col-md-9">
+        {# création du bloc « body » sans contenu par défaut #}
+        {% block body %}
+        {% endblock %}
     </div>
-
-    <hr/>
-
-    <footer>
-        <p>EDR Application © {{ 'now'|date('Y') }} </p>
-    </footer>
 </div>
 
+<hr/>
+
+<footer>
+    <p>EDR Application © {{ 'now'|date('Y') }} </p>
+</footer>
+</div>
+
+<!-- jQuery lib -->
+<script type="text/javascript" src="{{ asset('bundles/edrappli/js/jquery.min.js') }}"></script>
+<script type="text/javascript" src="{{ asset('bundles/edrappli/js/jquery.transform2d.js') }}"></script>
+<!-- jTinder lib -->
+<script type="text/javascript" src="{{ asset('bundles/edrappli/js/main.js') }}"></script>
+
+<script type="text/javascript" src="{{ asset('bundles/edrappli/js/jquery.jTinder.js') }}"></script>
+<!-- jTinder initialization script -->
+<script type="text/javascript" src="{{ asset('bundles/edrappli/js/main.js') }}"></script>
+
+<script>$("#tinderslide").jTinder();</script>
+
 {% block javascripts %}
-    {# Ajoutez ces lignes JavaScript si vous comptez vous servir des fonctionnalités du bootstrap Twitter #}
-    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
-    <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+
+
 {% endblock %}
 
 </body>

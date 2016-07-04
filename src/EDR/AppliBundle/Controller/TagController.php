@@ -61,7 +61,7 @@ class TagController extends Controller
     {
         $deleteForm = $this->createDeleteForm($tag);
 
-        return $this->render('EDRAppliBundle:tag:show.html.twig', array(
+        return $this->render('EDRAppliBundle:etablissement:index.html.twig', array(
             'tag' => $tag,
             'delete_form' => $deleteForm->createView(),
         ));

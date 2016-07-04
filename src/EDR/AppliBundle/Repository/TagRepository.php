@@ -12,4 +12,18 @@ use Doctrine\ORM\EntityRepository;
  */
 class TagRepository extends EntityRepository
 {
+
+    public function getTag($id_etab){
+
+        // On récupère la liste des candidatures de cette annonce
+        $listApplications = $em
+            ->getRepository('EDRAppliBundle:Tag')
+            ->findBy(array('tag' => $tags))
+        ;
+
+        return $this->render('OCPlatformBundle:Etablissement:index.html.twig', array(
+            'tag' => $tags
+        ));
+    }
+
 }

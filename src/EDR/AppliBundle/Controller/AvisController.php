@@ -57,12 +57,13 @@ class AvisController extends Controller
      * Finds and displays a Avis entity.
      *
      */
-    public function showAction(Avis $avi)
+    public function showAction(Avis $avis)
     {
-        $deleteForm = $this->createDeleteForm($avi);
+        $deleteForm = $this->createDeleteForm($avis);
 
-        return $this->render('EDRAppliBundle:avis:show.html.twig', array(
-            'avi' => $avi,
+        
+        return $this->render('EDRAppliBundle:etablissement:show.html.twig', array(
+            'avis' => $avis,
             'delete_form' => $deleteForm->createView(),
         ));
     }

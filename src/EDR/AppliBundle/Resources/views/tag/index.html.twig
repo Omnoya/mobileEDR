@@ -17,6 +17,10 @@
         <tbody>
         {% for tag in tags %}
             <tr>
+                <div class="chip">
+                    Tag
+                    <i class="material-icons">close</i>
+                </div>
                 <td><a href="{{ path('tag_show', { 'id': tag.id }) }}">{{ tag.id }}</a></td>
                 <td>{{ tag.nom }}</td>
                 <td>
