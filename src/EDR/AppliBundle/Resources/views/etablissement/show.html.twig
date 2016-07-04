@@ -4,6 +4,11 @@
 {% block edrappli_body %}
     <h1>Etablissement</h1>
 
+    {% for avis  in avis_etablissement %}
+        <ul class="collapsible" data-collapsible="expandable">note : {{ avis.note }}
+            commentaire : {{ avis.commentaire }}</ul>
+    {% endfor %}
+
     <table>
         <tbody>
             <tr>

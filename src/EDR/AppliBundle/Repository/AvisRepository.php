@@ -1,9 +1,6 @@
 <?php
-
 namespace EDR\AppliBundle\Repository;
-
 use Doctrine\ORM\EntityRepository;
-
 /**
  * AvisRepository
  *
@@ -12,4 +9,13 @@ use Doctrine\ORM\EntityRepository;
  */
 class AvisRepository extends EntityRepository
 {
+    public function getAvis_etablissement($id_etab){
+
+        return $this->getEntityManager()
+            ->createQuery('SELECT a.commentaire, a.note 
+                                FROM EDRAppliBundle:Avis a 
+                                WHERE a.etablissement = :idEtab')
+            ->setParameter('idEtab', $id_etab )
+            ->getResult();
+    }
 }
