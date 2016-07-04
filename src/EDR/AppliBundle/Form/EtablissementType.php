@@ -16,7 +16,7 @@ class EtablissementType extends AbstractType
     {
         $builder
             ->add('nom')
-            ->add('photo')
+            ->add('uploadPhoto', 'file', array('label' => 'Photo', 'required' => false))
             ->add('adresse')
             ->add('adresse2')
             ->add('codePostal')

@@ -4,6 +4,11 @@
 {% block edrappli_body %}
     <h1>Etablissement</h1>
 
+    {% for avis  in avis_etablissement %}
+        <ul class="collapsible" data-collapsible="expandable">note : {{ avis.note }}
+            commentaire : {{ avis.commentaire }}</ul>
+    {% endfor %}
+
     <table>
         <tbody>
             <tr>
@@ -16,7 +21,7 @@
             </tr>
             <tr>
                 <th>Photo</th>
-                <td>{{ etablissement.photo }}</td>
+                <td><img class="" src="{{ asset('uploads/photos/')}}{{ etablissement.photo }}"></td>
             </tr>
             <tr>
                 <th>Adresse</th>
