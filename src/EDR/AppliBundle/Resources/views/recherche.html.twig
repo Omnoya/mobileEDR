@@ -22,7 +22,7 @@
 
     <div id="map">
     </div>
-    <script>
+    {% block javascripts %}<script>
         function initMap() {
             var mapDiv = document.getElementById('map');
             var map = new google.maps.Map(mapDiv, {
@@ -100,6 +100,6 @@
         }
     </script>
     <script src="{{ asset('https://maps.googleapis.com/maps/api/js?key=AIzaSyCiBQSP3z49zZbRtPDQf4UZ3Yfl1OPlivA&callback=initMap&libraries=places') }}" async defer></script>
-
+    {% endblock %}
 
 {% endblock %}
