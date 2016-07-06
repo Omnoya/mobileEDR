@@ -1,27 +1,27 @@
 {% extends "EDRAppliBundle::layout.html.twig" %}
 
 {% block body %}
-    <h1>Tag</h1>
+    <h1>Categorie</h1>
 
     <table>
         <tbody>
             <tr>
                 <th>Id</th>
-                <td>{{ tag.id }}</td>
+                <td>{{ categorie.id }}</td>
             </tr>
             <tr>
                 <th>Nom</th>
-                <td>{{ tag.nom }}</td>
+                <td>{{ categorie.nom }}</td>
             </tr>
         </tbody>
     </table>
 
     <ul>
         <li>
-            <a href="{{ path('tag_index') }}">Back to the list</a>
+            <a href="{{ path('categorie_index') }}">Back to the list</a>
         </li>
         <li>
-            <a href="{{ path('tag_edit', { 'id': tag.id }) }}">Edit</a>
+            <a href="{{ path('categorie_edit', { 'id': categorie.id }) }}">Edit</a>
         </li>
         <li>
             {{ form_start(delete_form) }}
