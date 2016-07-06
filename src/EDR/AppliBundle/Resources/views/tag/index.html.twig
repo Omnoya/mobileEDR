@@ -4,39 +4,79 @@
 
 {% block edrappli_body %}
 
-    <h1>Tag list</h1>
-
-    <table>
-        <thead>
+    <h1>Liste des tags</h1>
+    <ul>
+        <li>
+            <a class="btn btn-primary btn-lg" href="{{ path('tag_new') }}">
+                <i class="glyphicon glyphicon-plus"></i>
+                Créer une nouvelle entrée
+            </a>
+        </li>
+    </ul>
+    <div class="container-fluid">
+        <table class="table table-hover">
+            <thead>
             <tr>
                 <th>Id</th>
                 <th>Nom</th>
                 <th>Actions</th>
             </tr>
-        </thead>
-        <tbody>
-        {% for tag in tags %}
-            <tr>
-                <td><a href="{{ path('tag_show', { 'id': tag.id }) }}">{{ tag.id }}</a></td>
-                <td>{{ tag.nom }}</td>
-                <td>
-                    <ul>
-                        <li>
-                            <a href="{{ path('tag_show', { 'id': tag.id }) }}">show</a>
-                        </li>
-                        <li>
-                            <a href="{{ path('tag_edit', { 'id': tag.id }) }}">edit</a>
-                        </li>
-                    </ul>
-                </td>
-            </tr>
-        {% endfor %}
-        </tbody>
-    </table>
+            </thead>
+            <tbody>
 
-    <ul>
-        <li>
-            <a href="{{ path('tag_new') }}">Create a new entry</a>
-        </li>
-    </ul>
+            {% for flashMessage in app.session.flashbag.get('mesModif') %}
+
+                <div class="alert alert-success">
+                    <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+                    {{ flashMessage }}
+                </div>
+
+            {% endfor %}
+
+            {% for flashMessage in app.session.flashbag.get('mesSup') %}
+
+                <div class="alert alert-success">
+                    <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+                    {{ flashMessage }}
+                </div>
+
+            {% endfor %}
+
+            {% for tag in tags %}
+                <tr>
+                    {#<td><a href="{{ path('tag_show', { 'id': tag.id }) }}">{{ tag.id }}</a></td>#}
+                    <td>{{ tag.id }}</td>
+                    <td>{{ tag.nom }}</td>
+                    <td>
+                        <ul>
+                            {#<li>
+                                <a href="{{ path('tag_show', { 'id': tag.id }) }}" class="btn btn-info"
+                                   id="place-btn">
+
+                                    <i class="glyphicon glyphicon-eye-open"></i>
+                                    Voir
+                                </a>
+                            </li>#}
+                            <li>
+                                <a href="{{ path('tag_edit', { 'id': tag.id }) }}" class="btn btn-success"
+                                   id="place-btn">
+                                    <i class="glyphicon glyphicon-edit"></i>
+                                    Modifier
+                                </a>
+                            </li>
+                            <li>
+                                <a href="{{ path('tag_delete', { 'id': tag.id }) }}" class="btn btn-danger"
+                                   data-toggle="confirmation" data-title="Open Google?" id="place-btn">
+                                    <i class="glyphicon glyphicon-trash"></i>
+                                    Supprimer
+                                </a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+
+    </div>
 {% endblock %}
