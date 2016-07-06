@@ -4,19 +4,32 @@
 {% block body %}
     <h1>Tag edit</h1>
 
+    <a class="btn btn-primary btn-lg" href="{{ path('tag_index') }}">
+        <i class="glyphicon glyphicon-chevron-left"></i>
+        Retour à la liste
+    </a>
+
     {{ form_start(edit_form) }}
         {{ form_widget(edit_form) }}
-        <input type="submit" value="Edit" />
+        <ul class="">
+            <li>
+                <button type="submit" class="btn btn-success">
+                    <i class="glyphicon glyphicon-edit"></i>
+                    Modifier
+                </button>
+            </li>
+        </ul>
     {{ form_end(edit_form) }}
 
-    <ul>
-        <li>
-            <a href="{{ path('tag_index') }}">Back to the list</a>
-        </li>
+    {#<ul>
         <li>
             {{ form_start(delete_form) }}
-                <input type="submit" value="Delete">
+            <button type="submit" class="btn btn-danger">
+                <i class="glyphicon glyphicon-trash"></i>
+                Supprimer
+            </button>
             {{ form_end(delete_form) }}
+
         </li>
-    </ul>
+    </ul>#}
 {% endblock %}
