@@ -12,4 +12,13 @@ use Doctrine\ORM\EntityRepository;
  */
 class TagRepository extends EntityRepository
 {
+    public function getTag($id_tags){
+
+        return $this->getEntityManager()
+            ->createQuery('SELECT nom,
+                                FROM EDRAppliBundle:Tag 
+                                WHERE tag = :idEtab')
+            ->setParameter('idtags', $id_tags )
+            ->getResult();
+    }
 }

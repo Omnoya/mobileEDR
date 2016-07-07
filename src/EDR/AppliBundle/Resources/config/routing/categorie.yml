@@ -21,4 +21,4 @@ categorie_edit:
 categorie_delete:
     path:     /{id}/delete
     defaults: { _controller: "EDRAppliBundle:Categorie:delete" }
-    methods:  DELETE
+    methods:  [DELETE, GET]

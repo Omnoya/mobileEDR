@@ -22,7 +22,7 @@ class CategorieController extends Controller
     {
         $em = $this->getDoctrine()->getManager();
 
-        $categories = $em->getRepository('EDRAppliBundle:Categorie')->findAll();
+        $categories = $em->getRepository('EDRAppliBundle:Categorie')->findBy(array(), array('id' => 'desc'));
 
         return $this->render('EDRAppliBundle:categorie:index.html.twig', array(
             'categories' => $categories,
@@ -43,6 +43,11 @@ class CategorieController extends Controller
             $em = $this->getDoctrine()->getManager();
             $em->persist($categorie);
             $em->flush();
+
+            $this->get('session')->getFlashBag()->add(
+                'mesConfirm',
+                'Ajout nouvelle categorie Réussie !'
+            );
 
             return $this->redirectToRoute('categorie_show', array('id' => $categorie->getId()));
         }
@@ -82,13 +87,18 @@ class CategorieController extends Controller
             $em->persist($categorie);
             $em->flush();
 
+            $this->get('session')->getFlashBag()->add(
+                'mesConfirm',
+                'Modification Réussie !'
+            );
+
             return $this->redirectToRoute('categorie_edit', array('id' => $categorie->getId()));
         }
 
-        return $this->render('EDRAppliBundle:categorie:edit.html.twig', array(
-            'categorie' => $categorie,
-            'edit_form' => $editForm->createView(),
-            'delete_form' => $deleteForm->createView(),
+            return $this->render('EDRAppliBundle:categorie:edit.html.twig', array(
+                'categorie' => $categorie,
+                'edit_form' => $editForm->createView(),
+                'delete_form' => $deleteForm->createView(),
         ));
     }
 
@@ -96,16 +106,19 @@ class CategorieController extends Controller
      * Deletes a Categorie entity.
      *
      */
-    public function deleteAction(Request $request, Categorie $categorie)
-    {
-        $form = $this->createDeleteForm($categorie);
-        $form->handleRequest($request);
 
-        if ($form->isSubmitted() && $form->isValid()) {
-            $em = $this->getDoctrine()->getManager();
-            $em->remove($categorie);
-            $em->flush();
-        }
+    public function deleteAction($id)
+    {
+        $em = $this->getDoctrine()->getManager();
+        $categories = $em->getRepository('EDRAppliBundle:Categorie')->find($id);
+        $em->remove($categories);
+        $em->flush();
+
+        $this->get('session')->getFlashBag()->add(
+            'mesConfirm',
+            'Suppression Réussie !'
+        );
+
 
         return $this->redirectToRoute('categorie_index');
     }
@@ -122,7 +135,6 @@ class CategorieController extends Controller
         return $this->createFormBuilder()
             ->setAction($this->generateUrl('categorie_delete', array('id' => $categorie->getId())))
             ->setMethod('DELETE')
-            ->getForm()
-        ;
+            ->getForm();
     }
 }

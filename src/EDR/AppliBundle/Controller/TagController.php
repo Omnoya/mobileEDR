@@ -112,8 +112,8 @@ class TagController extends Controller
         $em = $this->getDoctrine()->getManager();
         $tag = $em->getRepository('EDRAppliBundle:Tag')->find($id);
 
-            $em->remove($tag);
-            $em->flush();
+        $em->remove($tag);
+        $em->flush();
 
         $this->get('session')->getFlashBag()->add(
             'mesSup',
@@ -122,6 +122,7 @@ class TagController extends Controller
         //}
 
         return $this->redirectToRoute('tag_index');
+    
     }
 
     /**

@@ -1,39 +1,76 @@
+{#{% extends 'base.html.twig' %} #}
 {% extends "EDRAppliBundle::layout.html.twig" %}
 
-{% block body %}
-    <h1>Categorie list</h1>
 
-    <table>
-        <thead>
+{% block edrappli_body %}
+
+    <h1>Liste des catégories</h1>
+    <ul>
+        <li>
+            <a class="btn btn-primary btn-lg" href="{{ path('categorie_new') }}">
+                <i class="glyphicon glyphicon-plus"></i>
+                Créer une nouvelle entrée
+            </a>
+        </li>
+    </ul>
+    <div class="container-fluid">
+        <table class="table table-hover">
+            <thead>
             <tr>
                 <th>Id</th>
                 <th>Nom</th>
                 <th>Actions</th>
             </tr>
-        </thead>
-        <tbody>
-        {% for categorie in categories %}
-            <tr>
-                <td><a href="{{ path('categorie_show', { 'id': categorie.id }) }}">{{ categorie.id }}</a></td>
-                <td>{{ categorie.nom }}</td>
-                <td>
-                    <ul>
-                        <li>
-                            <a href="{{ path('categorie_show', { 'id': categorie.id }) }}">show</a>
-                        </li>
-                        <li>
-                            <a href="{{ path('categorie_edit', { 'id': categorie.id }) }}">edit</a>
-                        </li>
-                    </ul>
-                </td>
-            </tr>
-        {% endfor %}
-        </tbody>
-    </table>
+            </thead>
+            <tbody>
 
-    <ul>
-        <li>
-            <a href="{{ path('categorie_new') }}">Create a new entry</a>
-        </li>
-    </ul>
+            {% for flashMessage in app.session.flashbag.get('mesConfirm') %}
+
+                <div class="alert alert-success">
+                    <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+                    {{ flashMessage }}
+                </div>
+
+            {% endfor %}
+
+
+
+            {% for categorie in categories %}
+                <tr>
+                    {#<td><a href="{{ path('tag_show', { 'id': tag.id }) }}">{{ tag.id }}</a></td>#}
+                    <td>{{categorie.id }}</td>
+                    <td>{{ categorie.nom }}</td>
+                    <td>
+                        <ul>
+                            {#<li>
+                                <a href="{{ path('tag_show', { 'id': tag.id }) }}" class="btn btn-info"
+                                   id="place-btn">
+
+                                    <i class="glyphicon glyphicon-eye-open"></i>
+                                    Voir
+                                </a>
+                            </li>#}
+                            <li>
+                                <a href="{{ path('categorie_edit', { 'id': categorie.id }) }}" class="btn btn-success"
+                                   id="place-btn">
+                                    <i class="glyphicon glyphicon-edit"></i>
+                                    Modifier
+                                </a>
+                            </li>
+                            <li>
+                                <a href="{{ path('categorie_delete', { 'id': categorie.id }) }}" class="btn btn-danger"
+                                   data-toggle="confirmation" data-title="Open Google?" id="place-btn">
+                                    <i class="glyphicon glyphicon-trash"></i>
+                                    Supprimer
+                                </a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+
+    </div>
 {% endblock %}
+
