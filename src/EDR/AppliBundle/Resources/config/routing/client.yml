@@ -1,0 +1,8 @@
+edr_appli_home:
+    path:     /
+    defaults: { _controller: EDRAppliBundle:Appli:index }
+
+etab_category_show:
+    path:     /{category}
+    defaults: { _controller: "EDRAppliBundle:Etablissement:showByCategory" }
+    methods:  GET

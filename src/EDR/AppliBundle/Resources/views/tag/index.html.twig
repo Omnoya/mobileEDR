@@ -1,6 +1,5 @@
 {#{% extends 'base.html.twig' %} #}
-{% extends "EDRAppliBundle::layout.html.twig" %}
-
+{% extends "EDRAppliBundle::layoutadmin.html.twig" %}
 
 {% block edrappli_body %}
 
@@ -24,16 +23,7 @@
             </thead>
             <tbody>
 
-            {% for flashMessage in app.session.flashbag.get('mesModif') %}
-
-                <div class="alert alert-success">
-                    <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
-                    {{ flashMessage }}
-                </div>
-
-            {% endfor %}
-
-            {% for flashMessage in app.session.flashbag.get('mesSup') %}
+            {% for flashMessage in app.session.flashbag.get('mesConfirm') %}
 
                 <div class="alert alert-success">
                     <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>

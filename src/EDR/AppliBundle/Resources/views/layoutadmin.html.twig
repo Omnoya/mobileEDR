@@ -8,12 +8,12 @@
 
 {% block menu %}
     <ul class="nav nav-pills nav-stacked">
-
+        {# utilisation de la fonction {{ path() }} pour faire des liens vers d'autres routes #}
         <li><a href="{{ path('edr_appli_home') }}">Accueil</a></li>
-        {% for categorie in categories %}
-            {# utilisation de la fonction {{ path() }} pour faire des liens vers d'autres routes #}
-            <li><a href="{{ path('etab_category_show', {'category' : categorie.nom }) }}">{{ categorie.nom }}</a></li>
-        {% endfor %}
+        <li><a href="{{ path('etablissement_index') }}">Gestion des Etablissements</a></li>
+        <li><a href="{{ path('categorie_index') }}">Gestion des Catégories</a></li>
+        <li><a href="{{ path('tag_index') }}">Gestion des Tags</a></li>
+        {#<li><a href="{{ path('edr_appli_home', {'type' : 'famille'}) }}">Famille</a></li>#}
     </ul>
 {% endblock %}
 
