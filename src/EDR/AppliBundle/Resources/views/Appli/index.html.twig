@@ -8,7 +8,16 @@
 
 {% block edrappli_body %}
 
-    <h2>Adresse du restaurant</h2>
+    {% if etablissements is defined %}
+
+        {% for etablissement in etablissements %}
+            <h2>{{ etablissement.nom }}</h2>
+            <p>{{ etablissement.adresse }}</p>
+            <p>{{ etablissement.adresse2 }}</p>
+            <p>{{ etablissement.codePostal }} {{ etablissement.ville }}</p>
+            <p>{{ etablissement.telephone }}</p>
+        {% endfor %}
+    {% endif %}
 
     {#
     <ul>
