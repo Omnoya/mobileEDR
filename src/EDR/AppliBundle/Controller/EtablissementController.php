@@ -88,11 +88,9 @@ class EtablissementController extends Controller
             ->getEtabWithCategory($category)
         ;
 
-        var_dump($etablissements);
-
         return $this->render('EDRAppliBundle:Appli:index.html.twig', array(
             'etablissements' => $etablissements,
-            'categories' => $categories
+            'categories' => $categories,
         ));
     }
 
