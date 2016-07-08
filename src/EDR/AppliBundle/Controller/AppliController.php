@@ -12,8 +12,6 @@ class AppliController extends Controller
 
         $categories = $em->getRepository('EDRAppliBundle:Categorie')->findAll();
         
-        var_dump($categories);
-        
         return $this->render('EDRAppliBundle:Appli:index.html.twig', array(
             'categories' => $categories
         ));
