@@ -27,25 +27,8 @@
                 </div>
             </div>
 
-
         {% endfor %}
 
     {% endif %}
-
-    {#
-    <ul>
-        {% for advert in listAdverts %}
-            <li>
-                <a href="{{ path('oc_platform_view', {'id':advert.id}) }}">
-                    {{ advert.title }}
-                </a>
-                par {{ advert.author }},
-                le {{ advert.date|date('d/m/Y') }}
-            </li>
-        {% else %}
-            <li>Pas encore d'annonces</li>
-        {% endfor %}
-    </ul>
-    #}
 
 {% endblock %}
