@@ -11,7 +11,7 @@
 
     {% block stylesheets %}
         {# On charge le CSS de bootstrap depuis le site directement #}
-        <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css" />
+        <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css"/>
         <link rel="stylesheet" href="{{ asset('bundles/edrappli/css/style.css') }}">
     {% endblock %}
 </head>
@@ -25,22 +25,16 @@
         </p>
     </div>
 
+
     <div class="row">
         <div id="menu" class="col-md-3">
             <h3>Menu</h3>
-            <ul class="nav nav-pills nav-stacked">
-                {# utilisation de la fonction {{ path() }} pour faire des liens vers d'autres routes #}
-                <li><a href="{{ path('edr_appli_home') }}">Accueil</a></li>
-                <li><a href="{{ path('edr_appli_home', {'type' : 'amis'}) }}">entre Amis</a></li>
-                <li><a href="{{ path('edr_appli_home', {'type' : 'famille'}) }}">Famille</a></li>
-                <li><a href="{{ path('edr_appli_home', {'type' : 'pro'}) }}">Cadre professionnel</a></li>
-                <li><a href="{{ path('edr_appli_home', {'type' : 'date'}) }}">Date</a></li>
-            </ul>
+            {% block menu %}
+            {% endblock %}
 
             {#<h4>Dernières annonces</h4>#}
             {# inclusion de la méthode menu du contrôleur Advert du bundle OCPlatformBundle, avec l'argument nombre défini à 3 #}
             {#{{ render(controller("OCPlatformBundle:Advert:menu", {'limit':3})) }}#}
-
         </div>
         <div id="content" class="col-md-9">
             {# création du bloc « body » sans contenu par défaut #}

@@ -1,23 +1,22 @@
-edr_appli_home:
-    path:     /
-    defaults: { _controller: EDRAppliBundle:Appli:index }
+edr_appli_client:
+    prefix:   /
+    resource: "@EDRAppliBundle/Resources/config/routing/client.yml"
 
 edr_appli_etablissement:
-    prefix:   /etablissement
+    prefix:   /appli/etablissement
     resource: "@EDRAppliBundle/Resources/config/routing/etablissement.yml"
 
 edr_appli_tag:
-    prefix:     /tag
+    prefix:   /appli/tag
     resource: "@EDRAppliBundle/Resources/config/routing/tag.yml"
-
 
 edr_appli_avis:
     resource: "@EDRAppliBundle/Resources/config/routing/avis.yml"
-    prefix:   /avis
+    prefix:   /appli/avis
 
 edr_appli_categorie:
     resource: "@EDRAppliBundle/Resources/config/routing/categorie.yml"
-    prefix:   /categorie
+    prefix:   /appli/categorie
 
 
 

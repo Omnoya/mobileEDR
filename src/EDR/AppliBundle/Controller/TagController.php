@@ -84,7 +84,7 @@ class TagController extends Controller
             $em->flush();
 
             $this->get('session')->getFlashBag()->add(
-                'mesModif',
+                'mesConfirm',
                 'Modification Réussie !'
             );
 
@@ -116,7 +116,7 @@ class TagController extends Controller
             $em->flush();
 
         $this->get('session')->getFlashBag()->add(
-            'mesSup',
+            'mesConfirm',
             'Suppression Réussie !'
         );
         //}

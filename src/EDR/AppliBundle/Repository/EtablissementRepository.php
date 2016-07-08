@@ -12,4 +12,20 @@ use Doctrine\ORM\EntityRepository;
  */
 class EtablissementRepository extends EntityRepository
 {
+    public function getEtabWithCategory($categoryName)
+    {
+        $qb = $this->createQueryBuilder('e');
+
+        //jointure avec l'entité Categorie
+        $qb
+            ->innerJoin('e.categories', 'c', 'WITH', 'c.nom = :categoryName')
+            ->setParameter('categoryName', $categoryName)
+            ->addSelect('c')
+        ;
+
+        return $qb
+            ->getQuery()
+            ->getResult()
+        ;
+    }
 }

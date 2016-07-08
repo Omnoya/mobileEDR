@@ -8,7 +8,29 @@
 
 {% block edrappli_body %}
 
-    <h2>Adresse du restaurant</h2>
+    {% if etablissements is defined %}
+
+        {% for etablissement in etablissements %}
+
+            <hr/>
+
+            <div class="row">
+                <div class="col-md-6">
+                    <img class="img-thumbnail img-responsive" src="{{ asset('uploads/photos/') }}{{ etablissement.photo }}" />
+                </div>
+                <div class="col-md-6">
+                    <h2>{{ etablissement.nom }}</h2>
+                    <p>{{ etablissement.adresse }}</p>
+                    <p>{{ etablissement.adresse2 }}</p>
+                    <p>{{ etablissement.codePostal }} {{ etablissement.ville }}</p>
+                    <p>{{ etablissement.telephone }}</p>
+                </div>
+            </div>
+
+
+        {% endfor %}
+
+    {% endif %}
 
     {#
     <ul>

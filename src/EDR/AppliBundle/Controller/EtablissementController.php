@@ -71,6 +71,30 @@ class EtablissementController extends Controller
     }
 
     /**
+     * Finds and displays restaurants by category.
+     *
+     */
+    public function showByCategoryAction($category)
+    {
+        $em = $this->getDoctrine()->getManager();
+
+        $categories = $em
+            ->getRepository('EDRAppliBundle:Categorie')
+            ->findAll()
+        ;
+
+        $etablissements = $em
+            ->getRepository('EDRAppliBundle:Etablissement')
+            ->getEtabWithCategory($category)
+        ;
+
+        return $this->render('EDRAppliBundle:Appli:index.html.twig', array(
+            'etablissements' => $etablissements,
+            'categories' => $categories,
+        ));
+    }
+
+    /**
      * Displays a form to edit an existing Etablissement entity.
      *
      */
