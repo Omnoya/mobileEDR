@@ -68,6 +68,13 @@ class TagController extends Controller
         ));
     }
 
+//    public function  findAction(Request $request){
+//        $form = $this->createForm('EDR\AppliBundle\Form\EtabFindType');
+//
+//        return $this->render('EDRAppliBundle:Appli:index.html.twig', array(
+//            'form' => $form->createView(),
+//        ));
+//    }
     /**
      * Displays a form to edit an existing Tag entity.
      *
