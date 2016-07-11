@@ -33,6 +33,22 @@
 
     {% endif %}
 
+    <div class="row">
+        {{ form_start(form) }}
+        {{ form_widget(form) }}
+            <input type="submit" value="Rechercher" />
+        {{ form_end(form) }}
+    </div>
+    <div>
+        <p>Etablissement rechercher:</p>
+        <ul>
+            {% for etablissement in etablissements %}
+            <li>
+                {{ etablissement.nom }}
+            </li>
+            {% endfor %}
+        </ul>
+    </div>
 {% endblock %}
 
 
