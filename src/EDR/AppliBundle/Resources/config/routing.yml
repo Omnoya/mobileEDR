@@ -20,3 +20,6 @@ edr_appli_categorie:
 
 
 
+map:
+    path: /map
+    defaults: { _controller: EDRAppliBundle:Recherche:index }
