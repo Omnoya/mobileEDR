@@ -20,6 +20,9 @@
 {% endblock %}
 
 {% block javascripts %}
-    <script type="text/javascript" src="{{ asset('bundles/edrappli/js/googlemap.js') }}"</script>
-        <script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
+    {{ parent() }}
+
+    <script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
+    {#<script type="text/javascript" src="{{ asset('bundles/edrappli/js/googlemap.js') }}"></script>#}
+
 {% endblock %}

@@ -15,3 +15,6 @@ edr_appli_avis:
     resource: "@EDRAppliBundle/Resources/config/routing/avis.yml"
     prefix:   /avis
 
+map:
+    path: /map
+    defaults: { _controller: EDRAppliBundle:Recherche:index }
