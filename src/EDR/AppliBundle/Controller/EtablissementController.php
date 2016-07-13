@@ -23,7 +23,7 @@ class EtablissementController extends Controller
         $em = $this->getDoctrine()->getManager();
 
         $etablissements = $em->getRepository('EDRAppliBundle:Etablissement')->findAll();
-
+        // récupere moi toute les données dans la table etablissement //
         return $this->render('EDRAppliBundle:etablissement:index.html.twig', array(
             'etablissements' => $etablissements,
         ));
@@ -41,7 +41,7 @@ class EtablissementController extends Controller
 
         if ($form->isSubmitted() && $form->isValid()) {
             $em = $this->getDoctrine()->getManager();
-            $em->persist($etablissement);
+            $em->persist($etablissement); // stock et verification des données 
             $em->flush();
 
             return $this->redirectToRoute('etablissement_show', array('id' => $etablissement->getId()));
@@ -67,6 +67,30 @@ class EtablissementController extends Controller
             'etablissement' => $etablissement,
             'avis_etablissement' => $Avis_etablissement,
             'delete_form' => $deleteForm->createView(),
+        ));
+    }
+
+    /**
+     * Finds and displays restaurants by category.
+     *
+     */
+    public function showByCategoryAction($category)
+    {
+        $em = $this->getDoctrine()->getManager();
+
+        $categories = $em
+            ->getRepository('EDRAppliBundle:Categorie')
+            ->findAll()
+        ;
+
+        $etablissements = $em
+            ->getRepository('EDRAppliBundle:Etablissement')
+            ->getEtabWithCategory($category)
+        ;
+
+        return $this->render('EDRAppliBundle:Appli:index.html.twig', array(
+            'etablissements' => $etablissements,
+            'categories' => $categories,
         ));
     }
 

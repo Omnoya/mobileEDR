@@ -1,8 +1,7 @@
-{#{% extends 'base.html.twig' %} #}
 {% extends "EDRAppliBundle::layoutadmin.html.twig" %}
 
-{% block edrappli_body %}
-    <h1>Etablissement creation</h1>
+{% block body %}
+    <h1>Categorie creation</h1>
 
     {{ form_start(form) }}
         {{ form_widget(form) }}
@@ -11,7 +10,7 @@
 
     <ul>
         <li>
-            <a href="{{ path('etablissement_index') }}">Back to the list</a>
+            <a href="{{ path('categorie_index') }}">Back to the list</a>
         </li>
     </ul>
 {% endblock %}

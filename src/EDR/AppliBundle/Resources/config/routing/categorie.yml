@@ -1,0 +1,24 @@
+categorie_index:
+    path:     /
+    defaults: { _controller: "EDRAppliBundle:Categorie:index" }
+    methods:  GET
+
+categorie_show:
+    path:     /{id}/show
+    defaults: { _controller: "EDRAppliBundle:Categorie:show" }
+    methods:  GET
+
+categorie_new:
+    path:     /new
+    defaults: { _controller: "EDRAppliBundle:Categorie:new" }
+    methods:  [GET, POST]
+
+categorie_edit:
+    path:     /{id}/edit
+    defaults: { _controller: "EDRAppliBundle:Categorie:edit" }
+    methods:  [GET, POST]
+
+categorie_delete:
+    path:     /{id}/delete
+    defaults: { _controller: "EDRAppliBundle:Categorie:delete" }
+    methods:  DELETE

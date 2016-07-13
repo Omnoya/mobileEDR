@@ -1,6 +1,6 @@
 edr_appli:
     resource: "@EDRAppliBundle/Resources/config/routing.yml"
-    prefix:   /appli
+    prefix:   /
 
 fos_user:
     resource: "@FOSUserBundle/Resources/config/routing/all.xml"

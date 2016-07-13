@@ -1,5 +1,5 @@
 {#{% extends 'base.html.twig' %} #}
-{% extends "EDRAppliBundle::layout.html.twig" %}
+{% extends "EDRAppliBundle::layoutadmin.html.twig" %}
 
 {% block edrappli_body %}
     <h1 class="jumbotron">Etablissement list</h1>
@@ -30,7 +30,7 @@
                         <a href="{{ path('etablissement_show', { 'id': etablissement.id }) }}">{{ etablissement.id }}</a>
                     </td>
                     <td>{{ etablissement.nom }}</td>
-                    <td><img class="" src="{{ asset('uploads/photos/') }}{{ etablissement.photo }}"></td>
+                    <td><img class="img-responsive" src="{{ asset('uploads/photos/') }}{{ etablissement.photo }}"></td>
                     <td>{{ etablissement.adresse }}</td>
                     <td>{{ etablissement.adresse2 }}</td>
                     <td>{{ etablissement.codePostal }}</td>
