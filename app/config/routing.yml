@@ -5,7 +5,3 @@ edr_appli:
 fos_user:
     resource: "@FOSUserBundle/Resources/config/routing/all.xml"
     prefix:   /user
-
-recherche:
-    resource: "@EDRAppliBundle/Resources/config/routing.yml"
-    prefix:  /appli/recherche
