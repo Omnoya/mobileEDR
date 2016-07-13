@@ -3,6 +3,7 @@
 namespace EDR\AppliBundle\Form;
 
 use Symfony\Component\Form\AbstractType;
+use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
@@ -27,7 +28,11 @@ class EtablissementType extends AbstractType
             ->add('email')
             ->add('publier')
             ->add('categories')
-            ->add('tags')
+            ->add('tags',EntityType::class, array(
+                'class' => 'EDRAppliBundle:Tag',
+                'multiple' => true,
+                'expanded' => true,
+            ))
         ;
     }
     
