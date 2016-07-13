@@ -8,6 +8,7 @@
 
 {% block edrappli_body %}
 
+
     {% if etablissements is defined %}
 
         {% for etablissement in etablissements %}
@@ -33,11 +34,19 @@
 
     {% endif %}
 
+    {% if form is defined %}
     <div class="row">
         {{ form_start(form) }}
+
         {{ form_widget(form) }}
+
             <input type="submit" value="Rechercher" />
+
+
+
         {{ form_end(form) }}
+            </form>
+        </div>
     </div>
     <div>
         <p>Etablissement rechercher:</p>
@@ -49,6 +58,8 @@
             {% endfor %}
         </ul>
     </div>
+    {% endif %}
+
 {% endblock %}
 
 

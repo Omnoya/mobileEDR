@@ -7,19 +7,22 @@
 {% endblock %}
 
 {% block menu %}
-    <ul class="nav nav-pills nav-stacked">
 
-        <li><a href="{{ path('edr_appli_home') }}">Accueil</a></li>
-        {% for categorie in categories %}
-            {# utilisation de la fonction {{ path() }} pour faire des liens vers d'autres routes #}
-            <li><a href="{{ path('etab_category_show', {'category' : categorie.nom }) }}">{{ categorie.nom }}</a></li>
-        {% endfor %}
-    </ul>
 {% endblock %}
 
 {% block body %}
 
     {# On définit un sous-titre commun à toutes les pages du bundle #}
+    {#<ul class="nav nav-pills nav-stacked">#}
+<div style="height: 100vh">
+    {#<li><a href="{{ path('edr_appli_home') }}">Accueil</a></li>#}
+    {% for categorie in categories %}
+        {# utilisation de la fonction {{ path() }} pour faire des liens vers d'autres routes #}
+        <div class="wrapper"><a href="{{ path('etab_category_show', {'category' : categorie.nom }) }}">{{ categorie.nom }}</a></div>
+
+    {% endfor %}
+    {#</ul>#}
+</div>
 
 
 

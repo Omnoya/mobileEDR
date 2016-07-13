@@ -2,3 +2,24 @@ img{
     width: 30px;
 }
 
+.wrapper{
+    background-image: url("../images/DSC06426.JPG");
+    height: 25%;
+    background-size: cover;
+    padding-top: 150px;
+    text-align: center;
+    color: white;
+}
+.wrapper:first-child{
+    background-image: url("../images/friends.jpg");
+    height: 100px;
+}
+
+.wrapper:nth-child(3){
+    background-image: url("../images/couple.jpg");
+}
+
+
+.wrapper:nth-child(4){
+    background-image: url("../images/night.jpg");
+}

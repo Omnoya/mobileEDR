@@ -18,7 +18,7 @@ class AppliController extends Controller
         $id = $request->request->get('etab_find_by_tag')['nom'];
 
         $etablissements = $em->getRepository('EDRAppliBundle:Etablissement')->findBy(array('id' => $id));
-         
+
         return $this->render('EDRAppliBundle:Appli:index.html.twig', array(
             'categories' => $categories,
             'etablissements' => $etablissements,

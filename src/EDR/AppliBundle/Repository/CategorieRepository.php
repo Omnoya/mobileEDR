@@ -12,4 +12,14 @@ use Doctrine\ORM\EntityRepository;
  */
 class CategorieRepository extends EntityRepository
 {
+    public function getAvis_etablissement($id_categorie){
+
+        return $this->getEntityManager()
+            ->createQuery('SELECT a.commentaire, a.note, a.favoris 
+                                FROM EDRAppliBundle:Avis a 
+                                WHERE a.categorie = :idcategorie')
+            ->setParameter('idcategorie', $id_categorie )
+            ->getResult();
+    }
+
 }

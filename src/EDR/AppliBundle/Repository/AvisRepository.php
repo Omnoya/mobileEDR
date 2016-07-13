@@ -12,7 +12,7 @@ class AvisRepository extends EntityRepository
     public function getAvis_etablissement($id_etab){
 
         return $this->getEntityManager()
-            ->createQuery('SELECT a.commentaire, a.note 
+            ->createQuery('SELECT a.commentaire, a.note, a.favoris 
                                 FROM EDRAppliBundle:Avis a 
                                 WHERE a.etablissement = :idEtab')
             ->setParameter('idEtab', $id_etab )

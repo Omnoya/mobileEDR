@@ -17,17 +17,11 @@
 </head>
 
 <body>
-<div class="container">
-    <div id="header" class="jumbotron">
-        <h1>EDR Application</h1>
-        <p>
-            Ce projet est créé par Paola, Elodie, Timothée & Omar.
-        </p>
-    </div>
+
 
 
     <div class="row">
-        <div id="menu" class="col-md-3">
+        {#<div id="menu" class="col-md-3">#}
             <h3>Menu</h3>
             {% block menu %}
             {% endblock %}
@@ -35,8 +29,8 @@
             {#<h4>Dernières annonces</h4>#}
             {# inclusion de la méthode menu du contrôleur Advert du bundle OCPlatformBundle, avec l'argument nombre défini à 3 #}
             {#{{ render(controller("OCPlatformBundle:Advert:menu", {'limit':3})) }}#}
-        </div>
-        <div id="content" class="col-md-9">
+        {#</div>#}
+        <div id="content" class="col-md-12">
             {# création du bloc « body » sans contenu par défaut #}
             {% block body %}
             {% endblock %}

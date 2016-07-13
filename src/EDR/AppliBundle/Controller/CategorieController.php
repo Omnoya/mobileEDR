@@ -59,10 +59,17 @@ class CategorieController extends Controller
      */
     public function showAction(Categorie $categorie)
     {
+        $em = $this->getDoctrine()->getManager();
         $deleteForm = $this->createDeleteForm($categorie);
+        $id_categorie = $categorie->getId();
+
+        $Avis_etablissement = $em->getRepository('EDRAppliBundle:Avis')->getAvis_etablissement($id_categorie);
+
 
         return $this->render('EDRAppliBundle:categorie:show.html.twig', array(
             'categorie' => $categorie,
+            'avis_etablissement' => $Avis_etablissement,
+
             'delete_form' => $deleteForm->createView(),
         ));
     }
