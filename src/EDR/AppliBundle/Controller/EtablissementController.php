@@ -88,6 +88,13 @@ class EtablissementController extends Controller
             ->getEtabWithCategory($category)
         ;
 
+        /*// Récupération de la liste des tags de chaque établissement
+        $tags = [];
+        foreach($etablissements as $etablissement){
+            foreach($etablissement->getTags() as )
+        }*/
+
+        
         return $this->render('EDRAppliBundle:Appli:index.html.twig', array(
             'etablissements' => $etablissements,
             'categories' => $categories,

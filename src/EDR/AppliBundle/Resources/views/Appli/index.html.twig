@@ -24,9 +24,19 @@
                     <p>{{ etablissement.adresse2 }}</p>
                     <p>{{ etablissement.codePostal }} {{ etablissement.ville }}</p>
                     <p>{{ etablissement.telephone }}</p>
+
+                    <ul>
+                    {% if not etablissement.tags.empty %}
+                        {% for tag in etablissement.tags %}
+                            <li class="btn btn-default" id="place-btn">
+                                {{ tag.nom }}
+                            </li>
+                        {% endfor %}
+                    {% endif %}
+                    </ul>
+
                 </div>
             </div>
-
         {% endfor %}
 
     {% endif %}
