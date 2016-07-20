@@ -28,4 +28,21 @@ class EtablissementRepository extends EntityRepository
             ->getResult()
         ;
     }
+
+    public function getEtabWithTag($idTag)
+    {
+        $qb = $this->createQueryBuilder('e');
+
+        //jointure avec l'entité Tag
+        $qb
+            ->innerJoin('e.tags', 't', 'WITH', 't.id = :idTag')
+            ->setParameter('idTag', $idTag)
+            ->addSelect('t')
+        ;
+
+        return $qb
+            ->getQuery()
+            ->getResult()
+            ;
+    }
 }

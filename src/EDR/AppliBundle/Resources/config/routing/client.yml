@@ -5,4 +5,4 @@ edr_appli_home:
 etab_category_show:
     path:     /{category}
     defaults: { _controller: "EDRAppliBundle:Etablissement:showByCategory" }
-    methods:  GET
+    methods:  [GET, POST]
