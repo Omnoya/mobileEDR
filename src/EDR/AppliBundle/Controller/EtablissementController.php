@@ -74,7 +74,7 @@ class EtablissementController extends Controller
      * Finds and displays restaurants by category.
      *
      */
-    public function showByCategoryAction($category)
+    public function showByCategoryAction($category,Request $request)
     {
         $em = $this->getDoctrine()->getManager();
 
@@ -88,6 +88,15 @@ class EtablissementController extends Controller
             ->getEtabWithCategory($category)
         ;
 
+        $form = $this->createForm('EDR\AppliBundle\Form\EtabFindByTagType');
+        if($request->isMethod('POST')){
+            $id = $request->request->get('etab_find_by_tag')['nom'];
+
+            $etablissements = $em->getRepository('EDRAppliBundle:Etablissement')->getEtabWithTag($id);
+            //$tags_etab = $etablissements[0]->getTags()->getSnapshot();
+            //$tags_etab = $em->getRepository('EDRAppliBundle:Etablissement')->findById($etablissements[0]->getId());
+        }
+
         /*// Récupération de la liste des tags de chaque établissement
         $tags = [];
         foreach($etablissements as $etablissement){
@@ -98,6 +107,26 @@ class EtablissementController extends Controller
         return $this->render('EDRAppliBundle:Appli:index.html.twig', array(
             'etablissements' => $etablissements,
             'categories' => $categories,
+            'form' => $form->createView(),
+            //"tags_etab" => $tags_etab
+        ));
+    }
+
+    public function showByTagAction(Request $request)
+    {
+        $em = $this->getDoctrine()->getManager();
+
+        $categories = $em->getRepository('EDRAppliBundle:Categorie')->findAll();
+
+        $form = $this->createForm('EDR\AppliBundle\Form\EtabFindByTagType');
+        $id = $request->request->get('etab_find_by_tag')['nom'];
+
+        $etablissements = $em->getRepository('EDRAppliBundle:Etablissement')->findBy(array('id_tag' => $id));
+
+        return $this->render('EDRAppliBundle:Appli:index.html.twig', array(
+            'categories' => $categories,
+            'etablissements' => $etablissements,
+            'form' => $form->createView()
         ));
     }
 
