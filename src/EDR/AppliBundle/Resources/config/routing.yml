@@ -18,5 +18,6 @@ edr_appli_categorie:
     resource: "@EDRAppliBundle/Resources/config/routing/categorie.yml"
     prefix:   /appli/categorie
 
-
-
+map:
+    path: /appli/map
+    defaults: { _controller: EDRAppliBundle:Recherche:index }

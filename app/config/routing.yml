@@ -5,4 +5,3 @@ edr_appli:
 fos_user:
     resource: "@FOSUserBundle/Resources/config/routing/all.xml"
     prefix:   /user
-
