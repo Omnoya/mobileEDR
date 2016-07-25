@@ -1,11 +1,12 @@
-img{
-    width: 30px;
-}
-html, body {
+/***********/
+/**CSS MAP**/
+/***********/
+
+/*html, body {
     height: 100%;
     margin: 0;
     padding: 0;
-}
+}*/
 #map {
     height: 700px;
     width: 700px;
@@ -36,6 +37,7 @@ html, body {
     border-color: #4d90fe;
 }
 
+
 .pac-container {
     font-family: Roboto;
 }
@@ -51,6 +53,7 @@ html, body {
     font-size: 13px;
     font-weight: 300;
 }
+
 #target {
     width: 345px;
 }

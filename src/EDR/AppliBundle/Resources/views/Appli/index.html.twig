@@ -1,3 +1,6 @@
+{#CLIENT#}
+
+
 {# src/EDR/AppliBundle/Resources/views/Appli/index.html.twig #}
 
 {% extends "EDRAppliBundle::layout.html.twig" %}
@@ -6,7 +9,25 @@
     Recherche Restaurants - {{ parent() }}
 {% endblock %}
 
+{% block menu %}
+
+    {{ parent() }}
+
+    {#Formulaire pour rechercher par tag#}
+    {% if form is defined %}
+        <div class="row well">
+            {{ form_start(form) }}
+            {{ form_widget(form) }}
+            <input type="submit" value="Rechercher" />
+            {{ form_end(form) }}
+        </div>
+    {% endif %}
+
+{% endblock %}
+
 {% block edrappli_body %}
+
+    {# Affichage restaurant selon catégorie choisie #}
 
     {% if etablissements is defined %}
 
@@ -26,13 +47,13 @@
                     <p>{{ etablissement.telephone }}</p>
 
                     <ul>
-                    {% if not etablissement.tags.empty %}
-                        {% for tag in etablissement.tags %}
-                            <li class="btn btn-default" id="place-btn">
-                                {{ tag.nom }}
-                            </li>
-                        {% endfor %}
-                    {% endif %}
+                        {% if not etablissement.tags.empty %}
+                            {% for tag in etablissement.tags %}
+                                <li class="btn btn-default" id="place-btn">
+                                    {{ tag.nom }}
+                                </li>
+                            {% endfor %}
+                        {% endif %}
                     </ul>
 
                 </div>

@@ -8,7 +8,19 @@ class RechercheController extends Controller
 {
     public function indexAction()
     {
+
         
         return $this->render('EDRAppliBundle:Map:recherche.html.twig');
+
+        $em = $this->getDoctrine()->getManager();
+
+        $etablissements = $em->getRepository('EDRAppliBundle:Etablissement')->findAll();
+
+        return $this->render('EDRAppliBundle:Map:recherche.html.twig', array(
+            'etablissements' => $etablissements
+        ));
+
+
     }
+
 }
