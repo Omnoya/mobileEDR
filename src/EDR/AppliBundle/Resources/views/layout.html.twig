@@ -1,6 +1,6 @@
 {# src/EDR/AppliBundle/Resources/views/layout.html.twig #}
 
-{% extends "::layout.html.twig" %}
+{% extends "::base.html.twig" %}
 
 {% block title %}
     {{ parent() }}
@@ -8,7 +8,6 @@
 
 {% block menu %}
     <ul class="nav nav-pills nav-stacked">
-
         <li><a href="{{ path('edr_appli_home') }}">Accueil</a></li>
         {% for categorie in categories %}
             {# utilisation de la fonction {{ path() }} pour faire des liens vers d'autres routes #}
@@ -25,6 +24,7 @@
 
     {# On définit un nouveau bloc, que les vues du bundle pourront remplir #}
     {% block edrappli_body %}
+
     {% endblock %}
 
 {% endblock %}

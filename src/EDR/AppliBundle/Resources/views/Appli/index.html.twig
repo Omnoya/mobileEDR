@@ -1,3 +1,6 @@
+{#CLIENT#}
+
+
 {# src/EDR/AppliBundle/Resources/views/Appli/index.html.twig #}
 
 {% extends "EDRAppliBundle::layout.html.twig" %}
@@ -10,8 +13,7 @@
 
     {{ parent() }}
 
-    {#{{ render(controller("EDRAppliBundle:Etablissement:showByTag")) }}#}
-
+    {#Formulaire pour rechercher par tag#}
     {% if form is defined %}
         <div class="row well">
             {{ form_start(form) }}
@@ -19,16 +21,6 @@
             <input type="submit" value="Rechercher" />
             {{ form_end(form) }}
         </div>
-        {#<div>
-            <p>Etablissement rechercher:</p>
-            <ul>
-                {% for etablissement in etablissements %}
-                    <li>
-                        {{ etablissement.nom }}
-                    </li>
-                {% endfor %}
-            </ul>
-        </div>#}
     {% endif %}
 
 {% endblock %}
@@ -69,40 +61,5 @@
         {% endfor %}
 
     {% endif %}
-
-    {# Affichage selon tag choisi #}
-
-    {#{% if etablissements_t is defined %}
-
-        {% for etablissement_t in etablissements_t %}
-
-            <hr/>
-
-            <div class="row">
-                <div class="col-md-6">
-                    <img class="img-thumbnail img-responsive" src="{{ asset('uploads/photos/') }}{{ etablissement_t.photo }}" />
-                </div>
-                <div class="col-md-6">
-                    <h2>{{ etablissement_t.nom }}</h2>
-                    <p>{{ etablissement_t.adresse }}</p>
-                    <p>{{ etablissement_t.adresse2 }}</p>
-                    <p>{{ etablissement_t.codePostal }} {{ etablissement_t.ville }}</p>
-                    <p>{{ etablissement_t.telephone }}</p>
-
-                    #}{#<ul>
-                        {% if not etablissement.tags.empty %}
-                            {% for tag in etablissement.tags %}
-                                <li class="btn btn-default" id="place-btn">
-                                    {{ tag.nom }}
-                                </li>
-                            {% endfor %}
-                        {% endif %}
-                    </ul>#}{#
-
-                </div>
-            </div>
-        {% endfor %}
-
-    {% endif %}#}
 
 {% endblock %}
