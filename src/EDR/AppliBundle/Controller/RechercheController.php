@@ -8,6 +8,7 @@ class RechercheController extends Controller
 {
     public function indexAction()
     {
+        
         return $this->render('EDRAppliBundle:Map:recherche.html.twig');
     }
 }

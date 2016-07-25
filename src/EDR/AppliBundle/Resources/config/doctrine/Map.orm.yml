@@ -1,0 +1,35 @@
+EDR\AppliBundle\Entity\Map:
+    type: entity
+    table: null
+    repositoryClass: EDR\AppliBundle\Repository\MapRepository
+    id:
+        id:
+            type: integer
+            id: true
+            generator:
+                strategy: AUTO
+    fields:
+        descriptif:
+            type: text
+            unique: true
+            column: Descriptif
+        photos:
+            type: string
+            length: 255
+            unique: true
+            column: Photos
+        horaires:
+            type: datetime
+            column: Horaires
+        likeFB:
+            type: string
+            length: 255
+            column: LikeFB
+        instagram:
+            type: string
+            length: 255
+            column: Instagram
+        noteCat:
+            type: integer
+            column: NoteCat
+    lifecycleCallbacks: {  }
