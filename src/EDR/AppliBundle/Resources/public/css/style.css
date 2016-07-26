@@ -57,3 +57,38 @@
 #target {
     width: 345px;
 }
+
+/***********/
+/**CSS LOGIN**/
+/***********/
+
+.block_login{
+    background-image: url('../images/Bk.jpg');
+    background-size: cover;
+    min-height: 80vh;
+    background-repeat: no-repeat;
+    min-width: 100vw;
+}
+.titrelogin {
+    margin-top: 50px;
+    font-size:34px;
+}
+
+.material-icons{
+    width:80px;
+}
+
+.edrinscription{
+    background: rgba(0, 0, 0, .4);
+    display: inline-block;
+    padding: 0.2em;
+    font-size: 18px;
+    letter-spacing: 2px;
+    margin-bottom: 10em;
+}
+
+.sign {
+    background-color: orangered;
+}
+
+
