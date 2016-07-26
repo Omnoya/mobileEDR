@@ -104,7 +104,7 @@ class EtablissementController extends Controller
         }*/
 
         
-        return $this->render('EDRAppliBundle:Appli:index.html.twig', array(
+        return $this->render('EDRAppliBundle:Appli:show.html.twig', array(
             'etablissements' => $etablissements,
             'categories' => $categories,
             'form' => $form->createView(),
