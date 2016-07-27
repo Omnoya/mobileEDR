@@ -1,0 +1,24 @@
+tag_index:
+    path:     /
+    defaults: { _controller: "EDRAppliBundle:Tag:index" }
+    methods:  GET
+
+tag_show:
+    path:     /{id}/show
+    defaults: { _controller: "EDRAppliBundle:Tag:show" }
+    methods:  GET
+
+tag_new:
+    path:     /new
+    defaults: { _controller: "EDRAppliBundle:Tag:new" }
+    methods:  [GET, POST]
+
+tag_edit:
+    path:     /{id}/edit
+    defaults: { _controller: "EDRAppliBundle:Tag:edit" }
+    methods:  [GET, POST]
+
+tag_delete:
+    path:     /{id}/delete
+    defaults: { _controller: "EDRAppliBundle:Tag:delete" }
+    methods:  [DELETE, GET]

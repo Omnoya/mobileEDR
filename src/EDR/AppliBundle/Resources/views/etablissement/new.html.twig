@@ -1,0 +1,19 @@
+{#ADMIN#}
+
+{#{% extends 'base.html.twig' %} #}
+{% extends "EDRAppliBundle::layoutadmin.html.twig" %}
+
+{% block edrappli_body %}
+    <h1>Etablissement creation</h1>
+
+    {{ form_start(form) }}
+        {{ form_widget(form) }}
+        <input type="submit" value="Create" />
+    {{ form_end(form) }}
+
+    <ul>
+        <li>
+            <a href="{{ path('etablissement_index') }}">Back to the list</a>
+        </li>
+    </ul>
+{% endblock %}

@@ -12,4 +12,37 @@ use Doctrine\ORM\EntityRepository;
  */
 class EtablissementRepository extends EntityRepository
 {
+    public function getEtabWithCategory($categoryName)
+    {
+        $qb = $this->createQueryBuilder('e');
+
+        //jointure avec l'entité Categorie
+        $qb
+            ->innerJoin('e.categories', 'c', 'WITH', 'c.nom = :categoryName')
+            ->setParameter('categoryName', $categoryName)
+            ->addSelect('c')
+        ;
+
+        return $qb
+            ->getQuery()
+            ->getResult()
+        ;
+    }
+
+    public function getEtabWithTag($idTag)
+    {
+        $qb = $this->createQueryBuilder('e');
+
+        //jointure avec l'entité Tag
+        $qb
+            ->innerJoin('e.tags', 't', 'WITH', 't.id = :idTag')
+            ->setParameter('idTag', $idTag)
+            ->addSelect('t')
+        ;
+
+        return $qb
+            ->getQuery()
+            ->getResult()
+            ;
+    }
 }

@@ -1,0 +1,29 @@
+{% extends "EDRAppliBundle::layout.html.twig" %}
+
+{% block title  %}
+    Recherche Restaurants - {{ parent() }}
+{% endblock %}
+
+{% block edrappli_body %}
+
+    <h2>Connexion</h2>
+
+
+
+    {#
+    <ul>
+        {% for advert in listAdverts %}
+            <li>
+                <a href="{{ path('oc_platform_view', {'id':advert.id}) }}">
+                    {{ advert.title }}
+                </a>
+                par {{ advert.author }},
+                le {{ advert.date|date('d/m/Y') }}
+            </li>
+        {% else %}
+            <li>Pas encore d'annonces</li>
+        {% endfor %}
+    </ul>
+    #}
+
+{% endblock %}

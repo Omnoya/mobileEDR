@@ -12,6 +12,12 @@ use Doctrine\ORM\Mapping as ORM;
  */
 class Tag
 {
+
+    public function __toString() {
+        return $this->nom;
+    }
+    //Code généré//
+    
     /**
      * @var int
      *

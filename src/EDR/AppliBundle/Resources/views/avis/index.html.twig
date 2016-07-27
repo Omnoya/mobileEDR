@@ -1,0 +1,46 @@
+{#{% extends 'base.html.twig' %} #}
+{% extends "EDRAppliBundle::layout.html.twig" %}
+
+{% block body %}
+    <h1>Avis list</h1>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Commentaire</th>
+                <th>Note</th>
+                <th>Favoris</th>
+                <th>Sauvegarde</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for avi in avis %}
+            <tr>
+                <td><a href="{{ path('avis_show', { 'id': avi.id }) }}">{{ avi.id }}</a></td>
+                <td>{{ avi.commentaire }}</td>
+                <td>{{ avi.note }}</td>
+                <td>{% if avi.favoris %}Yes{% else %}No{% endif %}</td>
+                <td>{% if avi.sauvegarde %}Yes{% else %}No{% endif %}</td>
+                <td>
+                    <ul>
+                        <li>
+                            <a href="{{ path('avis_show', { 'id': avi.id }) }}">show</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('avis_edit', { 'id': avi.id }) }}">edit</a>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('avis_new') }}">Create a new entry</a>
+        </li>
+    </ul>
+{% endblock %}
