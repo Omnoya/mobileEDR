@@ -16,10 +16,12 @@
     {#Formulaire pour rechercher par tag#}
     {% if form is defined %}
         <div class="">
+
             {{ form_start(form) }}
             {{ form_widget(form) }}
             <input type="submit" value="Rechercher"/>
             {{ form_end(form) }}
+
         </div>
     {% endif %}
 

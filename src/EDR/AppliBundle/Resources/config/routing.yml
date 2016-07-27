@@ -1,5 +1,5 @@
 edr_appli_client:
-    prefix:   /
+    prefix:   /appli
     resource: "@EDRAppliBundle/Resources/config/routing/client.yml"
 
 edr_appli_etablissement:
@@ -18,6 +18,3 @@ edr_appli_categorie:
     resource: "@EDRAppliBundle/Resources/config/routing/categorie.yml"
     prefix:   /categorie
 
-map:
-    path: /map
-    defaults: { _controller: EDRAppliBundle:Recherche:index }
