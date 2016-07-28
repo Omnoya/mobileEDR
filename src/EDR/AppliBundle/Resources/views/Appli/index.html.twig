@@ -3,7 +3,7 @@
 
 {# src/EDR/AppliBundle/Resources/views/Appli/index.html.twig #}
 
-{% extends "EDRAppliBundle::layout.html.twig" %}
+{% extends "::base.html.twig" %}
 
 {% block title  %}
     Recherche Restaurants - {{ parent() }}
@@ -11,55 +11,12 @@
 
 {% block menu %}
 
-    {{ parent() }}
-
-    {#Formulaire pour rechercher par tag#}
-    {% if form is defined %}
-        <div class="row well">
-            {{ form_start(form) }}
-            {{ form_widget(form) }}
-            <input type="submit" value="Rechercher" />
-            {{ form_end(form) }}
-        </div>
-    {% endif %}
-
-{% endblock %}
-
-{% block edrappli_body %}
-
-    {# Affichage restaurant selon catégorie choisie #}
-
-    {% if etablissements is defined %}
-
-        {% for etablissement in etablissements %}
-
-            <hr/>
-
-            <div class="row">
-                <div class="col-md-6">
-                    <img class="img-thumbnail img-responsive" src="{{ asset('uploads/photos/') }}{{ etablissement.photo }}" />
-                </div>
-                <div class="col-md-6">
-                    <h2>{{ etablissement.nom }}</h2>
-                    <p>{{ etablissement.adresse }}</p>
-                    <p>{{ etablissement.adresse2 }}</p>
-                    <p>{{ etablissement.codePostal }} {{ etablissement.ville }}</p>
-                    <p>{{ etablissement.telephone }}</p>
-
-                    <ul>
-                        {% if not etablissement.tags.empty %}
-                            {% for tag in etablissement.tags %}
-                                <li class="btn btn-default" id="place-btn">
-                                    {{ tag.nom }}
-                                </li>
-                            {% endfor %}
-                        {% endif %}
-                    </ul>
-
-                </div>
-            </div>
+    <ul class="nav nav-pills nav-stacked">
+        {% for categorie in categories %}
+            {# utilisation de la fonction {{ path() }} pour faire des liens vers d'autres routes #}
+            <li><a href="{{ path('etab_category_show', {'category' : categorie.nom }) }}">{{ categorie.nom }}</a></li>
         {% endfor %}
-
-    {% endif %}
+    </ul>
 
 {% endblock %}
+

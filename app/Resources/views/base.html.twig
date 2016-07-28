@@ -10,10 +10,13 @@
         <title>{% block title %}EDR{% endblock %}</title>
 
         {% block stylesheets %}
+
             {# On charge le CSS de bootstrap depuis le site directement #}
             <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.7/css/materialize.min.css">
             <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
             <link rel="stylesheet" href="{{ asset('bundles/edrappli/css/style.css') }}">
+
         {% endblock %}
     </head>
 
@@ -21,9 +24,22 @@
 
     {% if app.request.get('_route') == 'fos_user_security_login' %}
 
+
         <div class="col s12">
+
+        <div id="content" class="col-md-12">
+
             {# création du bloc « body » sans contenu par défaut #}
             {% block body_login %}
+
+            {% endblock %}
+        </div>
+
+    {% elseif app.request.get('_route') == 'fos_user_registration_register' %}
+
+        <div id="content" class="col-md-12">
+            {# création du bloc « body » sans contenu par défaut #}
+            {% block body_register %}
 
             {% endblock %}
         </div>
@@ -33,18 +49,29 @@
 
                 <h1>EDR</h1>
 
+        <div class="container">
+
+            <div class="row">
+                <div id="menu" class="col-md-12">
+
+
                     {% block menu %}
                     {% endblock %}
 
 
                 <div class="row">
                     <div class="col s10">
+
+                </div>
+                <div id="content" class="col-md-12">
+
                     {# création du bloc « body » sans contenu par défaut #}
                     {% block body %}
 
                     {% endblock %}
                     </div>
                 </div>
+
 
 
             <hr/>
@@ -54,6 +81,18 @@
             </footer>
 
 
+            <footer class="page-footer">
+                {% if is_granted('IS_AUTHENTICATED_FULLY') %}
+                <div class="container">
+                    <p>EDR Application © {{ 'now'|date('Y') }}</p>
+                    <p>Ce projet est créé par Paola, Elodie, Timothée & Omar.</p>
+                </div>
+                {% endif %}
+            </footer>
+
+        </div>
+
+
     {% endif %}
 
 
@@ -61,7 +100,9 @@
     {% block javascripts %}
         {# Ajoutez ces lignes JavaScript si vous comptez vous servir des fonctionnalités du bootstrap Twitter #}
         <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+
         <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.7/js/materialize.min.js"></script>
+
     {% endblock %}
 
     </body>

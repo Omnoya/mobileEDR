@@ -12,6 +12,7 @@
     </div>
 
 
+
     {% for etablissement in etablissements %}
         <a href="{{ path('etablissement_show', { 'id': etablissement.id }) }}">{{ etablissement.id }}</a>
         <div class="card admin_card"><h4>{{ etablissement.nom }}</h4>

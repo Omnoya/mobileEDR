@@ -1,5 +1,5 @@
-{% extends "EDRAppliBundle::layout.html.twig" %}
+{% extends "::base.html.twig" %}
 
-{% block edrappli_body %}
-{% include "FOSUserBundle:Registration:register_content.html.twig" %}
+{% block body_register %}
+    {% include "UserBundle:Registration:register_content.html.twig" %}
 {% endblock %}

@@ -1,4 +1,0 @@
-edr_user:
-    path:     /login
-    defaults:
-        _controller: UserBundle:User:view
