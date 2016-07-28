@@ -3,17 +3,139 @@
 {#{% extends 'base.html.twig' %} #}
 {% extends "EDRAppliBundle::layoutadmin.html.twig" %}
 
+{#{% block edrappli_body %}#}
+    {#<h1>Etablissement creation</h1>#}
+
+    {#{{ form_start(form) }}#}
+        {#{{ form_widget(form) }}#}
+        {#<input type="submit" value="Create" />#}
+    {#{{ form_end(form) }}#}
+
+    {#<ul>#}
+        {#<li>#}
+            {#<a href="{{ path('etablissement_index') }}">Back to the list</a>#}
+        {#</li>#}
+    {#</ul>#}
+{#{% endblock %}#}
+
 {% block edrappli_body %}
-    <h1>Etablissement creation</h1>
+        {{ form_start(form) }}
+        <div>
+            {{ form_label(form.nom) }}
+            {{ form_errors(form.nom) }}
+            {{ form_widget(form.nom) }}
+        </div>
+        <div>
+            {{ form_label(form.uploadPhoto) }}
+            {{ form_errors(form.uploadPhoto) }}
+            {{ form_widget(form.uploadPhoto) }}
+        </div>
 
-    {{ form_start(form) }}
-        {{ form_widget(form) }}
+
+        <div class="row">
+            <div class="input-field col s12">
+
+                {{ form_label(form.categories) }}
+                {{ form_errors(form.categories) }}
+                {{ form_widget(form.categories) }}
+            </div>
+        </div>
+        <div class="row">
+            <div class="input-field col s12">
+
+                {{ form_label(form.adresse) }}
+                {{ form_errors(form.adresse) }}
+                {{ form_widget(form.adresse) }}
+            </div>
+        </div>
+        <div class="row">
+            <div class="input-field col s12">
+
+                {{ form_label(form.adresse2) }}
+                {{ form_errors(form.adresse2) }}
+                {{ form_widget(form.adresse2) }}
+            </div>
+        </div>
+        <div class="row">
+            <div class="input-field col s12">
+
+                {{ form_label(form.codePostal) }}
+                {{ form_errors(form.codePostal) }}
+                {{ form_widget(form.codePostal) }}
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="input-field col s12">
+
+                {{ form_label(form.ville) }}
+                {{ form_errors(form.ville) }}
+                {{ form_widget(form.ville) }}
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="input-field col s12">
+
+                {{ form_label(form.longitude) }}
+                {{ form_errors(form.longitude) }}
+                {{ form_widget(form.longitude) }}
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="input-field col s12">
+
+                {{ form_label(form.latitude) }}
+                {{ form_errors(form.latitude) }}
+                {{ form_widget(form.latitude) }}
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="input-field col s12">
+
+                {{ form_label(form.telephone) }}
+                {{ form_errors(form.telephone) }}
+                {{ form_widget(form.telephone) }}
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="input-field col s12">
+
+                {{ form_label(form.email) }}
+                {{ form_errors(form.email) }}
+                {{ form_widget(form.email) }}
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="input-field col s12">
+
+                {{ form_label(form.tags) }}
+                {{ form_errors(form.tags) }}
+                {{ form_widget(form.tags) }}
+            </div>
+        </div>
+
         <input type="submit" value="Create" />
-    {{ form_end(form) }}
+        {{ form_end(form) }}
 
-    <ul>
-        <li>
-            <a href="{{ path('etablissement_index') }}">Back to the list</a>
-        </li>
-    </ul>
+        <ul>
+            <li>
+                <a href="{{ path('etablissement_index') }}">Back to the list</a>
+            </li>
+        </ul>
+
+        {% block javascripts %}
+            {{ parent() }}
+            <script>
+                $(document).ready(function() {
+                    $('select').material_select();
+                });
+            </script>
+
+        {% endblock %}
+
 {% endblock %}
