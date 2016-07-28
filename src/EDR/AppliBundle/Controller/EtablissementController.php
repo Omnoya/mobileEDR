@@ -74,22 +74,20 @@ class EtablissementController extends Controller
      * Finds and displays restaurants by category.
      *
      */
-    public function showByCategoryAction($category,Request $request)
+    public function showByCategoryAction($category, Request $request)
     {
         $em = $this->getDoctrine()->getManager();
 
         $categories = $em
             ->getRepository('EDRAppliBundle:Categorie')
-            ->findAll()
-        ;
+            ->findAll();
 
         $etablissements = $em
             ->getRepository('EDRAppliBundle:Etablissement')
-            ->getEtabWithCategory($category)
-        ;
+            ->getEtabWithCategory($category);
 
         $form = $this->createForm('EDR\AppliBundle\Form\EtabFindByTagType');
-        if($request->isMethod('POST')){
+        if ($request->isMethod('POST')) {
             $id = $request->request->get('etab_find_by_tag')['nom'];
 
             $etablissements = $em->getRepository('EDRAppliBundle:Etablissement')->getEtabWithTag($id);
@@ -103,13 +101,14 @@ class EtablissementController extends Controller
             foreach($etablissement->getTags() as )
         }*/
 
-        
         return $this->render('EDRAppliBundle:Appli:show.html.twig', array(
             'etablissements' => $etablissements,
             'categories' => $categories,
             'form' => $form->createView(),
             //"tags_etab" => $tags_etab
         ));
+        
+
     }
 
     public function showByTagAction(Request $request)
@@ -144,7 +143,7 @@ class EtablissementController extends Controller
 
             $em = $this->getDoctrine()->getManager();
 
-            if($editForm->get('uploadPhoto')->getData() != null) {
+            if ($editForm->get('uploadPhoto')->getData() != null) {
                 //unlink(__DIR__.'/../../../../web/uploads/photos/'.$etablissement->getPhoto());
                 $etablissement->removeUpload();
                 //$etablissement->setPhoto(null);
@@ -195,7 +194,6 @@ class EtablissementController extends Controller
         return $this->createFormBuilder()
             ->setAction($this->generateUrl('etablissement_delete', array('id' => $etablissement->getId())))
             ->setMethod('DELETE')
-            ->getForm()
-        ;
+            ->getForm();
     }
 }
