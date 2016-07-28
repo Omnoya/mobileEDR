@@ -3,78 +3,34 @@
 {#{% extends 'base.html.twig' %} #}
 {% extends "EDRAppliBundle::layoutadmin.html.twig" %}
 
-{% block edrappli_body %}
-    <h1>Etablissement</h1>
+{% block body %}
+    <h3 class="admin_h3">Etablissement</h3>
 
     {% for avis  in avis_etablissement %}
         <ul class="collapsible" data-collapsible="expandable">note : {{ avis.note }}
             commentaire : {{ avis.commentaire }}</ul>
     {% endfor %}
 
-    <table>
-        <tbody>
-            <tr>
-                <th>Id</th>
-                <td>{{ etablissement.id }}</td>
-            </tr>
-            <tr>
-                <th>Nom</th>
-                <td>{{ etablissement.nom }}</td>
-            </tr>
-            <tr>
-                <th>Photo</th>
-                <td><img class="" src="{{ asset('uploads/photos/')}}{{ etablissement.photo }}"></td>
-            </tr>
-            <tr>
-                <th>Adresse</th>
-                <td>{{ etablissement.adresse }}</td>
-            </tr>
-            <tr>
-                <th>Adresse2</th>
-                <td>{{ etablissement.adresse2 }}</td>
-            </tr>
-            <tr>
-                <th>Codepostal</th>
-                <td>{{ etablissement.codePostal }}</td>
-            </tr>
-            <tr>
-                <th>Ville</th>
-                <td>{{ etablissement.ville }}</td>
-            </tr>
-            <tr>
-                <th>Longitude</th>
-                <td>{{ etablissement.longitude }}</td>
-            </tr>
-            <tr>
-                <th>Latitude</th>
-                <td>{{ etablissement.latitude }}</td>
-            </tr>
-            <tr>
-                <th>Telephone</th>
-                <td>{{ etablissement.telephone }}</td>
-            </tr>
-            <tr>
-                <th>Email</th>
-                <td>{{ etablissement.email }}</td>
-            </tr>
-            <tr>
-                <th>Publier</th>
-                <td>{% if etablissement.publier %}Yes{% else %}No{% endif %}</td>
-            </tr>
-        </tbody>
-    </table>
+    {{ etablissement.nom }}
+    <img class="" src="{{ asset('uploads/photos/') }}{{ etablissement.photo }}">
+    {{ etablissement.adresse }}<br>
+    {{ etablissement.adresse2 }}<br>
+    {{ etablissement.codePostal }}<br>
+    {{ etablissement.ville }}<br>
+    {{ etablissement.longitude }}<br>
+    {{ etablissement.latitude }}<br>
+    {{ etablissement.telephone }}<br>
+    {{ etablissement.email }}<br>
+    {% if etablissement.publier %}Publié{% else %}Non Publié{% endif %}<br>
 
-    <ul>
-        <li>
-            <a href="{{ path('etablissement_index') }}">Back to the list</a>
-        </li>
-        <li>
-            <a href="{{ path('etablissement_edit', { 'id': etablissement.id }) }}">Edit</a>
-        </li>
-        <li>
-            {{ form_start(delete_form) }}
-                <input type="submit" value="Delete">
-            {{ form_end(delete_form) }}
-        </li>
-    </ul>
+    <button class="admin_submit">
+        <a href="{{ path('etablissement_index') }}">Retour à la liste des établissements</a>
+    </button>
+
+    <a href="{{ path('etablissement_edit', { 'id': etablissement.id }) }}" class="admin_edit">Modifier</a>
+
+    {{ form_start(delete_form) }}
+    <input type="submit" value="Delete" class="admin_delete">
+    {{ form_end(delete_form) }}
+
 {% endblock %}

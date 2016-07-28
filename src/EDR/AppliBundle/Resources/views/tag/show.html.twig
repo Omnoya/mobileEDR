@@ -3,32 +3,16 @@
 {% extends "EDRAppliBundle::layoutadmin.html.twig" %}
 
 {% block body %}
-    <h1>Tag</h1>
+    <h3 class="admin_h3">Tag</h3>
 
-    <table>
-        <tbody>
-            <tr>
-                <th>Id</th>
-                <td>{{ tag.id }}</td>
-            </tr>
-            <tr>
-                <th>Nom</th>
-                <td>{{ tag.nom }}</td>
-            </tr>
-        </tbody>
-    </table>
+    {{ tag.nom }}
+    <button class="admin_submit">
+        <a href="{{ path('tag_index') }}">Retour à la liste</a>
+    </button>
+    <a href="{{ path('tag_edit', { 'id': tag.id }) }}" class="admin_edit">Modifier</a>
 
-    <ul>
-        <li>
-            <a href="{{ path('tag_index') }}">Back to the list</a>
-        </li>
-        <li>
-            <a href="{{ path('tag_edit', { 'id': tag.id }) }}">Edit</a>
-        </li>
-        <li>
-            {{ form_start(delete_form) }}
-                <input type="submit" value="Delete">
-            {{ form_end(delete_form) }}
-        </li>
-    </ul>
+    {{ form_start(delete_form) }}
+    <input type="submit" value="Delete" class="admin_delete">
+    {{ form_end(delete_form) }}
+
 {% endblock %}

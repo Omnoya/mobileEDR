@@ -4,24 +4,19 @@
 {% extends "EDRAppliBundle::layoutadmin.html.twig" %}
 
 {% block body %}
-    <h1>Tag edit</h1>
+<h3 class="admin_h3">Modifier un tag</h3>
 
-    <a class="btn btn-primary btn-lg" href="{{ path('tag_index') }}">
-        <i class="glyphicon glyphicon-chevron-left"></i>
-        Retour à la liste
-    </a>
+
 
     {{ form_start(edit_form) }}
-        {{ form_widget(edit_form) }}
-        <ul class="">
-            <li>
-                <button type="submit" class="btn btn-success">
-                    <i class="glyphicon glyphicon-edit"></i>
+        <div class="admin_form">{{ form_widget(edit_form) }}
+
+                <button type="submit" class="admin_submit">
                     Modifier
-                </button>
-            </li>
-        </ul>
-    {{ form_end(edit_form) }}
+                </button> <button class="admin_submit"><a href="{{ path('tag_index') }}" >
+        Retour à la liste
+    </a></button>
+    {{ form_end(edit_form) }}</div>
 
     {#<ul>
         <li>

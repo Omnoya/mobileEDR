@@ -3,17 +3,17 @@
 {#{% extends 'base.html.twig' %} #}
 {% extends "EDRAppliBundle::layoutadmin.html.twig" %}
 
-{% block edrappli_body %}
-    <h1>Etablissement creation</h1>
+{% block body %}
+    <h3 class="admin_h3">Ajouter un nouvel établissement</h3>
 
+<div class="admin_form">
     {{ form_start(form) }}
         {{ form_widget(form) }}
-        <input type="submit" value="Create" />
+        <input type="submit" value="Ajouter" class="admin_submit"/>
+    <a href="{{ path('etablissement_index') }}" class="admin_submit">Retour à la liste des établissements</a>
     {{ form_end(form) }}
 
-    <ul>
-        <li>
-            <a href="{{ path('etablissement_index') }}">Back to the list</a>
-        </li>
-    </ul>
+</div>
+
+
 {% endblock %}

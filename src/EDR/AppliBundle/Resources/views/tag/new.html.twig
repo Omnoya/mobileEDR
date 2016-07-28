@@ -3,16 +3,14 @@
 {% extends "EDRAppliBundle::layoutadmin.html.twig" %}
 
 {% block body %}
-    <h1>Tag creation</h1>
+    <h3 class="admin_h3">Création d'un nouveau tag</h3>
 
-    {{ form_start(form) }}
+    <div class="admin_form">{{ form_start(form) }}
         {{ form_widget(form) }}
-        <input type="submit" value="Create" />
-    {{ form_end(form) }}
+        <input type="submit" class="admin_submit" value="Ajouter" /> <a href="{{ path('tag_index') }}" class="admin_submit">Retour à la liste des tags</a>
 
-    <ul>
-        <li>
-            <a href="{{ path('tag_index') }}">Back to the list</a>
-        </li>
-    </ul>
+    {{ form_end(form) }}
+    </div>
+
+
 {% endblock %}

@@ -3,27 +3,14 @@
 {#{% extends 'base.html.twig' %} #}
 {% extends "EDRAppliBundle::layoutadmin.html.twig" %}
 
-{% block edrappli_body %}
+{% block body %}
 
-    <h1>Liste des tags</h1>
-    <ul>
-        <li>
-            <a class="btn btn-primary btn-lg" href="{{ path('tag_new') }}">
-                <i class="glyphicon glyphicon-plus"></i>
-                Créer une nouvelle entrée
-            </a>
-        </li>
-    </ul>
-    <div class="container-fluid">
-        <table class="table table-hover">
-            <thead>
-            <tr>
-                <th>Id</th>
-                <th>Nom</th>
-                <th>Actions</th>
-            </tr>
-            </thead>
-            <tbody>
+    <h3 class="admin_h3">Liste des tags</h3>
+
+            <div class="row admin_menu"><a href="{{ path('tag_new') }}" alt="Créer un nouveau tag" title="Créer un nouveau tag">
+                <i class="material-icons left">note_add</i>
+             Créer un nouveau tag</a>
+            </div>
 
             {% for flashMessage in app.session.flashbag.get('mesConfirm') %}
 
@@ -35,12 +22,17 @@
             {% endfor %}
 
             {% for tag in tags %}
-                <tr>
+
                     {#<td><a href="{{ path('tag_show', { 'id': tag.id }) }}">{{ tag.id }}</a></td>#}
-                    <td>{{ tag.id }}</td>
-                    <td>{{ tag.nom }}</td>
-                    <td>
-                        <ul>
+
+                    <button class="admin_tag">{{ tag.nom }}
+                        <br>
+                            <a href="{{ path('tag_edit', { 'id': tag.id }) }}" class="admin_edit">Modifier</a>
+                            <a href="{{ path('tag_delete', { 'id': tag.id }) }}" alt="Supprimer" title="Supprimer" class="admin_delete" data-toggle="confirmation" data-title="Open Google?">Supprimer</a>
+                    </button>
+
+
+
                             {#<li>
                                 <a href="{{ path('tag_show', { 'id': tag.id }) }}" class="btn btn-info"
                                    id="place-btn">
@@ -49,26 +41,12 @@
                                     Voir
                                 </a>
                             </li>#}
-                            <li>
-                                <a href="{{ path('tag_edit', { 'id': tag.id }) }}" class="btn btn-success"
-                                   id="place-btn">
-                                    <i class="glyphicon glyphicon-edit"></i>
-                                    Modifier
-                                </a>
-                            </li>
-                            <li>
-                                <a href="{{ path('tag_delete', { 'id': tag.id }) }}" class="btn btn-danger"
-                                   data-toggle="confirmation" data-title="Open Google?" id="place-btn">
-                                    <i class="glyphicon glyphicon-trash"></i>
-                                    Supprimer
-                                </a>
-                            </li>
-                        </ul>
-                    </td>
-                </tr>
-            {% endfor %}
-            </tbody>
-        </table>
 
-    </div>
+
+
+
+            {% endfor %}
+
+
+
 {% endblock %}

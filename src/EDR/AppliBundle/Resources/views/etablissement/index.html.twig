@@ -4,64 +4,33 @@
 {#{% extends 'base.html.twig' %} #}
 {% extends "EDRAppliBundle::layoutadmin.html.twig" %}
 
-{% block edrappli_body %}
-    <h1 class="jumbotron">Etablissement list</h1>
+{% block body %}
+    <h3 class="admin_h3">Gestion des Etablissements</h3>
 
-    <div class="container-fluid">
-        <table class="table table-hover">
-            <thead>
-            <tr>
-                <th>Id</th>
-                <th>Nom</th>
-                <th>Photo</th>
-                <th>Adresse</th>
-                <th>Adresse2</th>
-                <th>Codepostal</th>
-                <th>Ville</th>
-                <th>Longitude</th>
-                <th>Latitude</th>
-                <th>Telephone</th>
-                <th>Email</th>
-                <th>Publier</th>
-                <th>Actions</th>
-            </tr>
-            </thead>
-            <tbody>
-            {% for etablissement in etablissements %}
-                <tr>
-                    <td>
-                        <a href="{{ path('etablissement_show', { 'id': etablissement.id }) }}">{{ etablissement.id }}</a>
-                    </td>
-                    <td>{{ etablissement.nom }}</td>
-                    <td><img class="img-responsive" src="{{ asset('uploads/photos/') }}{{ etablissement.photo }}"></td>
-                    <td>{{ etablissement.adresse }}</td>
-                    <td>{{ etablissement.adresse2 }}</td>
-                    <td>{{ etablissement.codePostal }}</td>
-                    <td>{{ etablissement.ville }}</td>
-                    <td>{{ etablissement.longitude }}</td>
-                    <td>{{ etablissement.latitude }}</td>
-                    <td>{{ etablissement.telephone }}</td>
-                    <td>{{ etablissement.email }}</td>
-                    <td>{% if etablissement.publier %}Yes{% else %}No{% endif %}</td>
-                    <td>
-                        <ul>
-                            <li>
-                                <a href="{{ path('etablissement_show', { 'id': etablissement.id }) }}">show</a>
-                            </li>
-                            <li>
-                                <a href="{{ path('etablissement_edit', { 'id': etablissement.id }) }}">edit</a>
-                            </li>
-                        </ul>
-                    </td>
-                </tr>
-            {% endfor %}
-            </tbody>
-        </table>
+    <div class="row admin_menu">
+        <a href="{{ path('etablissement_new') }}">Ajouter un nouvel établissement</a>
     </div>
-        <ul>
-            <li>
-                <a href="{{ path('etablissement_new') }}">Create a new entry</a>
-            </li>
-        </ul>
+
+
+    {% for etablissement in etablissements %}
+        <a href="{{ path('etablissement_show', { 'id': etablissement.id }) }}">{{ etablissement.id }}</a>
+        <div class="card admin_card"><h4>{{ etablissement.nom }}</h4>
+            <img class="img-responsive" src="{{ asset('uploads/photos/') }}{{ etablissement.photo }}"><br>
+            {{ etablissement.adresse }}<br>
+            {{ etablissement.adresse2 }}<br>
+            {{ etablissement.codePostal }}<br>
+            {{ etablissement.ville }}<br>
+            {{ etablissement.longitude }}<br>
+            {{ etablissement.latitude }}<br>
+            {{ etablissement.telephone }}<br>
+            {{ etablissement.email }}<br>
+            {% if etablissement.publier %}Publié{% else %}Non Publié{% endif %}<br>
+            <button><a href="{{ path('etablissement_show', { 'id': etablissement.id }) }}">Afficher</a></button>
+            <a href="{{ path('etablissement_edit', { 'id': etablissement.id }) }}"
+                    class="admin_submit">Modifier</a>
+        </div>
+    {% endfor %}
+
+
 
 {% endblock %}
