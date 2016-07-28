@@ -28,11 +28,7 @@ class EtablissementType extends AbstractType
             ->add('email')
             ->add('publier')
             ->add('categories')
-            ->add('tags',EntityType::class, array(
-                'class' => 'EDRAppliBundle:Tag',
-                'multiple' => true,
-                'expanded' => true,
-            ))
+            ->add('tags')
         ;
     }
     
