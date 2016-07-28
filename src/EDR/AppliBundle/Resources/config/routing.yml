@@ -19,5 +19,5 @@ edr_appli_categorie:
     prefix:   /categorie
 
 map:
-    path: /map
+    path: /api/map
     defaults: { _controller: EDRAppliBundle:Recherche:index }
