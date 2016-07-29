@@ -61,8 +61,10 @@ class EtablissementController extends Controller
     {
         $em = $this->getDoctrine()->getManager();
         $deleteForm = $this->createDeleteForm($etablissement);
+
         $id_etab = $etablissement->getId();
         $Avis_etablissement = $em->getRepository('EDRAppliBundle:Avis')->getAvis_etablissement($id_etab);
+
         return $this->render('EDRAppliBundle:etablissement:show.html.twig', array(
             'etablissement' => $etablissement,
             'avis_etablissement' => $Avis_etablissement,
@@ -78,14 +80,10 @@ class EtablissementController extends Controller
     {
         $em = $this->getDoctrine()->getManager();
 
-        $categories = $em
-            ->getRepository('EDRAppliBundle:Categorie')
-            ->findAll();
+        $categories = $em->getRepository('EDRAppliBundle:Categorie')->findAll();
 
-        $etablissements = $em
-            ->getRepository('EDRAppliBundle:Etablissement')
-            ->getEtabWithCategory($category);
-
+        $etablissements = $em->getRepository('EDRAppliBundle:Etablissement')->getEtabWithCategory($category);
+        
         $form = $this->createForm('EDR\AppliBundle\Form\EtabFindByTagType');
         if ($request->isMethod('POST')) {
             $id = $request->request->get('etab_find_by_tag')['nom'];

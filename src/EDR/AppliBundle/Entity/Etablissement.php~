@@ -18,6 +18,11 @@ class Etablissement
 {
 
     /**
+     * @ORM\OneToMany(targetEntity="EDR\AppliBundle\Entity\Avis", mappedBy="etablissement")
+     */
+    private $avis;
+
+    /**
      * @var UploadedFile uploadPhoto
      */
     public $uploadPhoto;

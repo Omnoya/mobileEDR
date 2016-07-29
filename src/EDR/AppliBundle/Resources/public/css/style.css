@@ -65,7 +65,7 @@
 .block_login{
     background-image: url('../images/Bk.jpg');
     background-size: cover;
-    min-height: 80vh;
+    min-height: 120vh;
     background-repeat: no-repeat;
     min-width: 100vw;
 }
