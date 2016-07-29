@@ -17,10 +17,10 @@
     {% if form is defined %}
             {{ form_start(form) }}
             {{ form_widget(form) }}
-            <input type="submit" value="Rechercher"/>
-            {{ form_end(form) }}
+            <input id="submit" type="search"/>
 
-        
+        {{ form_end(form) }}
+
     {% endif %}
 
 {% endblock %}
