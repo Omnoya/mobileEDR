@@ -18,13 +18,20 @@ class Etablissement
 {
 
     /**
+     * @ORM\OneToMany(targetEntity="EDR\AppliBundle\Entity\Avis", mappedBy="etablissement")
+     */
+    private $avis;
+
+    /**
      * @var UploadedFile uploadPhoto
      */
     public $uploadPhoto;
 
     public function __toString() {
         return $this->nom;
+
     }
+    
 
     protected function getUploadDir()
     {
@@ -520,4 +527,38 @@ class Etablissement
         return $this->tags;
     }
     
+
+    /**
+     * Add avi
+     *
+     * @param \EDR\AppliBundle\Entity\Avis $avi
+     *
+     * @return Etablissement
+     */
+    public function addAvi(\EDR\AppliBundle\Entity\Avis $avi)
+    {
+        $this->avis[] = $avi;
+
+        return $this;
+    }
+
+    /**
+     * Remove avi
+     *
+     * @param \EDR\AppliBundle\Entity\Avis $avi
+     */
+    public function removeAvi(\EDR\AppliBundle\Entity\Avis $avi)
+    {
+        $this->avis->removeElement($avi);
+    }
+
+    /**
+     * Get avis
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getAvis()
+    {
+        return $this->avis;
+    }
 }

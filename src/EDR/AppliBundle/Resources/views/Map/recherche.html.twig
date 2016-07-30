@@ -40,7 +40,10 @@
             map = new google.maps.Map(document.getElementById('map'), {
                 center: {lat: 48.408, lng: 2.699 },
                 zoom: 14
+
             });
+
+
             codeAddress();
         }
 
@@ -89,6 +92,9 @@
                     alert("Geocode was not successful for the following reason: " + status);
                 }
             });
+
+
+
 
             function attachDescription(marker, description) {
 
