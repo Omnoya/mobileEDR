@@ -40,7 +40,13 @@
         var map;
 
 
+
+
+
         function initMap() {
+            direction = new google.maps.DirectionsService;
+            directionsDisplay = new google.maps.DirectionsRenderer;
+
             geocoder = new google.maps.Geocoder();
             map = new google.maps.Map(document.getElementById('map'), {
                 center: {lat: 48.408, lng: 2.699 },
@@ -324,7 +330,6 @@
         });
 
     </script>
-
 
 {% endblock %}
 
