@@ -61,8 +61,10 @@ class EtablissementController extends Controller
     {
         $em = $this->getDoctrine()->getManager();
         $deleteForm = $this->createDeleteForm($etablissement);
+
         $id_etab = $etablissement->getId();
         $Avis_etablissement = $em->getRepository('EDRAppliBundle:Avis')->getAvis_etablissement($id_etab);
+
         return $this->render('EDRAppliBundle:etablissement:show.html.twig', array(
             'etablissement' => $etablissement,
             'avis_etablissement' => $Avis_etablissement,
@@ -78,34 +80,28 @@ class EtablissementController extends Controller
     {
         $em = $this->getDoctrine()->getManager();
 
-        $categories = $em
-            ->getRepository('EDRAppliBundle:Categorie')
-            ->findAll();
+        $categories = $em->getRepository('EDRAppliBundle:Categorie')->findAll();
 
-        $etablissements = $em
-            ->getRepository('EDRAppliBundle:Etablissement')
-            ->getEtabWithCategory($category);
-
+        $etablissements = $em->getRepository('EDRAppliBundle:Etablissement')->getEtabWithCategory($category);
+        
         $form = $this->createForm('EDR\AppliBundle\Form\EtabFindByTagType');
         if ($request->isMethod('POST')) {
             $id = $request->request->get('etab_find_by_tag')['nom'];
 
             $etablissements = $em->getRepository('EDRAppliBundle:Etablissement')->getEtabWithTag($id);
             //$tags_etab = $etablissements[0]->getTags()->getSnapshot();
-            //$tags_etab = $em->getRepository('EDRAppliBundle:Etablissement')->findById($etablissements[0]->getId());
         }
 
-        /*// Récupération de la liste des tags de chaque établissement
-        $tags = [];
-        foreach($etablissements as $etablissement){
-            foreach($etablissement->getTags() as )
-        }*/
+//         Récupération de la liste des tags de chaque établissement
+//        $tags = [];
+//        foreach($etablissements as $etablissement){
+//            foreach($etablissement->getTags() as )
+//        }
 
         return $this->render('EDRAppliBundle:Appli:show.html.twig', array(
             'etablissements' => $etablissements,
             'categories' => $categories,
-            'form' => $form->createView(),
-            //"tags_etab" => $tags_etab
+            'form' => $form->createView()
         ));
         
 

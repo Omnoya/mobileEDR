@@ -15,92 +15,107 @@
 
     {#Formulaire pour rechercher par tag#}
     {% if form is defined %}
-        <div class="input-fie">
 
-            {{ form_start(form) }}
-            {{ form_widget(form) }}
-            <input type="submit" value="Rechercher"/>
-            {{ form_end(form) }}
+        {{ form_start(form) }}
 
+        <div class="row">
+            {{ form_label(form.nom) }}
+            <div class="input-field col s12">
+                {{ form_widget(form.nom) }}
+            </div>
+            {{ form_errors(form.nom) }}
         </div>
+        <div class="row">
+            <input type="submit" value="search"/>
+        </div>
+
+        {{ form_end(form) }}
+
     {% endif %}
 
 {% endblock %}
 
 {% block edrappli_body %}
 
-    {# Affichage restaurant selon catégorie choisie #}
+{# Affichage restaurant selon catégorie choisie #}
 
     {% if etablissements is defined %}
 
+        {% if etablissements is empty %}
+            {#Message à renvoyer si la variable établissement est vide#}
+            <p>plop</p>
+        {% endif %}
+
         {% for etablissement in etablissements %}
-
-            {#<div class="row">
-                <div class="col m6 s12">
-                    <img class="responsive-img" src="{{ asset('uploads/photos/') }}{{ etablissement.photo }}" />
-                </div>
-                <div class="col m6 s12">
-                    <h2>{{ etablissement.nom }}</h2>
-                    <p>{{ etablissement.adresse }}</p>
-                    <p>{{ etablissement.adresse2 }}</p>
-                    <p>{{ etablissement.codePostal }} {{ etablissement.ville }}</p>
-                    <p>{{ etablissement.telephone }}</p>
-
-                    <ul>
-                        {% if not etablissement.tags.empty %}
-                            {% for tag in etablissement.tags %}
-                                <li class="btn btn-default" id="place-btn">
-                                    {{ tag.nom }}
-                                </li>
-                            {% endfor %}
-                        {% endif %}
-                    </ul>
-
-                </div>
-            </div>#}
 
             <div class="row">
                 <div class="col m6 offset-m3 s12">
                     <div class="card">
-
                         <div class="card-image waves-effect waves-block waves-light">
                             <img class="activator" src="{{ asset('uploads/photos/') }}{{ etablissement.photo }}">
                         </div>
-
                         <div class="card-content">
-
-                            <span class="card-title activator grey-text text-darken-4">{{ etablissement.nom }}<i
-                                        class="material-icons right">more_vert</i></span>
-
+                            <span class="card-title activator grey-text text-darken-4">{{ etablissement.nom }}
+                                <i class="material-icons right">more_vert</i>
+                            </span>
                             <p>{{ etablissement.adresse }}</p>
                             <p>{{ etablissement.adresse2 }}</p>
                             <p>{{ etablissement.codePostal }} {{ etablissement.ville }}</p>
                             <p>{{ etablissement.telephone }}</p>
 
+                            <div class="card-action">
+                                <a href="{{ path('map') }}">M'y rendre</a>
+                            </div>
 
                             {% if not etablissement.tags.empty %}
+
                                 {% for tag in etablissement.tags %}
                                     <div class="chip">
                                         {{ tag.nom }}
                                         <i class="close material-icons">close</i>
                                     </div>
                                 {% endfor %}
+
                             {% endif %}
 
                         </div>
 
                         <div class="card-reveal">
-                            <span class="card-title grey-text text-darken-4">Card Title<i class="material-icons right">close</i></span>
-                            <p>Here is some more information about this product</p>
+                            <span class="card-title grey-text text-darken-4">Avis<i class="material-icons right">close</i></span>
+                            {% for etablissement in etablissement.avis %}
+                                <div class="collection">
+                                    <div class="row">
+                                        <ul>
+                                            <li class="collection-item avatar">
+                                                <img class="circle" src="{{ asset('bundles/edrappli/images/Bk.jpg') }}" alt=""/>
+                                                <a href="#!" class="collection-item">
+                                                    {{ etablissement.commentaire }}
+                                                    <span class="badge">note :{{ etablissement.note }}</span>
+                                                </a>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            {% endfor %}
                         </div>
-
                     </div>
                 </div>
             </div>
 
         {% endfor %}
 
+    {% else %}
+        {#Message a afficher si la variable établissement n'est pas renvoyé par le controlleur#}
+        <p>plipp</p>
     {% endif %}
 
 {% endblock %}
 
+{% block javascripts %}
+    {{ parent() }}
+    <script>
+        $(document).ready(function() {
+            $('select').material_select();
+        });
+    </script>
+{% endblock %}
