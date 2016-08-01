@@ -35,9 +35,9 @@ framework:
 twig:
     debug:            "%kernel.debug%"
     strict_variables: "%kernel.debug%"
-    form:
-        resources:
-            - "EDRAppliBundle:Form:bootstrap_3_layout.html.twig"
+#    form:
+#        resources:
+#            - "EDRAppliBundle:Form:bootstrap_3_layout.html.twig"
 #    form_themes:
 #        - 'bootstrap_3_layout.html.twig'
 
