@@ -129,12 +129,3 @@ html, body {
 
 
 
-#panel {
-    position: absolute;
-    top: 10px;
-    left: 100px;
-    z-index: 5;
-    background-color: #fff;
-    padding: 10px;
-    border-left: 3px solid #0000DD;
-}

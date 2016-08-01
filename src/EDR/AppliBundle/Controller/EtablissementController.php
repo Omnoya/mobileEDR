@@ -90,20 +90,18 @@ class EtablissementController extends Controller
 
             $etablissements = $em->getRepository('EDRAppliBundle:Etablissement')->getEtabWithTag($id);
             //$tags_etab = $etablissements[0]->getTags()->getSnapshot();
-            //$tags_etab = $em->getRepository('EDRAppliBundle:Etablissement')->findById($etablissements[0]->getId());
         }
 
-        /*// Récupération de la liste des tags de chaque établissement
-        $tags = [];
-        foreach($etablissements as $etablissement){
-            foreach($etablissement->getTags() as )
-        }*/
+//         Récupération de la liste des tags de chaque établissement
+//        $tags = [];
+//        foreach($etablissements as $etablissement){
+//            foreach($etablissement->getTags() as )
+//        }
 
         return $this->render('EDRAppliBundle:Appli:show.html.twig', array(
             'etablissements' => $etablissements,
             'categories' => $categories,
-            'form' => $form->createView(),
-            //"tags_etab" => $tags_etab
+            'form' => $form->createView()
         ));
         
 
