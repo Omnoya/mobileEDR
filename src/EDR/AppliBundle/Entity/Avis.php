@@ -18,16 +18,12 @@ class Avis
     /**
      * @ORM\ManyToOne(targetEntity="EDR\UserBundle\Entity\User")
      */
-
-
     private $user;
 
     /**
      * @ORM\ManyToOne(targetEntity="EDR\AppliBundle\Entity\Etablissement", inversedBy="avis")
      * @ORM\JoinColumn(nullable=false)
      */
-
-
     private $etablissement;
 
     /**
