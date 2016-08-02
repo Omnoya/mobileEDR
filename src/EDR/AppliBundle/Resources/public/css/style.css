@@ -57,11 +57,13 @@
 #target {
     width: 345px;
 }
+/******* CSS Admin *******/
 
 .admin_h3 {
     text-align: center;
     margin: auto;
     width: 100%;
+    color: #0088CC;
 }
 .admin_h1 {
     text-align:center;
@@ -71,10 +73,10 @@
 }
 .admin_body {
     background: #4d90fe;
-    background: -webkit-linear-gradient(left,#4d90fe, #003399); /* For Safari 5.1 to 6.0 */
-    background: -o-linear-gradient(left,#4d90fe, #003399); /* For Opera 11.1 to 12.0 */
-    background: -moz-linear-gradient(left,#4d90fe, #003399); /* For Firefox 3.6 to 15 */
-    background: linear-gradient(left,#4d90fe, #003399); /* Standard syntax */
+    background: -webkit-linear-gradient(left,#003399, #00001A); /* For Safari 5.1 to 6.0 */
+    background: -o-linear-gradient(left,#003399, #00001A); /* For Opera 11.1 to 12.0 */
+    background: -moz-linear-gradient(left,#003399, #00001A); /* For Firefox 3.6 to 15 */
+    background: linear-gradient(left,#003399, #00001A); /* Standard syntax */
     font-family: "URW Gothic L";
 }
 .admin_menu {
@@ -113,40 +115,64 @@
 }
 .admin_tag {
     color: #FFFFFF;
-    border: 1px solid #CCCCCC;
-    border-radius: 20px;
+    border-radius: 2px;
+    background-color: rgba(0, 102, 255, 0.5);
     padding: 5px;
-    margin: 10px;
-    background: rgba(0,128,128,0.5);
+    width: 20%;
+    margin: auto;
+}
+.admin_h6 {
+    text-align: center;
+}
+.admin_new {
+    background-color: #FFFFFF;
+    box-shadow: black;
+}
+.admin_new a{
+    color: #0D3B66;
+    text-decoration: none;
+    text-transform: uppercase;
+}
+.admin_new a:hover{
+    transition-duration: bold 3s linear 1s;
+    letter-spacing: 1px;
 }
 
+.admin_valider {
+    padding: 10px;
+    border: none;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    color: #00001A;
+    background: rgba(179, 217, 255, 0.5);
+
+}
 .admin_edit{
-    color: #103641;
+    background-color: #009900;
     font-size: 14px;
     width: auto;
-    padding: 1px;
+    padding: 10px;
     text-transform: uppercase;
-    font-weight: bold;
     letter-spacing: 1px;
+    margin-top: 10px;
+    color: #FFFFFF;
+    border: none;
+}
+.admin_retour {
+    font-size: 16px;
 }
 .admin_delete{
-    color: #942514;
-    font-weight: bold;
+    background-color: #ff0000;
     padding: 10px;
     font-size: 14px;
+    border: none;
     text-transform: uppercase;
     letter-spacing: 1px;
- }
-
-.admin_submit {
-    background-color: #003399;
-    padding: 10px;
     color: #FFFFFF;
-    border: 1px solid #FFFFFF;
-    text-transform: uppercase;
-    margin: auto;
-    letter-spacing: 1px;
-
+    text-align: center;
+ }
+.admin_nav {
+   text-align: center;
 }
 .admin_form {
     width: 50%;
@@ -157,17 +183,28 @@
 .admin_cat {
     width: 20%;
     border-radius: 2px;
-    background-color: rgba(0,0,0, 0.5);
+    background-color: rgba(0, 102, 255, 0.5);
     margin: auto;
     padding: 10px;
     text-align: center;
 }
-.admin_card {
-    width: 50%;
+.admin_etab_card {
+    width: 30%;
     margin: auto;
     padding: 10px;
-    background-color: rgba(255,255,255, 0.4);
+    background-color: rgba(0, 102, 255, 0.4);
 }
+.admin_etab {
+    text-align: center;
+}
+.admin_show {
+    text-transform: uppercase;
+    padding: 10px;
+    color: #FFFFFF;
+
+}
+
+/********ADMIN FORM *******/
 
 
 /***********/

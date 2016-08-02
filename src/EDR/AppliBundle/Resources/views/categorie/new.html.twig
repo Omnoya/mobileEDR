@@ -3,16 +3,16 @@
 {% extends "EDRAppliBundle::layoutadmin.html.twig" %}
 
 {% block body %}
-    <h1>Categorie creation</h1>
+    <h3 class="admin_h3">Créer une nouvelle catégorie</h3>
 
-    {{ form_start(form) }}
+    <div class="admin_form">
+        {{ form_start(form) }}
         {{ form_widget(form) }}
-        <input type="submit" value="Create" />
-    {{ form_end(form) }}
+        <input type="submit" value="Créer" class="admin_valider"/>
+        {{ form_end(form) }}
 
-    <ul>
-        <li>
-            <a href="{{ path('categorie_index') }}">Back to the list</a>
-        </li>
-    </ul>
+        <a href="{{ path('categorie_index') }}" alt="Retour aux catégories" title="Retour aux catégories">&crarr;</a>
+    </div>
+
+
 {% endblock %}

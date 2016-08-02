@@ -10,8 +10,8 @@
 <div class="admin_form">
     {{ form_start(form) }}
         {{ form_widget(form) }}
-        <input type="submit" value="Ajouter" class="admin_submit"/>
-    <a href="{{ path('etablissement_index') }}" class="admin_submit">Retour à la liste des établissements</a>
+        <input type="submit" value="Ajouter" class="admin_valider"/>
+    <a href="{{ path('etablissement_index') }}" alt="Retour à la liste des établissements" title="Retour à la liste des établissements">&crarr;</a>
     {{ form_end(form) }}
 
 </div>
@@ -36,12 +36,12 @@
 
 {% block edrappli_body %}
         {{ form_start(form) }}
-        <div>
+        <div class="col s12">
             {{ form_label(form.nom) }}
             {{ form_errors(form.nom) }}
             {{ form_widget(form.nom) }}
         </div>
-        <div>
+        <div class="col s12">
             {{ form_label(form.uploadPhoto) }}
             {{ form_errors(form.uploadPhoto) }}
             {{ form_widget(form.uploadPhoto) }}
@@ -49,32 +49,28 @@
 
 
         <div class="row">
-            <div class="input-field col s12">
-
+            <div class="col s12">
                 {{ form_label(form.categories) }}
                 {{ form_errors(form.categories) }}
                 {{ form_widget(form.categories) }}
             </div>
         </div>
         <div class="row">
-            <div class="input-field col s12">
-
+            <div class="col s12">
                 {{ form_label(form.adresse) }}
                 {{ form_errors(form.adresse) }}
                 {{ form_widget(form.adresse) }}
             </div>
         </div>
         <div class="row">
-            <div class="input-field col s12">
-
+            <div class="col s12">
                 {{ form_label(form.adresse2) }}
                 {{ form_errors(form.adresse2) }}
                 {{ form_widget(form.adresse2) }}
             </div>
         </div>
         <div class="row">
-            <div class="input-field col s12">
-
+            <div class="col s12">
                 {{ form_label(form.codePostal) }}
                 {{ form_errors(form.codePostal) }}
                 {{ form_widget(form.codePostal) }}
@@ -82,8 +78,7 @@
         </div>
 
         <div class="row">
-            <div class="input-field col s12">
-
+            <div class="col s12">
                 {{ form_label(form.ville) }}
                 {{ form_errors(form.ville) }}
                 {{ form_widget(form.ville) }}
@@ -91,8 +86,7 @@
         </div>
 
         <div class="row">
-            <div class="input-field col s12">
-
+            <div class="col s12">
                 {{ form_label(form.longitude) }}
                 {{ form_errors(form.longitude) }}
                 {{ form_widget(form.longitude) }}
@@ -100,8 +94,7 @@
         </div>
 
         <div class="row">
-            <div class="input-field col s12">
-
+            <div class="col s12">
                 {{ form_label(form.latitude) }}
                 {{ form_errors(form.latitude) }}
                 {{ form_widget(form.latitude) }}
@@ -109,8 +102,7 @@
         </div>
 
         <div class="row">
-            <div class="input-field col s12">
-
+            <div class="col s12">
                 {{ form_label(form.telephone) }}
                 {{ form_errors(form.telephone) }}
                 {{ form_widget(form.telephone) }}
@@ -118,8 +110,7 @@
         </div>
 
         <div class="row">
-            <div class="input-field col s12">
-
+            <div class="col s12">
                 {{ form_label(form.email) }}
                 {{ form_errors(form.email) }}
                 {{ form_widget(form.email) }}
@@ -127,22 +118,21 @@
         </div>
 
         <div class="row">
-            <div class="input-field col s12">
-
+            <div class="col s12">
                 {{ form_label(form.tags) }}
                 {{ form_errors(form.tags) }}
                 {{ form_widget(form.tags) }}
             </div>
         </div>
 
-        <input type="submit" value="Create" />
+        <input type="submit" value="Créer un nouvel établissement" class="admin_valider"/>
         {{ form_end(form) }}
 
-        <ul>
-            <li>
-                <a href="{{ path('etablissement_index') }}">Back to the list</a>
-            </li>
-        </ul>
+
+        <p class="admin_nav">
+            <a href="{{ path('etablissement_index') }}" alt="Retour à la liste des établissements">&crarr;</a>
+        </p>
+
 
         {% block javascripts %}
             {{ parent() }}

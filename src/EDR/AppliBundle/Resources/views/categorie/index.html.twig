@@ -5,14 +5,18 @@
 {% block body %}
 <h3 class="admin_h3">Liste des catégories</h1>
 
-    <div class="admin_menu">
-    <a href="{{ path('categorie_new') }}">Créer une nouvelle catégorie</a>
+    <div class="admin_menu admin_new">
+    <a href="{{ path('categorie_new') }}" >Créer une nouvelle catégorie</a>
     </div>
 
     {% for categorie in categories %}
         <div class="row">
-                <div class="admin_cat"><a href="{{ path('categorie_show', { 'id': categorie.id }) }}"></a>
-                {{ categorie.nom }}<br/><a href="{{ path('categorie_edit', { 'id': categorie.id }) }}">MODIFIER</a>
+                <div class="admin_cat">
+                    <a href="{{ path('categorie_show', { 'id': categorie.id }) }}"></a>
+                {{ categorie.nom }}
+                    <p class="admin_nav">
+                        <a href="{{ path('categorie_edit', { 'id': categorie.id }) }}" class="admin_edit">Modifier</a>
+                    </p>
                 </div>
         </div>
     {% endfor %}

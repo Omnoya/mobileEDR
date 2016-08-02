@@ -5,48 +5,49 @@
 
 {% block body %}
 
-    <h3 class="admin_h3">Liste des tags</h3>
+<h3 class="admin_h3">Liste des tags</h3>
 
-            <div class="row admin_menu"><a href="{{ path('tag_new') }}" alt="Créer un nouveau tag" title="Créer un nouveau tag">
-                <i class="material-icons left">note_add</i>
-             Créer un nouveau tag</a>
-            </div>
+<div class="row admin_menu admin_new"><a href="{{ path('tag_new') }}" alt="Créer un nouveau tag" title="Créer un nouveau tag">
+        <i class="material-icons left">note_add</i>
+        Créer un nouveau tag</a>
+</div>
 
-            {% for flashMessage in app.session.flashbag.get('mesConfirm') %}
+{% for flashMessage in app.session.flashbag.get('mesConfirm') %}
 
-                <div class="alert alert-success">
-                    <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
-                    {{ flashMessage }}
-                </div>
+    <div class="alert alert-success">
+        <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+        {{ flashMessage }}
+    </div>
 
-            {% endfor %}
+{% endfor %}
 
             {% for tag in tags %}
 
                     {#<td><a href="{{ path('tag_show', { 'id': tag.id }) }}">{{ tag.id }}</a></td>#}
+<div class="row">
+    <div class="admin_tag">
+                    <h6 class="admin_h6">{{ tag.nom }}</h6>
+        <p class="admin_nav">
+            <a href="{{ path('tag_edit', { 'id': tag.id }) }}" class="admin_edit">Modifier</a>
+            <a href="{{ path('tag_delete', { 'id': tag.id }) }}" alt="Supprimer" title="Supprimer" class="admin_delete"
+       data-toggle="confirmation" data-title="Open Google?">Supprimer</a>
+        </p>
+    </div>
+</div>
+    {#<li>
+        <a href="{{ path('tag_show', { 'id': tag.id }) }}" class="btn btn-info"
+           id="place-btn">
 
-                    <button class="admin_tag">{{ tag.nom }}
-                        <br>
-                            <a href="{{ path('tag_edit', { 'id': tag.id }) }}" class="admin_edit">Modifier</a>
-                            <a href="{{ path('tag_delete', { 'id': tag.id }) }}" alt="Supprimer" title="Supprimer" class="admin_delete" data-toggle="confirmation" data-title="Open Google?">Supprimer</a>
-                    </button>
-
-
-
-                            {#<li>
-                                <a href="{{ path('tag_show', { 'id': tag.id }) }}" class="btn btn-info"
-                                   id="place-btn">
-
-                                    <i class="glyphicon glyphicon-eye-open"></i>
-                                    Voir
-                                </a>
-                            </li>#}
-
-
-
-
-            {% endfor %}
+            <i class="glyphicon glyphicon-eye-open"></i>
+            Voir
+        </a>
+    </li>#}
 
 
 
-{% endblock %}
+
+    {% endfor %}
+
+
+
+    {% endblock %}

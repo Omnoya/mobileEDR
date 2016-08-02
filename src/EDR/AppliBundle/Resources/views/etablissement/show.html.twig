@@ -5,32 +5,34 @@
 
 {% block body %}
     <h3 class="admin_h3">Etablissement</h3>
+    <div class="card admin_etab_card">
+        {% for avis  in avis_etablissement %}
+            <ul class="collapsible" data-collapsible="expandable">note : {{ avis.note }}
+                commentaire : {{ avis.commentaire }}</ul>
+        {% endfor %}
 
-    {% for avis  in avis_etablissement %}
-        <ul class="collapsible" data-collapsible="expandable">note : {{ avis.note }}
-            commentaire : {{ avis.commentaire }}</ul>
-    {% endfor %}
+        <h4 class="admin_etab">{{ etablissement.nom }}</h4>
+        <img class="" src="{{ asset('uploads/photos/') }}{{ etablissement.photo }}"><br>
+        {{ etablissement.adresse }}<br>
+        {{ etablissement.adresse2 }}<br>
+        {{ etablissement.codePostal }}<br>
+        {{ etablissement.ville }}<br>
+        {{ etablissement.longitude }}<br>
+        {{ etablissement.latitude }}<br>
+        {{ etablissement.telephone }}<br>
+        {{ etablissement.email }}<br>
+        {% if etablissement.publier %}Publié{% else %}Non Publié{% endif %}<br>
 
-    {{ etablissement.nom }}
-    <img class="" src="{{ asset('uploads/photos/') }}{{ etablissement.photo }}">
-    {{ etablissement.adresse }}<br>
-    {{ etablissement.adresse2 }}<br>
-    {{ etablissement.codePostal }}<br>
-    {{ etablissement.ville }}<br>
-    {{ etablissement.longitude }}<br>
-    {{ etablissement.latitude }}<br>
-    {{ etablissement.telephone }}<br>
-    {{ etablissement.email }}<br>
-    {% if etablissement.publier %}Publié{% else %}Non Publié{% endif %}<br>
 
-    <button class="admin_submit">
-        <a href="{{ path('etablissement_index') }}">Retour à la liste des établissements</a>
-    </button>
+        <p class="admin_nav">
+            <a href="{{ path('etablissement_edit', { 'id': etablissement.id }) }}" class="admin_edit">Modifier</a>
+            <a href="{{ path('etablissement_index') }}" alt="Retour à la liste des établissements" class="admin_retour">&crarr;</a>
+        </p>
 
-    <a href="{{ path('etablissement_edit', { 'id': etablissement.id }) }}" class="admin_edit">Modifier</a>
+            {{ form_start(delete_form) }}<input type="submit" value="Supprimer"
+                                                class="admin_delete">{{ form_end(delete_form) }}
 
-    {{ form_start(delete_form) }}
-    <input type="submit" value="Delete" class="admin_delete">
-    {{ form_end(delete_form) }}
 
+
+    </div>
 {% endblock %}

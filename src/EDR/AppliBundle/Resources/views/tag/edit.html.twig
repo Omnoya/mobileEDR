@@ -8,15 +8,16 @@
 
 
 
-    {{ form_start(edit_form) }}
-        <div class="admin_form">{{ form_widget(edit_form) }}
 
-                <button type="submit" class="admin_submit">
-                    Modifier
-                </button> <button class="admin_submit"><a href="{{ path('tag_index') }}" >
-        Retour à la liste
-    </a></button>
-    {{ form_end(edit_form) }}</div>
+        <div class="admin_form">
+            {{ form_start(edit_form) }}
+            {{ form_widget(edit_form) }}
+            <p class="admin_nav">
+            <input type="submit" class="admin_edit" value="Modifier"/>
+            <a href="{{ path('tag_index') }}" alt="Retour à la liste" class="admin_retour">&crarr;</a>
+    {{ form_end(edit_form) }}
+            </p>
+        </div>
 
     {#<ul>
         <li>

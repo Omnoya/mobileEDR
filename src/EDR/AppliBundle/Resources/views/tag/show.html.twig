@@ -6,13 +6,14 @@
     <h3 class="admin_h3">Tag</h3>
 
     {{ tag.nom }}
-    <button class="admin_submit">
-        <a href="{{ path('tag_index') }}">Retour à la liste</a>
-    </button>
-    <a href="{{ path('tag_edit', { 'id': tag.id }) }}" class="admin_edit">Modifier</a>
+    <p class="admin_nav">
+        <a href="{{ path('tag_edit', { 'id': tag.id }) }}" class="admin_edit">Modifier</a>
+        <a href="{{ path('tag_index') }}" alt="Retour à la liste" title="Retour à la liste" class="admin_retour">&crarr;</a>
+        {{ form_start(delete_form) }}
+        <input type="submit" value="Delete" class="admin_delete">
+        {{ form_end(delete_form) }}
 
-    {{ form_start(delete_form) }}
-    <input type="submit" value="Delete" class="admin_delete">
-    {{ form_end(delete_form) }}
+    </p>
+
 
 {% endblock %}

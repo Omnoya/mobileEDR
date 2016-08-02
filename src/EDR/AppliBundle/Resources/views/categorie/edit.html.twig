@@ -5,15 +5,18 @@
 {% block body %}
     <h3 class="admin_h3">Modification d'une catégorie</h3>
 
-<div class="admin_form" >{{ form_start(edit_form) }}
-        {{ form_widget(edit_form) }}
-        <input type="submit" value="Modifier" class="admin_submit"/>
-    <a href="{{ path('categorie_index') }}" class="admin_submit">Retour aux catégories</a>
+<div class="admin_form" >
+    {{ form_start(edit_form) }}
+    {{ form_widget(edit_form) }}
+        <p class="admin_nav">
+            <input type="submit" value="Modifier" class="admin_edit"/>
+            <a href="{{ path('categorie_index') }}" alt="Retour aux catégories" class="admin_retour">&crarr;</a>
+        {{ form_end(edit_form) }}
+        {{ form_start(delete_form) }}
+            <input type="submit" class="admin_delete" value="Supprimer">
+         {{ form_end(delete_form) }}
+        </p>
 
-    {{ form_end(edit_form) }}
-    {{ form_start(delete_form) }}
-    <input type="submit" class="admin_submit" value="Supprimer">
-    {{ form_end(delete_form) }}
 
 
 </div>
