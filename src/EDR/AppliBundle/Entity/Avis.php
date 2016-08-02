@@ -13,6 +13,15 @@ use Doctrine\ORM\Mapping as ORM;
 class Avis
 {
 
+
+
+    /**
+     * @ORM\ManyToOne(targetEntity="EDR\UserBundle\Entity\User")
+     */
+
+
+    private $user;
+
     /**
      * @ORM\ManyToOne(targetEntity="EDR\AppliBundle\Entity\Etablissement", inversedBy="avis")
      * @ORM\JoinColumn(nullable=false)
@@ -182,5 +191,29 @@ class Avis
     public function getEtablissement()
     {
         return $this->etablissement;
+    }
+
+    /**
+     * Set user
+     *
+     * @param \EDR\UserBundle\Entity\User $user
+     *
+     * @return Avis
+     */
+    public function setUser(\EDR\UserBundle\Entity\User $user = null)
+    {
+        $this->user = $user;
+
+        return $this;
+    }
+
+    /**
+     * Get user
+     *
+     * @return \EDR\UserBundle\Entity\User
+     */
+    public function getUser()
+    {
+        return $this->user;
     }
 }
