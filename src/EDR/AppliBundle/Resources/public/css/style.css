@@ -105,19 +105,20 @@ html, body {
 .class_famille {
     background-image: url(http://www.vanseodesign.com/blog/wp-content/uploads/2011/10/background-3.jpg);
     font-size: 35px;
+    margin-top: -23px;
 }
-.class_amis {
+.class_entre.amis{
     background-image: url(http://i.imgur.com/A2rqm.png);
     margin-top: -18px;
     font-size: 30px;
 }
-.class_professionnel {
-    background-image: url(http://www.vanseodesign.com/blog/wp-content/uploads/2011/10/background-3.jpg);
+.class_cadre.professionnel {
+    background-image: url(http://i.imgur.com/A2rqm.png);
     margin-top: -18px;
     font-size: 30px;
 }
 .class_date {
-    background-image: url(http://i.imgur.com/A2rqm.png);
+    background-image: url(http://www.vanseodesign.com/blog/wp-content/uploads/2011/10/background-3.jpg);
     margin-top: -18px;
     font-size: 30px;
 }
