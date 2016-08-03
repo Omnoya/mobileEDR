@@ -1,32 +1,57 @@
-{# src/EDR/AppliBundle/Resources/views/layout.html.twig #}
+{# src/EDR/AppliBundle/Resources/views/layoutadmin.html.twig #}
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
 
-{% extends "::base.html.twig" %}
+    {# création du bloc « title » avec « OC Plateforme » comme contenu par défaut #}
+    <title>{% block title %}EDR - Tableau de bord{% endblock %}</title>
 
-{% block title %}
-    {{ parent() }}
-{% endblock %}
+    {% block stylesheets %}
+        {# On charge le CSS de bootstrap depuis le site directement #}
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.7/css/materialize.min.css">
+        <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+        <link rel="stylesheet" href="{{ asset('bundles/edrappli/css/style.css') }}">
+    {% endblock %}
+</head>
+
+<body class="admin_body">
+<h1 class="admin_h1">EDR - Tableau de bord</h1>
 
 {% block menu %}
-    <ul class="nav nav-pills nav-stacked">
-        {# utilisation de la fonction {{ path() }} pour faire des liens vers d'autres routes #}
-        <li><a href="{{ path('edr_appli_home') }}">Accueil</a></li>
-        <li><a href="{{ path('etablissement_index') }}">Gestion des Etablissements</a></li>
-        <li><a href="{{ path('categorie_index') }}">Gestion des Catégories</a></li>
-        <li><a href="{{ path('tag_index') }}">Gestion des Tags</a></li>
-        <li><a href="{{ path('avis_index') }}">Gestion des Avis</a></li>
-        {#<li><a href="{{ path('edr_appli_home', {'type' : 'famille'}) }}">Famille</a></li>#}
-    </ul>
-{% endblock %}
 
-{% block body %}
-
-    {# On définit un sous-titre commun à toutes les pages du bundle #}
-    <h1>Nom du Restaurant</h1>
-
-    <hr/>
-
-    {# On définit un nouveau bloc, que les vues du bundle pourront remplir #}
-    {% block edrappli_body %}
-    {% endblock %}
+        <a href="{{ path('edr_appli_home') }}"><div class="row admin_menu"><i class="material-icons left">dashboard</i>Accueil</div></a>
+        <a href="{{ path('etablissement_index') }}"><div class="row admin_menu"><i class="material-icons left">settings</i>Gérer les établissements</div></a>
+        <a href="{{ path('categorie_index') }}"><div class="row admin_menu"><i class="material-icons left">note_add</i>Gérer les catégories</div></a>
+        <a href="{{ path('tag_index') }}"><div class="row admin_menu"><i class="material-icons left">label</i>Gérer les tags</div></a>
+        <a href="#"><div class="row admin_menu"><i class="material-icons left">perm_identity</i>Gérer les utilisateurs</div></a>
+        <a href="{{ path('avis_index') }}"><div class="row admin_menu"><i class="material-icons left">comment</i>Gérer les Avis</div></a>
 
 {% endblock %}
+
+        {% block body %}
+
+        {% endblock %}
+
+
+<footer class="admin_footer">
+    <p>EDR Application © {{ 'now'|date('Y') }}</p>
+</footer>
+
+{% block javascripts %}
+    {# Ajoutez ces lignes JavaScript si vous comptez vous servir des fonctionnalités du bootstrap Twitter #}
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+    <script
+            src="https://code.jquery.com/jquery-3.1.0.min.js"
+            integrity="sha256-cCueBR6CsyA4/9szpPfrX3s49M9vUU5BgtiJj06wt/s="
+            crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.7/js/materialize.min.js"></script>
+    <script>
+        $("button").click(function()) {
+            $("p").toggle();
+        });
+    </script>
+{% endblock %}
+
+</body>
+</html>
