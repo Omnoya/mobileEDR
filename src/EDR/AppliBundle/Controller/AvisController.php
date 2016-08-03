@@ -72,6 +72,33 @@ class AvisController extends Controller
         ));
     }
 
+    public function showAvisAction(Request $request, $id_etab, $avi)
+    {
+        $em = $this->getDoctrine()->getManager();
+        $Avis_etablissement = $em->getRepository('EDRAppliBundle:Avis')->getAvis_etablissement($id_etab);
+
+
+        $com = new Avis();
+
+        $form = $this->createForm('EDRApplicBundle\Form\AvisType', $com);
+        $form->handleRequest($request);
+        $all_com = $em->getRepository('EDRAppliBundle:Avis')->findById($id_etab);
+
+        if ($form->isSubmitted() && $form->isValid()) {
+            $em->persist($com);
+            $em->flush();
+            return $this->redirectToRoute('etab_category_show', array('id' => $all_com->getId()));
+        }
+
+        return $this->render('EDRAppliBundle:etablissement:show.html.twig', array(
+            'com' => $all_com,
+            'avis_etablissement' => $Avis_etablissement,
+            'form' => $form->createView(),
+        ));
+
+
+    }
+
     /**
      * Displays a form to edit an existing Avis entity.
      *

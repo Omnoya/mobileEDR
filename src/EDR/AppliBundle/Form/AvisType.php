@@ -20,6 +20,7 @@ class AvisType extends AbstractType
             ->add('favoris')
             ->add('sauvegarde')
             ->add('etablissement')
+            ->add('submit')
         ;
     }
     

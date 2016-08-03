@@ -13,8 +13,6 @@ use Doctrine\ORM\Mapping as ORM;
 class Avis
 {
 
-
-
     /**
      * @ORM\ManyToOne(targetEntity="EDR\UserBundle\Entity\User")
      */
