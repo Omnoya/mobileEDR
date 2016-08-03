@@ -85,13 +85,13 @@
                                 <div class="input-field col s12">
                                     {{ form(form) }}
 
-                                    {#<textarea id="textarea1" class="materialize-textarea"></textarea>#}
-                                    {#<label for="textarea1">Textarea</label>#}
+                                    <textarea id="textarea1" class="materialize-textarea"></textarea>
+                                    <label for="textarea1">Textarea</label>
                                 </div>
-                                {#{{ form_start(form) }}#}
-                                {#{{ form_widget(form) }}#}
-                                {#<input type="submit" value="Create" />#}
-                                {#{{ form_end(form) }}#}
+                                {{ form_start(form) }}
+                                {{ form_widget(form) }}
+                                <input type="submit" value="create" />
+                                {{ form_end(form) }}
                             </div>
 
                             {% for etablissement in etablissement.avis %}

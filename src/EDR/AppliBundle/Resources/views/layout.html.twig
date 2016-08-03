@@ -46,11 +46,11 @@
             {#</ul>#}
             <ul class="side-nav" id="mobile-demo">
 
-                    {% for categorie in categories %}
-                        <li>
-                            <a href="{{ path('etab_category_show', {'category' : categorie.nom }) }}">{{ categorie.nom }}</a>
-                        </li>
-                    {% endfor %}
+                    {#{% for categorie in categories %}#}
+                        {#<li>#}
+                            {#<a href="{{ path('etab_category_show', {'category' : categorie.nom }) }}">{{ categorie.nom }}</a>#}
+                        {#</li>#}
+                    {#{% endfor %}#}
 
                 <li><a href="{{ path('fos_user_security_login') }}">Connexion</a></li>
             </ul>
