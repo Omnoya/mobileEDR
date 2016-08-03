@@ -76,14 +76,31 @@ class EtablissementController extends Controller
      * Finds and displays restaurants by category.
      *
      */
-    public function showByCategoryAction($category, Request $request)
+    public function showByCategoryAction($category, Request $request, $page)
     {
+        //pagination
+        if ($page < 1) {
+            throw $this->createNotFoundException("La page ".$page." n'existe pas.");
+        }
+
         $em = $this->getDoctrine()->getManager();
+
+        // je fixe le nombre d'etablissements par page à 1
+        $nbPerPage = 1;
 
         $categories = $em->getRepository('EDRAppliBundle:Categorie')->findAll();
 
-        $etablissements = $em->getRepository('EDRAppliBundle:Etablissement')->getEtabWithCategory($category);
-        
+        //Utilisation de notre propre fonction avec pagination
+        $etablissements = $em->getRepository('EDRAppliBundle:Etablissement')->getEtabWithCategory($category,$page,$nbPerPage);
+
+        // On calcule le nombre total de pages grâce au count($etablissements) qui retourne le nombre total d'établissement
+        $nbPages = ceil(count($etablissements) / $nbPerPage);
+
+        // Si la page n'existe pas, on retourne une 404
+        if ($page > $nbPages) {
+            throw $this->createNotFoundException("La page ".$page." n'existe pas.");
+        }
+
         $form = $this->createForm('EDR\AppliBundle\Form\EtabFindByTagType');
         if ($request->isMethod('POST')) {
             $id = $request->request->get('etab_find_by_tag')['nom'];
@@ -101,7 +118,10 @@ class EtablissementController extends Controller
         return $this->render('EDRAppliBundle:Appli:show.html.twig', array(
             'etablissements' => $etablissements,
             'categories' => $categories,
-            'form' => $form->createView()
+            'categ' => $category,
+            'form' => $form->createView(),
+            'nbPages' => $nbPages,
+            'page' => $page
         ));
         
 

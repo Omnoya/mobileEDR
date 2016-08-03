@@ -3,6 +3,7 @@
 namespace EDR\AppliBundle\Repository;
 
 use Doctrine\ORM\EntityRepository;
+use Doctrine\ORM\Tools\Pagination\Paginator;
 
 /**
  * EtablissementRepository
@@ -12,9 +13,28 @@ use Doctrine\ORM\EntityRepository;
  */
 class EtablissementRepository extends EntityRepository
 {
-    public function getEtabWithCategory($categoryName)
+    public function getEtabWithCategory($categoryName, $page, $nbPerPage)
     {
-        $qb = $this->createQueryBuilder('e');
+        $query = $this
+            ->createQueryBuilder('e')
+            ->innerJoin('e.categories', 'c', 'WITH', 'c.nom = :categoryName')
+            ->setParameter('categoryName', $categoryName)
+            ->addSelect('c')
+            ->getQuery()
+        ;
+
+        $query
+            // On définit l'annonce à partir de laquelle commencer la liste
+            ->setFirstResult(($page - 1) * $nbPerPage)
+            // Ainsi que le nombre d'annonce à afficher sur une page
+            ->setMaxResults($nbPerPage)
+        ;
+
+        // Enfin, on retourne l'objet Paginator correspondant à la requête construite
+        // (n'oubliez pas le use correspondant en début de fichier)
+        return new Paginator($query, true);
+
+        /*$qb = $this->createQueryBuilder('e');
 
         //jointure avec l'entité Categorie
         $qb
@@ -26,7 +46,7 @@ class EtablissementRepository extends EntityRepository
         return $qb
             ->getQuery()
             ->getResult()
-        ;
+        ;*/
     }
 
     public function getEtabWithTag($idTag)
