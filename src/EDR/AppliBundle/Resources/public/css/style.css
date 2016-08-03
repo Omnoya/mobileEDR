@@ -222,13 +222,14 @@ html, body {
     background-repeat: no-repeat;
     min-width: 100vw;
 }
+
 .titrelogin {
     margin-top: 50px;
-    font-size:34px;
+    font-size: 34px;
 }
 
 .material-icons{
-    width:80px;
+    width: 80px;
 }
 
 .edrinscription{
@@ -242,6 +243,20 @@ html, body {
 
 .sign {
     background-color: orangered;
+}
+
+.pos-rel{
+    position: relative;
+    left: -50%;
+    background: rgba(0,0,0,0.6);
+}
+
+.pos-abs{
+    position: absolute;
+
+    z-index: 200;
+    left: 50%;
+
 }
 
 /**CSS Home2**/
