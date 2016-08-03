@@ -30,13 +30,13 @@
 
         <div class="col s12">
 
-        <div id="content" class="col-md-12">
+        {#<div id="content" class="col-md-12">#}
 
             {# création du bloc « body » sans contenu par défaut #}
             {% block body_login %}
 
             {% endblock %}
-        </div>
+        {#</div>#}
 
     {% elseif app.request.get('_route') == 'fos_user_registration_register' %}
 
