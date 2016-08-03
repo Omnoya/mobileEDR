@@ -18,6 +18,11 @@ class Etablissement
 {
 
     /**
+     * @ORM\OneToMany(targetEntity="EDR\AppliBundle\Entity\Avis", mappedBy="etablissement")
+     */
+    private $avis;
+
+    /**
      * @var UploadedFile uploadPhoto
      */
     public $uploadPhoto;
@@ -48,19 +53,19 @@ class Etablissement
 
     /**
      * @ORM\PrePersist
+     * @ORM\PreUpdate
      */
     public function preUpload()
     {
-
         if (null !== $this->uploadPhoto) {
             // do whatever you want to generate a unique name
-            $this->photo = uniqid().'.'.$this->uploadPhoto->guesExtension();
-
+            $this->photo = uniqid().'.'.$this->uploadPhoto->guessExtension();
         }
     }
 
     /**
      * @ORM\PostPersist
+     * @ORM\PostUpdate
      */
     public function upload()
     {

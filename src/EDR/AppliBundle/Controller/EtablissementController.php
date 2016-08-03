@@ -61,8 +61,10 @@ class EtablissementController extends Controller
     {
         $em = $this->getDoctrine()->getManager();
         $deleteForm = $this->createDeleteForm($etablissement);
+
         $id_etab = $etablissement->getId();
         $Avis_etablissement = $em->getRepository('EDRAppliBundle:Avis')->getAvis_etablissement($id_etab);
+
         return $this->render('EDRAppliBundle:etablissement:show.html.twig', array(
             'etablissement' => $etablissement,
             'avis_etablissement' => $Avis_etablissement,
@@ -74,17 +76,30 @@ class EtablissementController extends Controller
      * Finds and displays restaurants by category.
      *
      */
-    public function showByCategoryAction($category, Request $request)
+    public function showByCategoryAction($category, Request $request, $page)
     {
+        //pagination
+        if ($page < 1) {
+            throw $this->createNotFoundException("La page ".$page." n'existe pas.");
+        }
+
         $em = $this->getDoctrine()->getManager();
 
-        $categories = $em
-            ->getRepository('EDRAppliBundle:Categorie')
-            ->findAll();
+        // je fixe le nombre d'etablissements par page à 1
+        $nbPerPage = 1;
 
-        $etablissements = $em
-            ->getRepository('EDRAppliBundle:Etablissement')
-            ->getEtabWithCategory($category);
+        $categories = $em->getRepository('EDRAppliBundle:Categorie')->findAll();
+
+        //Utilisation de notre propre fonction avec pagination
+        $etablissements = $em->getRepository('EDRAppliBundle:Etablissement')->getEtabWithCategory($category,$page,$nbPerPage);
+
+        // On calcule le nombre total de pages grâce au count($etablissements) qui retourne le nombre total d'établissement
+        $nbPages = ceil(count($etablissements) / $nbPerPage);
+
+        // Si la page n'existe pas, on retourne une 404
+        if ($page > $nbPages) {
+            throw $this->createNotFoundException("La page ".$page." n'existe pas.");
+        }
 
         $form = $this->createForm('EDR\AppliBundle\Form\EtabFindByTagType');
         if ($request->isMethod('POST')) {
@@ -92,20 +107,21 @@ class EtablissementController extends Controller
 
             $etablissements = $em->getRepository('EDRAppliBundle:Etablissement')->getEtabWithTag($id);
             //$tags_etab = $etablissements[0]->getTags()->getSnapshot();
-            //$tags_etab = $em->getRepository('EDRAppliBundle:Etablissement')->findById($etablissements[0]->getId());
         }
 
-        /*// Récupération de la liste des tags de chaque établissement
-        $tags = [];
-        foreach($etablissements as $etablissement){
-            foreach($etablissement->getTags() as )
-        }*/
+//         Récupération de la liste des tags de chaque établissement
+//        $tags = [];
+//        foreach($etablissements as $etablissement){
+//            foreach($etablissement->getTags() as )
+//        }
 
         return $this->render('EDRAppliBundle:Appli:show.html.twig', array(
             'etablissements' => $etablissements,
             'categories' => $categories,
+            'categ' => $category,
             'form' => $form->createView(),
-            //"tags_etab" => $tags_etab
+            'nbPages' => $nbPages,
+            'page' => $page
         ));
         
 

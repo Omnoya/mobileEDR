@@ -1,5 +1,11 @@
 {% extends "::base.html.twig" %}
 
+{% block menu %}
+
+
+    {{ parent() }}
+{% endblock %}
+
 {% block body %}
 
     {#<input id="pac-input" class="controls" type="text"#}
@@ -18,15 +24,14 @@
     {#<label for="changetype-geocode">Geocodes</label>#}
     {#</div>#}
 
-    <input id="pac-input" class="controls" type="text" placeholder="Search Box">
-    <div id="map"></div>
+
+    <div id="map"></div></div>
 
 {% endblock %}
 
 {% block javascripts %}
 
     {{ parent() }}
-
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCkdRROZn9lF8Jwxv22A6YvzMZjwZoQzo0&libraries=places&callback=initMap"
             async defer></script>
 
@@ -35,11 +40,155 @@
         var map;
 
 
+
+
+
         function initMap() {
+            direction = new google.maps.DirectionsService;
+            directionsDisplay = new google.maps.DirectionsRenderer;
+
             geocoder = new google.maps.Geocoder();
             map = new google.maps.Map(document.getElementById('map'), {
                 center: {lat: 48.408, lng: 2.699 },
-                zoom: 14
+                zoom: 14,
+                styles :[
+                    {
+                        "featureType": "all",
+                        "elementType": "labels.text.fill",
+                        "stylers": [
+                            {
+                                "color": "#ffffff"
+                            }
+                        ]
+                    },
+                    {
+                        "featureType": "all",
+                        "elementType": "labels.text.stroke",
+                        "stylers": [
+                            {
+                                "color": "#000000"
+                            },
+                            {
+                                "lightness": 13
+                            }
+                        ]
+                    },
+                    {
+                        "featureType": "administrative",
+                        "elementType": "geometry.fill",
+                        "stylers": [
+                            {
+                                "color": "#000000"
+                            }
+                        ]
+                    },
+                    {
+                        "featureType": "administrative",
+                        "elementType": "geometry.stroke",
+                        "stylers": [
+                            {
+                                "color": "#144b53"
+                            },
+                            {
+                                "lightness": 14
+                            },
+                            {
+                                "weight": 1.4
+                            }
+                        ]
+                    },
+                    {
+                        "featureType": "landscape",
+                        "elementType": "all",
+                        "stylers": [
+                            {
+                                "color": "#08304b"
+                            }
+                        ]
+                    },
+                    {
+                        "featureType": "poi",
+                        "elementType": "geometry",
+                        "stylers": [
+                            {
+                                "color": "#0c4152"
+                            },
+                            {
+                                "lightness": 5
+                            }
+                        ]
+                    },
+                    {
+                        "featureType": "road.highway",
+                        "elementType": "geometry.fill",
+                        "stylers": [
+                            {
+                                "color": "#000000"
+                            }
+                        ]
+                    },
+                    {
+                        "featureType": "road.highway",
+                        "elementType": "geometry.stroke",
+                        "stylers": [
+                            {
+                                "color": "#0b434f"
+                            },
+                            {
+                                "lightness": 25
+                            }
+                        ]
+                    },
+                    {
+                        "featureType": "road.arterial",
+                        "elementType": "geometry.fill",
+                        "stylers": [
+                            {
+                                "color": "#000000"
+                            }
+                        ]
+                    },
+                    {
+                        "featureType": "road.arterial",
+                        "elementType": "geometry.stroke",
+                        "stylers": [
+                            {
+                                "color": "#0b3d51"
+                            },
+                            {
+                                "lightness": 16
+                            }
+                        ]
+                    },
+                    {
+                        "featureType": "road.local",
+                        "elementType": "geometry",
+                        "stylers": [
+                            {
+                                "color": "#000000"
+                            }
+                        ]
+                    },
+                    {
+                        "featureType": "transit",
+                        "elementType": "all",
+                        "stylers": [
+                            {
+                                "color": "#146474"
+                            }
+                        ]
+                    },
+                    {
+                        "featureType": "water",
+                        "elementType": "all",
+                        "stylers": [
+                            {
+                                "color": "#021019"
+                            }
+                        ]
+                    }
+                ]
+
             });
             codeAddress();
         }
@@ -89,6 +238,9 @@
                     alert("Geocode was not successful for the following reason: " + status);
                 }
             });
+
+
+
 
             function attachDescription(marker, description) {
 
@@ -179,8 +331,6 @@
 
     </script>
 
-
 {% endblock %}
-
 
 

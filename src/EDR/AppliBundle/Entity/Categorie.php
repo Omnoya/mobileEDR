@@ -33,6 +33,13 @@ class Categorie
      */
     private $nom;
 
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="icongoogle", type="string", length=50)
+     */
+    private $icongoogle;
+
 
     /**
      * Get id
@@ -65,5 +72,28 @@ class Categorie
     public function getNom()
     {
         return $this->nom;
+    }
+
+    /**
+     * Set icongoogle
+     *
+     * @param string $icongoogle
+     * @return Categorie
+     */
+    public function setIcongoogle($icongoogle)
+    {
+        $this->icongoogle = $icongoogle;
+
+        return $this;
+    }
+
+    /**
+     * Get icongoogle
+     *
+     * @return string
+     */
+    public function getIcongoogle()
+    {
+        return $this->icongoogle;
     }
 }

@@ -1,12 +1,13 @@
 /***********/
 /**CSS MAP**/
 /***********/
-
-/*html, body {
+/*!**/
+html, body {
     height: 100%;
     margin: 0;
     padding: 0;
-}*/
+}
+
 #map {
     height: 700px;
     width: 700px;
@@ -21,6 +22,9 @@
     outline: none;
     box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
 }
+
+
+
 
 #pac-input {
     background-color: #fff;
@@ -214,7 +218,7 @@
 .block_login{
     background-image: url('../images/Bk.jpg');
     background-size: cover;
-    min-height: 80vh;
+    min-height: 120vh;
     background-repeat: no-repeat;
     min-width: 100vw;
 }
@@ -239,5 +243,39 @@
 .sign {
     background-color: orangered;
 }
+
+/**CSS Home2**/
+.home_profil {
+    font-size: 40px;
+}
+.home_icon {
+    font-size: 35px;
+}
+.class_famille {
+    background-image: url(http://www.vanseodesign.com/blog/wp-content/uploads/2011/10/background-3.jpg);
+    font-size: 35px;
+    margin-top: -23px;
+}
+.class_entre.amis{
+    background-image: url(http://i.imgur.com/A2rqm.png);
+    margin-top: -18px;
+    font-size: 30px;
+}
+.class_cadre.professionnel {
+    background-image: url(http://i.imgur.com/A2rqm.png);
+    margin-top: -18px;
+    font-size: 30px;
+}
+.class_date {
+    background-image: url(http://www.vanseodesign.com/blog/wp-content/uploads/2011/10/background-3.jpg);
+    margin-top: -18px;
+    font-size: 30px;
+}
+.home_center {
+    text-align: center;
+    margin-bottom: -30px;
+}
+
+
 
 
