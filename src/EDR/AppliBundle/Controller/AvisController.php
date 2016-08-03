@@ -41,6 +41,11 @@ class AvisController extends Controller
 
         if ($form->isSubmitted() && $form->isValid()) {
             $em = $this->getDoctrine()->getManager();
+            $usr = $this->get('security.token_storage')->getToken()->getUser();
+            //on recupere l utilisateur // 
+
+            $usr->getUsername();
+            $avi->setUser($usr); // on injecte le nom de l utlisateur //
             $em->persist($avi);
             $em->flush();
 

@@ -43,7 +43,6 @@
 
         {% if etablissements is empty %}
             {#Message à renvoyer si la variable établissement est vide#}
-            <p>plop</p>
         {% endif %}
 
         {% for etablissement in etablissements %}
@@ -79,17 +78,31 @@
                             {% endif %}
 
                         </div>
-
                         <div class="card-reveal">
                             <span class="card-title grey-text text-darken-4">Avis<i class="material-icons right">close</i></span>
+                            <div class="row">
+                                <div class="input-field col s12">
+                                    <textarea id="textarea1" class="materialize-textarea"></textarea>
+                                    <label for="textarea1">Textarea</label>
+                                </div>
+
+                                {{ form_start(form) }}
+                                {{ form_widget(form) }}
+                                <input type="submit" value="Create" />
+                                {{ form_end(form) }}
+                            </div>
+
                             {% for etablissement in etablissement.avis %}
+
                                 <div class="collection">
                                     <div class="row">
                                         <ul>
+
                                             <li class="collection-item avatar">
                                                 <img class="circle" src="{{ asset('bundles/edrappli/images/Bk.jpg') }}" alt=""/>
                                                 <a href="#!" class="collection-item">
-                                                    {{ etablissement.commentaire }}
+                                                    {{ etablissement.user }}
+                                                    <li>commentaire :{{ etablissement.commentaire }}</li>
                                                     <span class="badge">note :{{ etablissement.note }}</span>
                                                 </a>
                                             </li>

@@ -57,18 +57,61 @@ class EtablissementController extends Controller
      * Finds and displays a Etablissement entity.
      *
      */
-    public function showAction(Etablissement $etablissement)
+    public function showAction(Request $request, $id_etab, $avi)
     {
         $em = $this->getDoctrine()->getManager();
-        $deleteForm = $this->createDeleteForm($etablissement);
-        $id_etab = $etablissement->getId();
         $Avis_etablissement = $em->getRepository('EDRAppliBundle:Avis')->getAvis_etablissement($id_etab);
+
+
+        $com = new Avis();
+
+        $form = $this->createForm('EDRApplicBundle\Form\AvisType', $com);
+        $form->handleRequest($request);
+        $all_com = $em->getRepository('EDRAppliBundle:Avis')->findById($id_etab);
+
+        if ($form->isSubmitted() && $form->isValid()) {
+            $em->persist($com);
+            $em->flush();
+            return $this->redirectToRoute('etab_category_show', array('id' => $all_com->getId()));
+       }
+
         return $this->render('EDRAppliBundle:etablissement:show.html.twig', array(
-            'etablissement' => $etablissement,
+            'com' => $all_com,
             'avis_etablissement' => $Avis_etablissement,
-            'delete_form' => $deleteForm->createView(),
+            'form' => $form->createView(),
         ));
+
+
     }
+
+
+//    public function showAction(Request $request, $id)
+//    {
+//        $em = $this->getDoctrine()->getManager();
+//
+//        $thisMovie = $em->getRepository('ExamBlancBundle:Film')->findOneById($id);
+//
+//
+//        $com = new Avis();
+//
+//        $form = $this->createForm('ExamBlancBundle\Form\AvisType', $com);
+//        $form->handleRequest($request);
+//
+//        $all_com = $em->getRepository('ExamBlancBundle:Avis')->findById($id);
+//
+//        if ($form->isSubmitted() && $form->isValid()) {
+//            $com->setDate(new \DateTime());
+//            $em->persist($com);
+//            $em->flush();
+//
+//            return $this->redirectToRoute('exam_symfony_film_show', array('id' => $thisMovie->getId()));
+//        }
+//
+//        return $this->render('ExamBlancBundle:Symfony:show.html.twig', array(
+//            'com' => $all_com,
+//            'film'=> $thisMovie,
+//            'form' => $form->createView(),
+//        ));
 
     /**
      * Finds and displays restaurants by category.
