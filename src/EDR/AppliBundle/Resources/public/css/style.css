@@ -3,11 +3,7 @@
 /***********/
 /*!**/
 
-html, body {
-    height: 100%;
-    margin: 0;
-    padding: 0;
-}
+
 
 #map {
     height: 700px;
@@ -214,13 +210,6 @@ html, body {
 /**CSS LOGIN**/
 /***********/
 
-.block_login{
-    background-image: url('../images/Bk.jpg');
-    background-size: cover;
-    min-height: 120vh;
-    background-repeat: no-repeat;
-    min-width: 100vw;
-}
 
 .titrelogin {
     margin-top: 50px;
@@ -247,6 +236,7 @@ html, body {
 
 .pos-rel{
     position: relative;
+    margin-top: 50px;
     left: -50%;
     background: rgba(0,0,0,0.6);
 }
