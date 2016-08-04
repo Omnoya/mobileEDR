@@ -45,6 +45,11 @@ class Avis
     private $note;
 
     /**
+     * @ORM\Column(name="published", type="boolean")
+     */
+    private $published = true;
+
+    /**
      * @var bool
      *
      * @ORM\Column(name="favoris", type="boolean")
@@ -182,5 +187,29 @@ class Avis
     public function getEtablissement()
     {
         return $this->etablissement;
+    }
+
+    /**
+     * Set published
+     *
+     * @param boolean $published
+     *
+     * @return Avis
+     */
+    public function setPublished($published)
+    {
+        $this->published = $published;
+
+        return $this;
+    }
+
+    /**
+     * Get published
+     *
+     * @return boolean
+     */
+    public function getPublished()
+    {
+        return $this->published;
     }
 }

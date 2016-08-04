@@ -2,6 +2,7 @@
 /**CSS MAP**/
 /***********/
 /*!**/
+
 html, body {
     height: 100%;
     margin: 0;
@@ -12,6 +13,7 @@ html, body {
     height: 700px;
     width: 700px;
 }
+
 .controls {
     margin-top: 10px;
     border: 1px solid transparent;
@@ -22,9 +24,6 @@ html, body {
     outline: none;
     box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
 }
-
-
-
 
 #pac-input {
     background-color: #fff;
@@ -233,12 +232,13 @@ html, body {
 }
 
 .edrinscription{
-    background: rgba(0, 0, 0, .4);
+    //background: rgb(255, 255, 255);
+    color: white;
     display: inline-block;
-    padding: 0.2em;
+    //padding: 0.2em;
     font-size: 18px;
     letter-spacing: 2px;
-    margin-bottom: 10em;
+    //margin-bottom: 10em;
 }
 
 .sign {
@@ -257,6 +257,10 @@ html, body {
     z-index: 200;
     left: 50%;
 
+}
+
+.f-color{
+    color: #fff;
 }
 
 /**CSS Home2**/
