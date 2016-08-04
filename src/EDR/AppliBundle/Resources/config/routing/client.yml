@@ -3,6 +3,10 @@ edr_appli_home:
     defaults: { _controller: EDRAppliBundle:Appli:accueil }
 
 etab_category_show:
-    path:     /{category}
-    defaults: { _controller: "EDRAppliBundle:Etablissement:showByCategory" }
+    path:     /{category}/{page}
+    defaults:
+        _controller: EDRAppliBundle:Etablissement:showByCategory
+        page: 1
+    requirements:
+        page: '\d*'
     methods:  [GET, POST]

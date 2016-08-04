@@ -78,47 +78,75 @@ class EtablissementController extends Controller
      * Finds and displays restaurants by category.
      *
      */
-    public function showByCategoryAction($category, Request $request)
+    public function showByCategoryAction($category, Request $request, $page)
     {
         $em = $this->getDoctrine()->getManager();
-
         $categories = $em->getRepository('EDRAppliBundle:Categorie')->findAll();
 
-        $etablissements = $em->getRepository('EDRAppliBundle:Etablissement')->getEtabWithCategory($category);
+        /////////////////////
+        //// pagination /////
+        /////////////////////
+
+        // je fixe le nombre d'etablissements par page à 1
+        $nbPerPage = 1;
+
+        //Utilisation de notre propre fonction avec pagination
+        $etablissements = $em->getRepository('EDRAppliBundle:Etablissement')->getEtabWithCategory($category,$page,$nbPerPage);
+
+        // On calcule le nombre total de pages grâce au count($etablissements) qui retourne le nombre total d'établissement
+        $nbPages = ceil(count($etablissements) / $nbPerPage);
+
+        // Si la page n'existe pas, on retourne une 404
+        if ($page > $nbPages) {
+            throw $this->createNotFoundException("La page ".$page." n'existe pas.");
+        }
+
+        /////////////////////////
+        //// pagination end /////
+        /////////////////////////
+
+        //////////////////////////////////////////
+        ////// Formulaire recherche par Tag //////
+        //////////////////////////////////////////
+
+        $form = $this->createForm('EDR\AppliBundle\Form\EtabFindByTagType');
+        if ($request->isMethod('POST')) {
+            $id = $request->request->get('etab_find_by_tag')['nom'];
+
+            $etablissements = $em->getRepository('EDRAppliBundle:Etablissement')->getEtabWithTag($id);
+            //$tags_etab = $etablissements[0]->getTags()->getSnapshot();
+        }
+
+        //////////////////////////////////////////////
+        ////// End Formulaire recherche par Tag //////
+        //////////////////////////////////////////////
+
+        //////////////////////////////////////////
+        ////// Formulaire d'ajout avis ///////////
+        //////////////////////////////////////////
 
         $com = new Avis();
         $form_avis = $this->createForm('EDR\AppliBundle\Form\AvisType' ,$com);
         $form_avis->handleRequest($request);
 
         if ($form_avis->isSubmitted() && $form_avis->isValid()) {
-            $em = $this->getDoctrine()->getManager();
             $em->persist($com);
             $em->flush();
         }
-
-        $form = $this->createForm('EDR\AppliBundle\Form\EtabFindByTagType');
-        if ($request->isMethod('POST')) {
-            $id = $request->request->get('etab_find_by_tag')['nom'];
-            
-            $etablissements = $em->getRepository('EDRAppliBundle:Etablissement')->getEtabWithTag($id);
-            //$tags_etab = $etablissements[0]->getTags()->getSnapshot();
-        }
-
-//         Récupération de la liste des tags de chaque établissement
-//        $tags = [];
-//        foreach($etablissements as $etablissement){
-//            foreach($etablissement->getTags() as )
-//        }
+        //////////////////////////////////////////
+        ////// End Formulaire d'ajout avis ///////
+        //////////////////////////////////////////
 
         return $this->render('EDRAppliBundle:Appli:show.html.twig', array(
             'etablissements' => $etablissements,
             'com' => $com,
             'categories' => $categories,
             'form' => $form->createView(),
-            'form_avis' => $form_avis->createView()
+            'form_avis' => $form_avis->createView(),
+            'categ' => $category,
+            'nbPages' => $nbPages,
+            'page' => $page
         ));
-
-
     }
 
     public function showByTagAction(Request $request)

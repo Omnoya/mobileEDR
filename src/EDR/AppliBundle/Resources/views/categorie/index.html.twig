@@ -3,39 +3,24 @@
 {% extends "EDRAppliBundle::layoutadmin.html.twig" %}
 
 {% block body %}
-    <h1>Categorie list</h1>
+<h3 class="admin_h3">Liste des catégories</h1>
 
-    <table>
-        <thead>
-            <tr>
-                <th>Id</th>
-                <th>Nom</th>
-                <th>Actions</th>
-            </tr>
-        </thead>
-        <tbody>
-        {% for categorie in categories %}
-            <tr>
-                <td><a href="{{ path('categorie_show', { 'id': categorie.id }) }}">{{ categorie.id }}</a></td>
-                <td>{{ categorie.nom }}</td>
-                <td>
-                    <ul>
-                        <li>
-                            <a href="{{ path('categorie_show', { 'id': categorie.id }) }}">show</a>
-                        </li>
-                        <li>
-                            <a href="{{ path('categorie_edit', { 'id': categorie.id }) }}">edit</a>
-                        </li>
-                    </ul>
-                </td>
-            </tr>
-        {% endfor %}
-        </tbody>
-    </table>
+    <div class="admin_menu admin_new">
+    <a href="{{ path('categorie_new') }}" >Créer une nouvelle catégorie</a>
+    </div>
 
-    <ul>
-        <li>
-            <a href="{{ path('categorie_new') }}">Create a new entry</a>
-        </li>
-    </ul>
-{% endblock %}
+    {% for categorie in categories %}
+        <div class="row">
+                <div class="admin_cat">
+                    <a href="{{ path('categorie_show', { 'id': categorie.id }) }}"></a>
+                {{ categorie.nom }}
+                    <p class="admin_nav">
+                        <a href="{{ path('categorie_edit', { 'id': categorie.id }) }}" class="admin_edit">Modifier</a>
+                    </p>
+                </div>
+        </div>
+    {% endfor %}
+
+
+
+    {% endblock %}

@@ -1,44 +1,20 @@
-{% extends 'base.html.twig' %}
+{% extends '@EDRAppli/layoutadmin.html.twig' %}
 
 {% block body %}
-    <h1>Avis</h1>
+    <h3 class="admin_h3">Avis</h3>
 
-    <table>
-        <tbody>
-            <tr>
-                <th>Id</th>
-                <td>{{ avi.id }}</td>
-            </tr>
-            <tr>
-                <th>Commentaire</th>
-                <td>{{ avi.commentaire }}</td>
-            </tr>
-            <tr>
-                <th>Note</th>
-                <td>{{ avi.note }}</td>
-            </tr>
-            <tr>
-                <th>Favoris</th>
-                <td>{% if avi.favoris %}Yes{% else %}No{% endif %}</td>
-            </tr>
-            <tr>
-                <th>Sauvegarde</th>
-                <td>{% if avi.sauvegarde %}Yes{% else %}No{% endif %}</td>
-            </tr>
-        </tbody>
-    </table>
+    {{ avi.commentaire }}
+    {{ avi.note }}
+    {% if avi.favoris %}Yes{% else %}No{% endif %}
+    {% if avi.sauvegarde %}Yes{% else %}No{% endif %}
 
-    <ul>
-        <li>
-            <a href="{{ path('avis_index') }}">Back to the list</a>
-        </li>
-        <li>
-            <a href="{{ path('avis_edit', { 'id': avi.id }) }}">Edit</a>
-        </li>
-        <li>
-            {{ form_start(delete_form) }}
-                <input type="submit" value="Delete">
-            {{ form_end(delete_form) }}
-        </li>
-    </ul>
+    <p class="admin_nav">
+        <a href="{{ path('avis_index') }}" alt="Retour à la liste des avis">&crarr;</a>
+
+        <a href="{{ path('avis_edit', { 'id': avi.id }) }}" class="admin_edit">Modifier</a>
+
+        {{ form_start(delete_form) }}
+        <input type="submit" value="Supprimer" class="admin_delete">
+        {{ form_end(delete_form) }}
+    </p>
 {% endblock %}
