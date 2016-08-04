@@ -93,6 +93,10 @@ class EtablissementController extends Controller
         //Utilisation de notre propre fonction avec pagination
         $etablissements = $em->getRepository('EDRAppliBundle:Etablissement')->getEtabWithCategory($category,$page,$nbPerPage);
 
+        //Quentin
+        //$id_etab = $etablissement->getId();
+        //$Avis_etablissement = $em->getRepository('EDRAppliBundle:Avis')->getAvis_etablissement($id_etab);
+
         // On calcule le nombre total de pages grâce au count($etablissements) qui retourne le nombre total d'établissement
         $nbPages = ceil(count($etablissements) / $nbPerPage);
 
@@ -124,12 +128,17 @@ class EtablissementController extends Controller
         //////////////////////////////////////////
         ////// Formulaire d'ajout avis ///////////
         //////////////////////////////////////////
+        $usr = $this->get('security.token_storage')->getToken()->getUser();
 
         $com = new Avis();
         $form_avis = $this->createForm('EDR\AppliBundle\Form\AvisType' ,$com);
         $form_avis->handleRequest($request);
 
         if ($form_avis->isSubmitted() && $form_avis->isValid()) {
+
+            $usr = $this->get('security.token_storage')->getToken()->getUser();
+            $usr->getUsername();
+            $com->setUser($usr); // on injecte le nom de l utlisateur //
             $em->persist($com);
             $em->flush();
         }
