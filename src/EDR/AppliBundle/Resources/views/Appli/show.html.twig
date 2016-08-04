@@ -49,6 +49,7 @@
 
             <div class="row">
                 <div class="col m6 offset-m3 s12">
+
                     <div class="card">
                         <div class="card-image waves-effect waves-block waves-light">
                             <img class="activator" src="{{ asset('uploads/photos/') }}{{ etablissement.photo }}">
@@ -82,18 +83,11 @@
                         <div class="card-reveal">
                             <span class="card-title grey-text text-darken-4">Avis<i class="material-icons right">close</i></span>
                             <div class="row">
-                                <div class="input-field col s12">
-                                    {{ form(form) }}
-
-                                    <textarea id="textarea1" class="materialize-textarea"></textarea>
-                                    <label for="textarea1">Textarea</label>
-                                </div>
-                                {{ form_start(form) }}
-                                {{ form_widget(form) }}
-                                <input type="submit" value="create" />
-                                {{ form_end(form) }}
+                                {{ form_start(form_avis) }}
+                                {{ form_widget(form_avis) }}
+                                <input type="submit" value="Create" />
+                                {{ form_end(form_avis) }}
                             </div>
-
                             {% for etablissement in etablissement.avis %}
 
                                 <div class="collection">
@@ -112,11 +106,9 @@
                                     </div>
                                 </div>
                             {% endfor %}
-                        </div>
                     </div>
                 </div>
-            </div>
-
+</div>
         {% endfor %}
 
     {% else %}

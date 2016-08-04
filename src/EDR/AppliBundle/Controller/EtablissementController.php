@@ -6,6 +6,7 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 
 use EDR\AppliBundle\Entity\Etablissement;
+use EDR\AppliBundle\Entity\Avis;
 use EDR\AppliBundle\Form\EtablissementType;
 
 /**
@@ -26,6 +27,7 @@ class EtablissementController extends Controller
         // récupere moi toute les données dans la table etablissement //
         return $this->render('EDRAppliBundle:etablissement:index.html.twig', array(
             'etablissements' => $etablissements,
+
         ));
     }
 
@@ -57,7 +59,6 @@ class EtablissementController extends Controller
      * Finds and displays a Etablissement entity.
      *
      */
-
     public function showAction(Etablissement $etablissement)
     {
         $em = $this->getDoctrine()->getManager();
@@ -73,33 +74,6 @@ class EtablissementController extends Controller
         ));
     }
 
-
-    public function showAvisAction(Request $request, $id_etab)
-    {
-        $em = $this->getDoctrine()->getManager();
-        $Avis_etablissement = $em->getRepository('EDRAppliBundle:Avis')->getAvis_etablissement($id_etab);
-
-        $com = new Avis();
-
-        $form = $this->createForm('EDRAppliBundle\Form\AvisType', $com);
-        $form->handleRequest($request);
-        $all_com = $em->getRepository('EDRAppliBundle:Avis')->findById($id_etab);
-
-        if ($form->isSubmitted() && $form->isValid()) {
-            $em->persist($com);
-            $em->flush();
-            return $this->redirectToRoute('etab_category_show', array('id' => $all_com->getId()));
-        }
-
-        return $this->render('EDRAppliBundle:etablissement:show.html.twig', array(
-            'com' => $all_com,
-            'avis_etablissement' => $Avis_etablissement,
-            'form' => $form->createView(),
-        ));
-
-
-    }
-
     /**
      * Finds and displays restaurants by category.
      *
@@ -108,34 +82,40 @@ class EtablissementController extends Controller
     {
         $em = $this->getDoctrine()->getManager();
 
-        $categories = $em
-            ->getRepository('EDRAppliBundle:Categorie')
-            ->findAll();
+        $categories = $em->getRepository('EDRAppliBundle:Categorie')->findAll();
 
-        $etablissements = $em
-            ->getRepository('EDRAppliBundle:Etablissement')
-            ->getEtabWithCategory($category);
+        $etablissements = $em->getRepository('EDRAppliBundle:Etablissement')->getEtabWithCategory($category);
+
+        $com = new Avis();
+        $form_avis = $this->createForm('EDR\AppliBundle\Form\AvisType' ,$com);
+        $form_avis->handleRequest($request);
+
+        if ($form_avis->isSubmitted() && $form_avis->isValid()) {
+            $em = $this->getDoctrine()->getManager();
+            $em->persist($com);
+            $em->flush();
+        }
 
         $form = $this->createForm('EDR\AppliBundle\Form\EtabFindByTagType');
         if ($request->isMethod('POST')) {
             $id = $request->request->get('etab_find_by_tag')['nom'];
-
+            
             $etablissements = $em->getRepository('EDRAppliBundle:Etablissement')->getEtabWithTag($id);
             //$tags_etab = $etablissements[0]->getTags()->getSnapshot();
-            //$tags_etab = $em->getRepository('EDRAppliBundle:Etablissement')->findById($etablissements[0]->getId());
         }
 
-        /*// Récupération de la liste des tags de chaque établissement
-        $tags = [];
-        foreach($etablissements as $etablissement){
-            foreach($etablissement->getTags() as )
-        }*/
+//         Récupération de la liste des tags de chaque établissement
+//        $tags = [];
+//        foreach($etablissements as $etablissement){
+//            foreach($etablissement->getTags() as )
+//        }
 
         return $this->render('EDRAppliBundle:Appli:show.html.twig', array(
             'etablissements' => $etablissements,
+            'com' => $com,
             'categories' => $categories,
             'form' => $form->createView(),
-            //"tags_etab" => $tags_etab
+            'form_avis' => $form_avis->createView()
         ));
 
 
@@ -158,6 +138,8 @@ class EtablissementController extends Controller
             'form' => $form->createView()
         ));
     }
+
+
 
     /**
      * Displays a form to edit an existing Etablissement entity.

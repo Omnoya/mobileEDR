@@ -36,6 +36,8 @@ class AvisController extends Controller
     public function newAction(Request $request)
     {
 
+        $usr = $this->get('security.token_storage')->getToken()->getUser();
+
         $avi = new Avis();
         $form = $this->createForm('EDR\AppliBundle\Form\AvisType', $avi);
         $form->handleRequest($request);
@@ -43,21 +45,22 @@ class AvisController extends Controller
         if ($form->isSubmitted() && $form->isValid()) {
             $em = $this->getDoctrine()->getManager();
             $usr = $this->get('security.token_storage')->getToken()->getUser();
-            //on recupere l utilisateur // 
-
             $usr->getUsername();
             $avi->setUser($usr); // on injecte le nom de l utlisateur //
             $em->persist($avi);
             $em->flush();
 
-            return $this->redirectToRoute('avis_show', array('id' => $avi->getId()));
+            return $this->redirectToRoute('etab_category_show', array('id' => $avi->getId()));
+
         }
 
-        return $this->render('EDRAppliBundle:avis:new.html.twig', array(
+        return $this->render('EDRAppliBundle:Appli:show.html.twig', array(
             'avi' => $avi,
+            'usr' => $usr,
             'form' => $form->createView(),
         ));
     }
+
 
     /**
      * Finds and displays a Avis entity.
@@ -72,7 +75,9 @@ class AvisController extends Controller
             'delete_form' => $deleteForm->createView(),
         ));
     }
-    
+
+
+
     /**
      * Displays a form to edit an existing Avis entity.
      *
