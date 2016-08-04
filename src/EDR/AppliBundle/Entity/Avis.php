@@ -48,6 +48,11 @@ class Avis
     private $note;
 
     /**
+     * @ORM\Column(name="published", type="boolean")
+     */
+    private $published = true;
+
+    /**
      * @var bool
      *
      * @ORM\Column(name="favoris", type="boolean")
@@ -197,7 +202,6 @@ class Avis
     public function setUser(\EDR\UserBundle\Entity\User $user = null)
     {
         $this->user = $user;
-
         return $this;
     }
 
@@ -209,5 +213,29 @@ class Avis
     public function getUser()
     {
         return $this->user;
+    }
+
+    /**
+     * Set published
+     *
+     * @param boolean $published
+     *
+     * @return Avis
+     */
+    public function setPublished($published)
+    {
+        $this->published = $published;
+        return $this;
+    }
+
+
+    /**
+     * Get published
+     *
+     * @return boolean
+     */
+    public function getPublished()
+    {
+        return $this->published;
     }
 }

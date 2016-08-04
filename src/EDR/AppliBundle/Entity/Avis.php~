@@ -13,6 +13,7 @@ use Doctrine\ORM\Mapping as ORM;
 class Avis
 {
 
+<<<<<<< HEAD
 
 
     /**
@@ -22,6 +23,8 @@ class Avis
 
     private $user;
 
+=======
+>>>>>>> dev
     /**
      * @ORM\ManyToOne(targetEntity="EDR\AppliBundle\Entity\Etablissement", inversedBy="avis")
      * @ORM\JoinColumn(nullable=false)
@@ -52,6 +55,11 @@ class Avis
      * @ORM\Column(name="note", type="smallint")
      */
     private $note;
+
+    /**
+     * @ORM\Column(name="published", type="boolean")
+     */
+    private $published = true;
 
     /**
      * @var bool

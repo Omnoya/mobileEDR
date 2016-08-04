@@ -5,6 +5,11 @@
 
     {{ form_start(form) }}
         {{ form_widget(form) }}
+
+        {% if form.published is defined %}
+            {{ form_row(form.published) }}
+        {% endif %}
+
         <input type="submit" value="Create" />
     {{ form_end(form) }}
 
