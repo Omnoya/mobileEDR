@@ -7,7 +7,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
         {# création du bloc « title » avec « OC Plateforme » comme contenu par défaut #}
-        <title>{% block title %}EDR{% endblock %}</title>
+        {#<title>{% block title %}EDR{% endblock %}</title>#}
 
         {% block stylesheets %}
 
@@ -16,6 +16,7 @@
             <link rel="stylesheet" href="{{ asset('bundles/edrappli/css/style.css') }}">
             <link rel="stylesheet" type="text/css" href="{{ asset('bundles/edrappli/css/jTinder.css') }}">
             <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
 
         {% endblock %}
     </head>
@@ -47,7 +48,7 @@
     {% else %}
 
 
-                <h1>EDR</h1>
+                {#<h1>EDR</h1>#}
 
         <div class="container">
 
@@ -74,21 +75,21 @@
 
 
 
-            <hr/>
+            {#<hr/>#}
 
-            <footer>
-                <p>EDR Application © {{ 'now'|date('Y') }}</p>
-            </footer>
+            {#<footer>#}
+                {#<p>EDR Application © {{ 'now'|date('Y') }}</p>#}
+            {#</footer>#}
 
 
-            <footer class="page-footer">
+            {#<footer class="page-footer">#}
                 {#{% if is_granted('IS_AUTHENTICATED_FULLY') %}#}
-                <div class="container">
-                    <p>EDR Application © {{ 'now'|date('Y') }}</p>
-                    <p>Ce projet est créé par Paola, Elodie, Timothée & Omar.</p>
-                </div>
+                {#<div class="container">#}
+                    {#<p>EDR Application © {{ 'now'|date('Y') }}</p>#}
+                    {#<p>Ce projet est créé par Paola, Elodie, Timothée & Omar.</p>#}
+                {#</div>#}
                 {#{% endif %}#}
-            </footer>
+            {#</footer>#}
 
         </div>
 
