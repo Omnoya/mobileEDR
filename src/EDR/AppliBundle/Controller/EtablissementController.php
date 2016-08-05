@@ -6,6 +6,7 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 
 use EDR\AppliBundle\Entity\Etablissement;
+use EDR\AppliBundle\Entity\Avis;
 use EDR\AppliBundle\Form\EtablissementType;
 
 /**
@@ -26,6 +27,7 @@ class EtablissementController extends Controller
         // récupere moi toute les données dans la table etablissement //
         return $this->render('EDRAppliBundle:etablissement:index.html.twig', array(
             'etablissements' => $etablissements,
+
         ));
     }
 
@@ -41,7 +43,7 @@ class EtablissementController extends Controller
 
         if ($form->isSubmitted() && $form->isValid()) {
             $em = $this->getDoctrine()->getManager();
-            $em->persist($etablissement); // stock et verification des données 
+            $em->persist($etablissement); // stock et verification des données
             $em->flush();
 
             return $this->redirectToRoute('etablissement_show', array('id' => $etablissement->getId()));
@@ -78,20 +80,22 @@ class EtablissementController extends Controller
      */
     public function showByCategoryAction($category, Request $request, $page)
     {
-        //pagination
-        if ($page < 1) {
-            throw $this->createNotFoundException("La page ".$page." n'existe pas.");
-        }
-
         $em = $this->getDoctrine()->getManager();
+        $categories = $em->getRepository('EDRAppliBundle:Categorie')->findAll();
+
+        /////////////////////
+        //// pagination /////
+        /////////////////////
 
         // je fixe le nombre d'etablissements par page à 1
         $nbPerPage = 1;
 
-        $categories = $em->getRepository('EDRAppliBundle:Categorie')->findAll();
-
         //Utilisation de notre propre fonction avec pagination
         $etablissements = $em->getRepository('EDRAppliBundle:Etablissement')->getEtabWithCategory($category,$page,$nbPerPage);
+
+        //Quentin
+        //$id_etab = $etablissement->getId();
+        //$Avis_etablissement = $em->getRepository('EDRAppliBundle:Avis')->getAvis_etablissement($id_etab);
 
         // On calcule le nombre total de pages grâce au count($etablissements) qui retourne le nombre total d'établissement
         $nbPages = ceil(count($etablissements) / $nbPerPage);
@@ -101,6 +105,14 @@ class EtablissementController extends Controller
             throw $this->createNotFoundException("La page ".$page." n'existe pas.");
         }
 
+        /////////////////////////
+        //// pagination end /////
+        /////////////////////////
+
+        //////////////////////////////////////////
+        ////// Formulaire recherche par Tag //////
+        //////////////////////////////////////////
+
         $form = $this->createForm('EDR\AppliBundle\Form\EtabFindByTagType');
         if ($request->isMethod('POST')) {
             $id = $request->request->get('etab_find_by_tag')['nom'];
@@ -109,22 +121,41 @@ class EtablissementController extends Controller
             //$tags_etab = $etablissements[0]->getTags()->getSnapshot();
         }
 
-//         Récupération de la liste des tags de chaque établissement
-//        $tags = [];
-//        foreach($etablissements as $etablissement){
-//            foreach($etablissement->getTags() as )
-//        }
+        //////////////////////////////////////////////
+        ////// End Formulaire recherche par Tag //////
+        //////////////////////////////////////////////
+
+        //////////////////////////////////////////
+        ////// Formulaire d'ajout avis ///////////
+        //////////////////////////////////////////
+        $usr = $this->get('security.token_storage')->getToken()->getUser();
+
+        $com = new Avis();
+        $form_avis = $this->createForm('EDR\AppliBundle\Form\AvisType' ,$com);
+        $form_avis->handleRequest($request);
+
+        if ($form_avis->isSubmitted() && $form_avis->isValid()) {
+
+            $usr = $this->get('security.token_storage')->getToken()->getUser();
+            $usr->getUsername();
+            $com->setUser($usr); // on injecte le nom de l utlisateur //
+            $em->persist($com);
+            $em->flush();
+        }
+        //////////////////////////////////////////
+        ////// End Formulaire d'ajout avis ///////
+        //////////////////////////////////////////
 
         return $this->render('EDRAppliBundle:Appli:show.html.twig', array(
             'etablissements' => $etablissements,
+            'com' => $com,
             'categories' => $categories,
-            'categ' => $category,
             'form' => $form->createView(),
+            'form_avis' => $form_avis->createView(),
+            'categ' => $category,
             'nbPages' => $nbPages,
             'page' => $page
         ));
-        
-
     }
 
     public function showByTagAction(Request $request)
@@ -144,6 +175,8 @@ class EtablissementController extends Controller
             'form' => $form->createView()
         ));
     }
+
+
 
     /**
      * Displays a form to edit an existing Etablissement entity.

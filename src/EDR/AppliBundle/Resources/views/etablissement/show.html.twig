@@ -11,6 +11,13 @@
                 commentaire : {{ avis.commentaire }}</ul>
         {% endfor %}
 
+    {% for avis  in avis_etablissement %}
+        <ul class="collapsible" data-collapsible="expandable">
+            <li>Note : {{ avis.note }}</li>
+            <li>Commentaire : {{ avis.commentaire }}</li>
+        </ul>
+    {% endfor %}
+
         <h4 class="admin_etab">{{ etablissement.nom }}</h4>
         <img class="" src="{{ asset('uploads/photos/') }}{{ etablissement.photo }}"><br>
         {{ etablissement.adresse }}<br>
@@ -23,14 +30,14 @@
         {{ etablissement.email }}<br>
         {% if etablissement.publier %}Publié{% else %}Non Publié{% endif %}<br>
 
-
         <p class="admin_nav">
             <a href="{{ path('etablissement_edit', { 'id': etablissement.id }) }}" class="admin_edit">Modifier</a>
             <a href="{{ path('etablissement_index') }}" alt="Retour à la liste des établissements" class="admin_retour">&crarr;</a>
         </p>
 
-            {{ form_start(delete_form) }}<input type="submit" value="Supprimer"
-                                                class="admin_delete">{{ form_end(delete_form) }}
+        {{ form_start(delete_form) }}
+            <input type="submit" value="Supprimer" class="admin_delete">
+        {{ form_end(delete_form) }}
 
 
 

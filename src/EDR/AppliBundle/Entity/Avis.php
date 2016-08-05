@@ -14,11 +14,14 @@ class Avis
 {
 
     /**
+     * @ORM\ManyToOne(targetEntity="EDR\UserBundle\Entity\User")
+     */
+    private $user;
+
+    /**
      * @ORM\ManyToOne(targetEntity="EDR\AppliBundle\Entity\Etablissement", inversedBy="avis")
      * @ORM\JoinColumn(nullable=false)
      */
-
-
     private $etablissement;
 
     /**
@@ -190,6 +193,29 @@ class Avis
     }
 
     /**
+     * Set user
+     *
+     * @param \EDR\UserBundle\Entity\User $user
+     *
+     * @return Avis
+     */
+    public function setUser(\EDR\UserBundle\Entity\User $user = null)
+    {
+        $this->user = $user;
+        return $this;
+    }
+
+    /**
+     * Get user
+     *
+     * @return \EDR\UserBundle\Entity\User
+     */
+    public function getUser()
+    {
+        return $this->user;
+    }
+
+    /**
      * Set published
      *
      * @param boolean $published
@@ -199,9 +225,9 @@ class Avis
     public function setPublished($published)
     {
         $this->published = $published;
-
         return $this;
     }
+
 
     /**
      * Get published
