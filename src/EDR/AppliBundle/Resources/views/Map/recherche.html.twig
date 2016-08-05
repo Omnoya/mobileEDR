@@ -2,8 +2,33 @@
 
 {% block menu %}
 
+    <nav>
+        <div class="nav-wrapper">
+            <a href="#" class="brand-logo">EDR Application</a>
+            <a href="#" data-activates="mobile-demo" class="button-collapse"><i class="material-icons">menu</i></a>
+            <ul class="right hide-on-med-and-down">
 
-    {{ parent() }}
+                {% for categorie in categories %}
+                    <li>
+                        <a href="{{ path('etab_category_show', {'category' : categorie.nom }) }}">{{ categorie.nom }}</a>
+                    </li>
+                {% endfor %}
+
+                <li><a href="{{ path('fos_user_security_login') }}"><i class="material-icons right">face</i></a></li>
+            </ul>
+            <ul class="side-nav" id="mobile-demo">
+
+                {% for categorie in categories %}
+                    <li>
+                        <a href="{{ path('etab_category_show', {'category' : categorie.nom }) }}">{{ categorie.nom }}</a>
+                    </li>
+                {% endfor %}
+
+                <li><a href="{{ path('fos_user_security_login') }}">Connexion</a></li>
+            </ul>
+        </div>
+    </nav>
+
 {% endblock %}
 
 {% block body %}
@@ -25,7 +50,7 @@
     {#</div>#}
 
 
-    <div id="map"></div></div>
+    <div id="map"></div>
 
 {% endblock %}
 
@@ -40,18 +65,15 @@
         var map;
 
 
-
-
-
         function initMap() {
             direction = new google.maps.DirectionsService;
             directionsDisplay = new google.maps.DirectionsRenderer;
 
             geocoder = new google.maps.Geocoder();
             map = new google.maps.Map(document.getElementById('map'), {
-                center: {lat: 48.408, lng: 2.699 },
+                center: {lat: 48.408, lng: 2.699},
                 zoom: 14,
-                styles :[
+                styles: [
                     {
                         "featureType": "all",
                         "elementType": "labels.text.fill",
@@ -209,7 +231,7 @@
 
             {% for etablissement in etablissements %}
             var address = '{{ etablissement.adresse }} {{ etablissement.ville }}';
-            geocoder.geocode( { 'address': address}, function(results, status) {
+            geocoder.geocode({'address': address}, function (results, status) {
                 if (status == google.maps.GeocoderStatus.OK) {
                     map.setCenter(results[0].geometry.location);
                     var marker = new google.maps.Marker({
@@ -228,9 +250,9 @@
                     });
 
                     var description =
-                            '<div><p>{{ etablissement.nom }}</p></div>'+
-                            '<div><p>{{ etablissement.adresse }}</p></div>'+
-                            '<div><p>{{ etablissement.ville }}</p></div>'+
+                            '<div><p>{{ etablissement.nom }}</p></div>' +
+                            '<div><p>{{ etablissement.adresse }}</p></div>' +
+                            '<div><p>{{ etablissement.ville }}</p></div>' +
                             '<div><img src=\'{{ asset('uploads/photos/') }}{{ etablissement.photo }}\' width=\'150\'/></div>';
 
                     attachDescription(marker, description);
@@ -240,15 +262,13 @@
             });
 
 
-
-
             function attachDescription(marker, description) {
 
                 var infowindow = new google.maps.InfoWindow({
                     content: description
                 });
 
-                marker.addListener('click', function() {
+                marker.addListener('click', function () {
                     infowindow.open(marker.get('map'), marker);
                 });
             }

@@ -11,11 +11,12 @@ class RechercheController extends Controller
         $em = $this->getDoctrine()->getManager();
 
         $etablissements = $em->getRepository('EDRAppliBundle:Etablissement')->findAll();
+        $categories = $em->getRepository('EDRAppliBundle:Categorie')->findAll();
 
         return $this->render('EDRAppliBundle:Map:recherche.html.twig', array(
-            'etablissements' => $etablissements
+            'etablissements' => $etablissements,
+            'categories' => $categories
         ));
 
     }
-
 }
