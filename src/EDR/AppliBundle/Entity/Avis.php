@@ -12,7 +12,11 @@ use Doctrine\ORM\Mapping as ORM;
  */
 class Avis
 {
-
+    /**
+     * @var string
+     */
+    public $idetab;
+    
     /**
      * @ORM\ManyToOne(targetEntity="EDR\UserBundle\Entity\User")
      */
