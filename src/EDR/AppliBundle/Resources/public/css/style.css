@@ -184,8 +184,16 @@ html, body {
     text-align: center;
     color: #f6f6f6;
 }
-.admin_cat {
+.admin_cat, .admin_avis {
     width: 20%;
+    border-radius: 2px;
+    background-color: rgba(0, 102, 255, 0.5);
+    margin: auto;
+    padding: 10px;
+    text-align: center;
+}
+.admin_avis {
+    width: 40%;
     border-radius: 2px;
     background-color: rgba(0, 102, 255, 0.5);
     margin: auto;
@@ -209,7 +217,10 @@ html, body {
 }
 
 /********ADMIN FORM *******/
-
+.admin_field{
+    border-bottom: 2px solid #FFFFFF;
+    font-size: 14px;
+}
 
 /***********/
 /**CSS LOGIN**/

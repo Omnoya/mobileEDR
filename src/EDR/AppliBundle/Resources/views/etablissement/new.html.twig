@@ -7,14 +7,136 @@
 {% block body %}
     <h3 class="admin_h3">Ajouter un nouvel établissement</h3>
 
-<div class="admin_form">
-    {{ form_start(form) }}
-        {{ form_widget(form) }}
-        <input type="submit" value="Ajouter" class="admin_valider"/>
-    <a href="{{ path('etablissement_index') }}" alt="Retour à la liste des établissements" title="Retour à la liste des établissements">&crarr;</a>
-    {{ form_end(form) }}
+    <div class="container admin_form">
+        {{ form_start(form) }}
+        <div class="row">
+            <div class="col s12">
+                <div class="input-field">
+                    {{ form_label(form.nom) }}
+                    {{ form_widget(form.nom) }}
+                    {{ form_errors(form.nom) }}
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col s12">
+                <div class="input-field">
+                    {{ form_widget(form.categories) }}
+                    {{ form_errors(form.categories) }}
+                    {{ form_label(form.categories) }}
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col s12">
+                <div class="input-field">
+                    {{ form_label(form.adresse) }}
+                    {{ form_widget(form.adresse, {'attr':{'class':'materialize-textarea'} }) }}
+                    {{ form_errors(form.adresse) }}
+                </div>
 
-</div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col s12">
+                <div class="input-field">
+                    {{ form_label(form.adresse2) }}
+                    {{ form_widget(form.adresse2,{'attr':{'class':'materialize-textarea'} }) }}
+                    {{ form_errors(form.adresse2) }}
+                </div>
+
+            </div>
+        </div>
+        <div class="row">
+            <div class="col s12">
+                <div class="input-field">
+                    {{ form_label(form.codePostal) }}
+                    {{ form_widget(form.codePostal,{'attr':{'class':'materialize-textarea'} }) }}
+                    {{ form_errors(form.codePostal) }}
+                </div>
+
+            </div>
+        </div>
+        <div class="row">
+            <div class="col s12">
+                <div class="input-field">
+                    {{ form_label(form.ville) }}
+                    {{ form_widget(form.ville,{'attr':{'class':'materialize-textarea'} }) }}
+                    {{ form_errors(form.ville) }}
+                </div>
+
+            </div>
+        </div>
+        <div class="row">
+            <div class="col s12">
+                <div class="input-field">
+                    {{ form_label(form.longitude) }}
+                    {{ form_widget(form.longitude,{'attr':{'class':'materialize-textarea'} }) }}
+                    {{ form_errors(form.longitude) }}
+                </div>
+
+            </div>
+        </div>
+        <div class="row">
+            <div class="col s12">
+                <div class="input-field">
+                    {{ form_label(form.latitude) }}
+                    {{ form_widget(form.latitude,{'attr':{'class':'materialize-textarea'} }) }}
+                    {{ form_errors(form.latitude) }}
+                </div>
+
+            </div>
+        </div>
+        <div class="row">
+            <div class="col s12">
+                <div class="input-field">
+                    {{ form_label(form.telephone) }}
+                    {{ form_widget(form.telephone) }}
+                    {{ form_errors(form.telephone) }}
+                </div>
+
+            </div>
+        </div>
+        <div class="row">
+            <div class="col s12">
+                <div class="input-field">
+                    {{ form_label(form.email) }}
+                    {{ form_widget(form.email) }}
+                    {{ form_errors(form.email) }}
+                </div>
+
+            </div>
+        </div>
+        <div class="row">
+            <label for="etablissement_tags">Selectionnez un tag</label>
+             <div class="col s12">
+                    {{ form_widget(form.tags) }}
+                    {{ form_errors(form.tags) }}
+             </div>
+        </div>
+        <div class="row">
+            <div class="col s12">
+                <div class="file-field input-field">
+                    <div class="btn">
+                        <span>Photo</span>
+                        {{ form_widget(form.uploadPhoto) }}
+                        {{ form_errors(form.uploadPhoto) }}
+                    </div>
+                    <div class="file-path-wrapper">
+                        <input class="file-path validate" type="text">
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            {{ form_widget(form.publier) }}
+            <label for="etablissement_publier">Publier l'annonce</label>
+            {{ form_errors(form.publier) }}
+        </div>
+        <input type="submit" value="Créer un nouvel établissement" class="admin_valider"/>
+        <a href="{{ path('etablissement_index') }}" title="Retour à la liste des établissements">&crarr;</a>
+        {{ form_end(form) }}
+    </div>
 
 
 {% endblock %}
@@ -34,115 +156,16 @@
     {#</ul>#}
 {#{% endblock %}#}
 
-{% block edrappli_body %}
-        {{ form_start(form) }}
-        <div class="col s12">
-            {{ form_label(form.nom) }}
-            {{ form_errors(form.nom) }}
-            {{ form_widget(form.nom) }}
-        </div>
-        <div class="col s12">
-            {{ form_label(form.uploadPhoto) }}
-            {{ form_errors(form.uploadPhoto) }}
-            {{ form_widget(form.uploadPhoto) }}
-        </div>
+
+    {% block javascripts %}
+        {{ parent() }}
+        <script>
+            $(document).ready(function () {
+                $('select').material_select();
+            });
+        </script>
+
+    {% endblock %}
 
 
-        <div class="row">
-            <div class="col s12">
-                {{ form_label(form.categories) }}
-                {{ form_errors(form.categories) }}
-                {{ form_widget(form.categories) }}
-            </div>
-        </div>
-        <div class="row">
-            <div class="col s12">
-                {{ form_label(form.adresse) }}
-                {{ form_errors(form.adresse) }}
-                {{ form_widget(form.adresse) }}
-            </div>
-        </div>
-        <div class="row">
-            <div class="col s12">
-                {{ form_label(form.adresse2) }}
-                {{ form_errors(form.adresse2) }}
-                {{ form_widget(form.adresse2) }}
-            </div>
-        </div>
-        <div class="row">
-            <div class="col s12">
-                {{ form_label(form.codePostal) }}
-                {{ form_errors(form.codePostal) }}
-                {{ form_widget(form.codePostal) }}
-            </div>
-        </div>
-
-        <div class="row">
-            <div class="col s12">
-                {{ form_label(form.ville) }}
-                {{ form_errors(form.ville) }}
-                {{ form_widget(form.ville) }}
-            </div>
-        </div>
-
-        <div class="row">
-            <div class="col s12">
-                {{ form_label(form.longitude) }}
-                {{ form_errors(form.longitude) }}
-                {{ form_widget(form.longitude) }}
-            </div>
-        </div>
-
-        <div class="row">
-            <div class="col s12">
-                {{ form_label(form.latitude) }}
-                {{ form_errors(form.latitude) }}
-                {{ form_widget(form.latitude) }}
-            </div>
-        </div>
-
-        <div class="row">
-            <div class="col s12">
-                {{ form_label(form.telephone) }}
-                {{ form_errors(form.telephone) }}
-                {{ form_widget(form.telephone) }}
-            </div>
-        </div>
-
-        <div class="row">
-            <div class="col s12">
-                {{ form_label(form.email) }}
-                {{ form_errors(form.email) }}
-                {{ form_widget(form.email) }}
-            </div>
-        </div>
-
-        <div class="row">
-            <div class="col s12">
-                {{ form_label(form.tags) }}
-                {{ form_errors(form.tags) }}
-                {{ form_widget(form.tags) }}
-            </div>
-        </div>
-
-        <input type="submit" value="Créer un nouvel établissement" class="admin_valider"/>
-        {{ form_end(form) }}
-
-
-        <p class="admin_nav">
-            <a href="{{ path('etablissement_index') }}" alt="Retour à la liste des établissements">&crarr;</a>
-        </p>
-
-
-        {% block javascripts %}
-            {{ parent() }}
-            <script>
-                $(document).ready(function() {
-                    $('select').material_select();
-                });
-            </script>
-
-        {% endblock %}
-
-{% endblock %}
 
