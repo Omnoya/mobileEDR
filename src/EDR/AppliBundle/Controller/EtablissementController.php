@@ -128,17 +128,27 @@ class EtablissementController extends Controller
         //////////////////////////////////////////
         ////// Formulaire d'ajout avis ///////////
         //////////////////////////////////////////
-        $usr = $this->get('security.token_storage')->getToken()->getUser();
+
+        $id_etab = intval($request->request->get('avis')['idetab']);
+        $etab_avis = $em->getRepository('EDRAppliBundle:Etablissement')->findOneById($id_etab);
 
         $com = new Avis();
+        
         $form_avis = $this->createForm('EDR\AppliBundle\Form\AvisType' ,$com);
+        $form_avis->add('idetab');
+        $form_avis->remove('sauvegarde');
+        $form_avis->remove('published');
+        
         $form_avis->handleRequest($request);
 
         if ($form_avis->isSubmitted() && $form_avis->isValid()) {
-
             $usr = $this->get('security.token_storage')->getToken()->getUser();
-            $usr->getUsername();
+            
             $com->setUser($usr); // on injecte le nom de l utlisateur //
+            $com->setEtablissement($etab_avis);
+            $com->setPublished(false);
+            $com->setSauvegarde(false);
+
             $em->persist($com);
             $em->flush();
         }
@@ -147,14 +157,14 @@ class EtablissementController extends Controller
         //////////////////////////////////////////
 
         return $this->render('EDRAppliBundle:Appli:show.html.twig', array(
-            'etablissements' => $etablissements,
             'com' => $com,
             'categories' => $categories,
             'form' => $form->createView(),
             'form_avis' => $form_avis->createView(),
             'categ' => $category,
             'nbPages' => $nbPages,
-            'page' => $page
+            'page' => $page,
+            'etablissements' => $etablissements
         ));
     }
 
