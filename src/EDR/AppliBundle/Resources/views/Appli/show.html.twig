@@ -18,7 +18,7 @@
 
         {{ form_start(form) }}
 
-        <div class="row">
+        <div class="row" xmlns="http://www.w3.org/1999/html">
             {{ form_label(form.nom) }}
             <div class="input-field col s12">
                 {{ form_widget(form.nom) }}
@@ -45,8 +45,14 @@
             {#Message à renvoyer si la variable établissement est vide#}
         {% endif %}
 
+        {% if app.session.flashBag.has('success') %}
+            <div class="alert alert-success">
+                {% for msg in app.session.flashBag.get('success') %}
+                    {{ msg }}
+                {% endfor %}
+            </div>
+        {% endif %}
         {% for etablissement in etablissements %}
-
             <div class="row">
                 <div class="col m6 offset-m3 s12">
                     <div class="card">
@@ -82,7 +88,44 @@
                             <span class="card-title grey-text text-darken-4">Avis<i class="material-icons right">close</i></span>
                             <div class="row">
                                 {{ form_start(form_avis) }}
-                                {{ form_widget(form_avis) }}
+
+                                <div class="col s12">
+                                    <div class="row">
+                                        <div class="input-field">
+                                            {{ form_label(form_avis.commentaire) }}
+                                            {{ form_widget(form_avis.commentaire) }}
+                                            {{ form_errors(form_avis.commentaire) }}
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="input-field">
+                                            {{ form_label(form_avis.note) }}
+                                            {{ form_widget(form_avis.note) }}
+                                            {{ form_errors(form_avis.note) }}
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="input-field">
+                                            {{ form_widget(form_avis.favoris) }}
+                                            {{ form_label(form_avis.favoris) }}
+                                            {{ form_errors(form_avis.favoris) }}
+                                        </div>
+                                    </div>
+                                    <div class="row hide">
+                                        <div class="input-field">
+                                            {{ form_label(form_avis.etablissement) }}
+                                            {{ form_widget(form_avis.etablissement) }}
+                                            {{ form_errors(form_avis.etablissement) }}
+                                        </div>
+                                    </div>
+                                    <div class="row hide">
+                                        <div class="input-field">
+                                            {{ form_label(form_avis.idetab) }}
+                                            {{ form_widget(form_avis.idetab, { value : etablissement.id }) }}
+                                            {{ form_errors(form_avis.idetab) }}
+                                        </div>
+                                    </div>
+                                </div>
                                 <input type="submit" value="Create" />
                                 {{ form_end(form_avis) }}
                             </div>
@@ -108,9 +151,7 @@
                     </div>
                 </div>
             </div>
-</div>
         {% endfor %}
-
     {% else %}
         {#Message a afficher si la variable établissement n'est pas renvoyé par le controlleur#}
         <p>plipp</p>

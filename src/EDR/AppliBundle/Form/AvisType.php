@@ -19,8 +19,8 @@ class AvisType extends AbstractType
             ->add('commentaire')
             ->add('note')
             ->add('published', CheckboxType::class, array('required' => false))
-            ->add('favoris')
-            ->add('sauvegarde')
+            ->add('favoris', CheckboxType::class, array('required' => false))
+            ->add('sauvegarde', CheckboxType::class, array('required' => false))
             ->add('etablissement')
         ;
     }
