@@ -3,10 +3,16 @@
 /***********/
 /*!**/
 
-html, body {
+.admin-html{
     height: 100%;
     margin: 0;
     padding: 0;
+}
+
+.user-html{
+    height: 100%;
+    margin: 0;
+    padding-top: 160px;
 }
 
 #map {
@@ -74,7 +80,7 @@ html, body {
     color: #FFFFFF;
     font-weight: bold;
 }
-.admin_body {
+.admin-html {
     background: #4d90fe;
     background: -webkit-linear-gradient(left,#003399, #00001A); /* For Safari 5.1 to 6.0 */
     background: -o-linear-gradient(left,#003399, #00001A); /* For Opera 11.1 to 12.0 */

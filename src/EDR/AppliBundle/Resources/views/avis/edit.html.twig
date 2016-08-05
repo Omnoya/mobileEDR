@@ -2,20 +2,85 @@
 
 {% block body %}
     <h1>Avis edit</h1>
+    
+    <div class="container">
+        {{ form_start(edit_form) }}
+        <div class="row">
+            <div class="col m8 offset-m2">
+                <div class="row">
+                    {{ form_label(edit_form.commentaire) }}
+                    <div class="input-field">
+                        {{ form_widget(edit_form.commentaire) }}
+                        {{ form_errors(edit_form.commentaire) }}
+                    </div>
+                </div>
+                <div class="row">
+                    {{ form_label(edit_form.etablissement) }}
+                    <div class="input-field">
+                        {{ form_widget(edit_form.etablissement) }}
+                        {{ form_errors(edit_form.etablissement) }}
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="input-field">
+                        {{ form_widget(edit_form.favoris) }}
+                        {{ form_label(edit_form.favoris) }}
+                        {{ form_errors(edit_form.favoris) }}
+                    </div>
+                </div>
+                <div class="row">
+                    {{ form_label(edit_form.note) }}
+                    <div class="input-field">
+                        {{ form_widget(edit_form.note) }}
+                        {{ form_errors(edit_form.note) }}
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="input-field">
+                        {{ form_widget(edit_form.sauvegarde) }}
+                        {{ form_label(edit_form.sauvegarde) }}
+                        {{ form_errors(edit_form.sauvegarde) }}
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="input-field">
+                        {{ form_widget(edit_form.published) }}
+                        {{ form_label(edit_form.published) }}
+                        {{ form_errors(edit_form.published) }}
+                    </div>
+                </div>
+                <div class="row">
+                    <input type="submit" value="Edit" />
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <ul>
+                <li>
+                    <a href="{{ path('avis_index') }}">Back to the list</a>
+                </li>
+                <li>
+                    {{ form_start(delete_form) }}
+                    <input type="submit" value="Delete">
+                    {{ form_end(delete_form) }}
+                </li>
+            </ul>
+        </div>
+    </div>
 
-    {{ form_start(edit_form) }}
-        {{ form_widget(edit_form) }}
-        <input type="submit" value="Edit" />
+
+
     {{ form_end(edit_form) }}
 
-    <ul>
-        <li>
-            <a href="{{ path('avis_index') }}">Back to the list</a>
-        </li>
-        <li>
-            {{ form_start(delete_form) }}
-                <input type="submit" value="Delete">
-            {{ form_end(delete_form) }}
-        </li>
-    </ul>
+
+{% endblock %}
+
+{% block javascripts %}
+    {{ parent() }}
+    <script>
+        $(document).ready(function() {
+            $('select').material_select();
+        });
+    </script>
+
 {% endblock %}
