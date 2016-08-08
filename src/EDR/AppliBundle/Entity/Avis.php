@@ -23,7 +23,7 @@ class Avis
     private $user;
 
     /**
-     * @ORM\ManyToOne(targetEntity="EDR\AppliBundle\Entity\Etablissement", inversedBy="avis")
+     * @ORM\ManyToOne(targetEntity="EDR\AppliBundle\Entity\Etablissement", inversedBy="avis", cascade={"remove"})
      * @ORM\JoinColumn(nullable=false)
      */
     private $etablissement;

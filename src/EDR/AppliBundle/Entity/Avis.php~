@@ -12,14 +12,18 @@ use Doctrine\ORM\Mapping as ORM;
  */
 class Avis
 {
-
+    /**
+     * @var string
+     */
+    public $idetab;
+    
     /**
      * @ORM\ManyToOne(targetEntity="EDR\UserBundle\Entity\User")
      */
     private $user;
 
     /**
-     * @ORM\ManyToOne(targetEntity="EDR\AppliBundle\Entity\Etablissement", inversedBy="avis")
+     * @ORM\ManyToOne(targetEntity="EDR\AppliBundle\Entity\Etablissement", inversedBy="avis", cascade={"remove"})
      * @ORM\JoinColumn(nullable=false)
      */
     private $etablissement;

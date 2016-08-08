@@ -62,7 +62,7 @@ class EtablissementController extends Controller
     public function showAction(Etablissement $etablissement)
     {
         $em = $this->getDoctrine()->getManager();
-        $deleteForm = $this->createDeleteForm($etablissement);
+        //$deleteForm = $this->createDeleteForm($etablissement);
 
         $id_etab = $etablissement->getId();
         $Avis_etablissement = $em->getRepository('EDRAppliBundle:Avis')->getAvis_etablissement($id_etab);
@@ -70,7 +70,7 @@ class EtablissementController extends Controller
         return $this->render('EDRAppliBundle:etablissement:show.html.twig', array(
             'etablissement' => $etablissement,
             'avis_etablissement' => $Avis_etablissement,
-            'delete_form' => $deleteForm->createView(),
+           // 'delete_form' => $deleteForm->createView(),
         ));
     }
 
@@ -194,7 +194,7 @@ class EtablissementController extends Controller
      */
     public function editAction(Request $request, Etablissement $etablissement)
     {
-        $deleteForm = $this->createDeleteForm($etablissement);
+        //$deleteForm = $this->createDeleteForm($etablissement);
         $editForm = $this->createForm('EDR\AppliBundle\Form\EtablissementType', $etablissement);
         $editForm->handleRequest($request);
 
@@ -213,46 +213,69 @@ class EtablissementController extends Controller
             $em->persist($etablissement);
             $em->flush();
 
-            return $this->redirectToRoute('etablissement_edit', array('id' => $etablissement->getId()));
+            return $this->redirectToRoute('etablissement_index', array('id' => $etablissement->getId()));
         }
 
         return $this->render('EDRAppliBundle:etablissement:edit.html.twig', array(
             'etablissement' => $etablissement,
             'edit_form' => $editForm->createView(),
-            'delete_form' => $deleteForm->createView()
+            //'delete_form' => $deleteForm->createView()
         ));
     }
 
-    /**
-     * Deletes a Etablissement entity.
-     *
-     */
-    public function deleteAction(Request $request, Etablissement $etablissement)
-    {
-        $form = $this->createDeleteForm($etablissement);
-        $form->handleRequest($request);
+    public function deleteAction($id){
+        $em = $this->getDoctrine()->getManager();
 
-        if ($form->isSubmitted() && $form->isValid()) {
-            $em = $this->getDoctrine()->getManager();
-            $em->remove($etablissement);
+        $file = $em->getRepository('EDRAppliBundle:Etablissement')->findOneById($id);
+
+        if ($file){
+            $em->remove($file);
             $em->flush();
+
+            $this->get('session')->getFlashBag()->add(
+                'mesConfirm',
+                'Etablissement supprimer'
+            );
+
+            return $this->redirectToRoute('etablissement_index');
         }
 
         return $this->redirectToRoute('etablissement_index');
+
+
+
     }
 
-    /**
-     * Creates a form to delete a Etablissement entity.
-     *
-     * @param Etablissement $etablissement The Etablissement entity
-     *
-     * @return \Symfony\Component\Form\Form The form
-     */
-    private function createDeleteForm(Etablissement $etablissement)
-    {
-        return $this->createFormBuilder()
-            ->setAction($this->generateUrl('etablissement_delete', array('id' => $etablissement->getId())))
-            ->setMethod('DELETE')
-            ->getForm();
-    }
+//    /**
+//     * Deletes a Etablissement entity.
+//     *
+//     */
+//    public function deleteAction(Request $request, Etablissement $etablissement)
+//    {
+//        $form = $this->createDeleteForm($etablissement);
+//        $form->handleRequest($request);
+//
+//        if ($form->isSubmitted() && $form->isValid()) {
+//            $em = $this->getDoctrine()->getManager();
+//            $em->remove($etablissement);
+//            $em->flush();
+//        }
+//
+//        return $this->redirectToRoute('etablissement_index');
+//    }
+//
+//    /**
+//     * Creates a form to delete a Etablissement entity.
+//     *
+//     * @param Etablissement $etablissement The Etablissement entity
+//     *
+//     * @return \Symfony\Component\Form\Form The form
+//     */
+//    private function createDeleteForm(Etablissement $etablissement)
+//    {
+//        return $this->createFormBuilder()
+//            ->setAction($this->generateUrl('etablissement_delete', array('id' => $etablissement->getId())))
+//            ->setMethod('DELETE')
+//            ->getForm();
+//    }
 }

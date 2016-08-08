@@ -11,7 +11,14 @@
         <a href="{{ path('etablissement_new') }}">Ajouter un nouvel établissement</a>
     </div>
 
+    {% for flashMessage in app.session.flashbag.get('mesConfirm') %}
 
+        <div class="alert alert-success">
+            <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+            {{ flashMessage }}
+        </div>
+
+    {% endfor %}
 
     {% for etablissement in etablissements %}
         <div class="card admin_etab_card">
