@@ -14,20 +14,30 @@
     {{ form_end(edit_form) }}#}
 
     {{ form_start(edit_form) }}
-        <div class="admin_form col s12">{{ form_widget(edit_form) }}
+        <div class="admin_form col s12">
 
+            {{ form_widget(edit_form) }}
 
-        <p class="admin_nav">
-            <input type="submit" value="Modifier" class="admin_edit"/>
-            <a href="{{ path('etablissement_index') }}" alt="Retour à la liste des établissements"
-              title="Retour à la liste des établissements" class="admin_retour">&crarr;</a>
-            {{ form_start(delete_form) }}
-            <input type="submit" value="Supprimer" class="admin_delete">
-            {{ form_end(delete_form) }}
-            {{ form_end(edit_form) }}
-        </p>
+            <div class="admin_nav">
+                <input type="submit" value="Modifier" class="admin_edit"/>
+
+                <a href="{{ path('etablissement_index') }}" title="Retour à la liste des établissements" class="admin_retour">&crarr;</a>
+
+                <a href="{{ path('etablissement_delete', {'id' : etablissement.id }) }}" class="admin_delete">Supprimer</a>
+
+            </div>
 
         </div>
+    {{ form_end(edit_form) }}
 
+{% endblock %}
+
+{% block javascripts %}
+    {{ parent() }}
+    <script>
+        $(document).ready(function() {
+            $('select').material_select();
+        });
+    </script>
 
 {% endblock %}

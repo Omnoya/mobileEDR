@@ -18,7 +18,7 @@ class Etablissement
 {
 
     /**
-     * @ORM\OneToMany(targetEntity="EDR\AppliBundle\Entity\Avis", mappedBy="etablissement")
+     * @ORM\OneToMany(targetEntity="EDR\AppliBundle\Entity\Avis", mappedBy="etablissement", cascade={"remove"})
      */
     private $avis;
 

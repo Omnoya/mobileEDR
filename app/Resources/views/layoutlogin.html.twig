@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html class="user-html">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    {# création du bloc « title » avec « OC Plateforme » comme contenu par défaut #}
+    <title>{% block title %}EDR{% endblock %}</title>
+
+    {% block stylesheets %}
+
+        {# On charge le CSS de materialize depuis le site directement #}
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.6/css/materialize.css">
+        <link rel="stylesheet" href="{{ asset('bundles/edrappli/css/style.css') }}">
+        <link rel="stylesheet" type="text/css" href="{{ asset('bundles/edrappli/css/jTinder.css') }}">
+        <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+    {% endblock %}
+</head>
+
+<body>
+
+{% if app.request.get('_route') == 'fos_user_security_login' %}
+
+
+<div class="col s12">
+
+    {#<div id="content" class="col-md-12">#}
+
+    {# création du bloc « body » sans contenu par défaut #}
+    {% block body_login %}
+
+    {% endblock %}
+    {#</div>#}
+
+    {% elseif app.request.get('_route') == 'fos_user_registration_register' %}
+
+        <div id="content" class="col-md-12">
+            {# création du bloc « body » sans contenu par défaut #}
+            {% block body_register %}
+
+            {% endblock %}
+        </div>
+
+    {% else %}
+
+
+    <h1>EDR</h1>
+
+    <div class="container">
+
+        <div class="row">
+            <div id="menu" class="col-md-12">
+
+
+                {% block menu %}
+                {% endblock %}
+
+
+                <div class="row">
+                    <div class="col s10">
+
+                    </div>
+                    <div id="content" class="col-md-12">
+
+                        {# création du bloc « body » sans contenu par défaut #}
+                        {% block body %}
+
+                        {% endblock %}
+                    </div>
+                </div>
+
+
+
+                <hr/>
+
+                <footer>
+                    <p>EDR Application © {{ 'now'|date('Y') }}</p>
+                </footer>
+
+
+                <footer class="page-footer">
+                    {#{% if is_granted('IS_AUTHENTICATED_FULLY') %}#}
+                    <div class="container">
+                        <p>EDR Application © {{ 'now'|date('Y') }}</p>
+                        <p>Ce projet est créé par Paola, Elodie, Timothée & Omar.</p>
+                    </div>
+                    {#{% endif %}#}
+                </footer>
+
+            </div>
+
+
+            {% endif %}
+
+
+
+            {% block javascripts %}
+                {# Ajoutez ces lignes JavaScript si vous comptez vous servir des fonctionnalités du bootstrap Twitter #}
+                <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+
+
+                <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.7/js/materialize.min.js"></script>
+
+                <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.6/js/materialize.min.js"></script>
+                <!-- jQuery lib -->
+                <script type="text/javascript" src="{{ asset ('bundles/edrappli/js/my.js') }}"></script>
+
+                <script type="text/javascript" src="{{ asset ('bundles/edrappli/js/main.js') }}"></script>
+
+
+                <!-- transform2d lib -->
+                <script type="text/javascript" src="{{ asset ('bundles/edrappli/js/jquery.transform2d.js') }}"></script>
+
+                <!-- jTinder lib -->
+                <script type="text/javascript" src="{{ asset ('bundles/edrappli/js/jquery.jTinder.js') }}"></script>
+
+                <!-- jTinder initialization script -->
+                <script>$("#tinderslide").jTinder();</script>
+
+
+            {% endblock %}
+
+</body>
+</html>
