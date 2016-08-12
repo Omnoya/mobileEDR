@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     {# création du bloc « title » avec « OC Plateforme » comme contenu par défaut #}
-    <title>{% block title %}EDR - Tableau de bord{% endblock %}</title>
+    <title>{% block title %}Place To - Tableau de bord{% endblock %}</title>
 
     {% block stylesheets %}
         {# On charge le CSS de bootstrap depuis le site directement #}
@@ -16,7 +16,7 @@
 </head>
 
 <body class="admin_body">
-<h1 class="admin_h1">EDR - Tableau de bord</h1>
+<h1 class="admin_h1">Place To - Tableau de bord</h1>
 
 {% block menu %}
 
@@ -35,7 +35,7 @@
 {% block edrappli_body %} {% endblock %}
 
 <footer class="admin_footer">
-    <p>EDR Application © {{ 'now'|date('Y') }}</p>
+    <p>Place To © {{ 'now'|date('Y') }}</p>
 </footer>
 
 {% block javascripts %}
