@@ -1,35 +1,4 @@
-{% extends "::base.html.twig" %}
-
-{% block menu %}
-
-    <nav>
-        <div class="nav-wrapper">
-            <a href="#" class="brand-logo">EDR Application</a>
-            <a href="#" data-activates="mobile-demo" class="button-collapse"><i class="material-icons">menu</i></a>
-            <ul class="right hide-on-med-and-down">
-
-                {% for categorie in categories %}
-                    <li>
-                        <a href="{{ path('etab_category_show', {'category' : categorie.nom }) }}">{{ categorie.nom }}</a>
-                    </li>
-                {% endfor %}
-
-                <li><a href="{{ path('fos_user_security_login') }}"><i class="material-icons right">face</i></a></li>
-            </ul>
-            <ul class="side-nav" id="mobile-demo">
-
-                {% for categorie in categories %}
-                    <li>
-                        <a href="{{ path('etab_category_show', {'category' : categorie.nom }) }}">{{ categorie.nom }}</a>
-                    </li>
-                {% endfor %}
-
-                <li><a href="{{ path('fos_user_security_login') }}">Connexion</a></li>
-            </ul>
-        </div>
-    </nav>
-
-{% endblock %}
+{% extends "EDRAppliBundle::layout.html.twig" %}
 
 {% block body %}
 
@@ -66,7 +35,6 @@
     <script>
         var geocoder;
         var map;
-
 
         function initMap() {
             direction = new google.maps.DirectionsService;

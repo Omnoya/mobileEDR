@@ -31,3 +31,13 @@
     {{ form_end(edit_form) }}
 
 {% endblock %}
+
+{% block javascripts %}
+    {{ parent() }}
+    <script>
+        $(document).ready(function() {
+            $('select').material_select();
+        });
+    </script>
+
+{% endblock %}
