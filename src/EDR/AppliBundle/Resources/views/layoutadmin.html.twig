@@ -16,16 +16,38 @@
 </head>
 
 <body class="admin_body">
-<h1 class="admin_h1">Place To - Tableau de bord</h1>
 
+
+    <div class="row">
+        <div class="col s12 center">
+            <img src="{{ asset('bundles/edrappli/images/placeto_logo.png') }}">
+        </div>
+    </div>
+        <h1 class="admin_h1">Place To - Tableau de bord</h1>
+            <div class="container">
 {% block menu %}
 
-        <a href="{{ path('edr_appli_home') }}"><div class="row admin_menu"><i class="material-icons left">dashboard</i>Accueil</div></a>
-        <a href="{{ path('etablissement_index') }}"><div class="row admin_menu"><i class="material-icons left">settings</i>Gérer les établissements</div></a>
-        <a href="{{ path('categorie_index') }}"><div class="row admin_menu"><i class="material-icons left">note_add</i>Gérer les catégories</div></a>
-        <a href="{{ path('tag_index') }}"><div class="row admin_menu"><i class="material-icons left">label</i>Gérer les tags</div></a>
-        <a href="#"><div class="row admin_menu"><i class="material-icons left">perm_identity</i>Gérer les utilisateurs</div></a>
-        <a href="{{ path('avis_index') }}"><div class="row admin_menu"><i class="material-icons left">comment</i>Gérer les Avis</div></a>
+                <div class="row">
+                    <div class="col s12 m5 offset-m1 admin_menu">
+                        <p><a href="{{ path('edr_appli_home') }}">Accueil</a></p>
+                    </div>
+                    <div class="col s12 m5 admin_menu">
+                        <p><a href="{{ path('etablissement_index') }}">Gérer les Etablissements</a></p>
+                    </div>
+                    <div class="col s12 m5 offset-m1 admin_menu">
+                        <p><a href="{{ path('categorie_index') }}">Gérer les Catégories</a></p>
+                    </div>
+                    <div class="col s12 m5 admin_menu">
+                        <p><a href="{{ path('tag_index') }}">Gérer les Tags</a></p>
+                    </div>
+                    <div class="col s12 m5 offset-m1 admin_menu">
+                        <p><a href="#">Gérer les Utilisateurs</a></p>
+                    </div>
+                    <div class="col s12 m5 admin_menu">
+                        <p><a href="{{ path('avis_index') }}">Gérer les Avis</a></p>
+                    </div>
+                </div>
+
 
 {% endblock %}
 
@@ -33,7 +55,7 @@
 
         {% endblock %}
 {% block edrappli_body %} {% endblock %}
-
+    </div>
 <footer class="admin_footer">
     <p>Place To © {{ 'now'|date('Y') }}</p>
 </footer>

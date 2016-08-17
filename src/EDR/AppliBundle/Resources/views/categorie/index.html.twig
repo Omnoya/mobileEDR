@@ -5,13 +5,13 @@
 {% block body %}
 <h3 class="admin_h3">Liste des catégories</h1>
 
-    <div class="admin_menu admin_new">
+    <div class="row admin_new">
     <a href="{{ path('categorie_new') }}" >Créer une nouvelle catégorie</a>
     </div>
 
     {% for categorie in categories %}
         <div class="row">
-                <div class="admin_cat">
+                <div class="col s12 col m10 offset-m2 admin_cat">
                     <a href="{{ path('categorie_show', { 'id': categorie.id }) }}"></a>
                 {{ categorie.nom }}
                     <p class="admin_nav">

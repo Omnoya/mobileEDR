@@ -7,8 +7,8 @@
 
 <h3 class="admin_h3">Liste des tags</h3>
 
-<div class="row admin_menu admin_new"><a href="{{ path('tag_new') }}" alt="Créer un nouveau tag" title="Créer un nouveau tag">
-        <i class="material-icons left">note_add</i>
+<div class="row admin_new">
+    <a href="{{ path('tag_new') }}" alt="Créer un nouveau tag" title="Créer un nouveau tag">
         Créer un nouveau tag</a>
 </div>
 
@@ -25,7 +25,7 @@
 
                     {#<td><a href="{{ path('tag_show', { 'id': tag.id }) }}">{{ tag.id }}</a></td>#}
 <div class="row">
-    <div class="admin_tag">
+    <div class="col s12 col m10 offset-m2 admin_tag">
                     <h6 class="admin_h6">{{ tag.nom }}</h6>
         <p class="admin_nav">
             <a href="{{ path('tag_edit', { 'id': tag.id }) }}" class="admin_edit">Modifier</a>

@@ -14,7 +14,9 @@
     {{ form_end(edit_form) }}#}
 
     {{ form_start(edit_form) }}
-        <div class="admin_form col s12">{{ form_widget(edit_form) }}
+    <div class="row">
+        <div class="col s12 col m10 offset-m2 admin_form">
+            {{ form_widget(edit_form) }}
 
 
         <p class="admin_nav">
@@ -28,6 +30,6 @@
         </p>
 
         </div>
-
+    </div>
 
 {% endblock %}

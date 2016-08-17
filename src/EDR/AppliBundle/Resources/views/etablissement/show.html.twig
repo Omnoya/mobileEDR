@@ -5,34 +5,41 @@
 
 {% block body %}
     <h3 class="admin_h3">Etablissement</h3>
-    <div class="card admin_etab_card">
-        {% for avis  in avis_etablissement %}
-            <ul class="collapsible" data-collapsible="expandable">note : {{ avis.note }}
-                commentaire : {{ avis.commentaire }}</ul>
-        {% endfor %}
 
-        <h4 class="admin_etab">{{ etablissement.nom }}</h4>
-        <img class="" src="{{ asset('uploads/photos/') }}{{ etablissement.photo }}"><br>
-        {{ etablissement.adresse }}<br>
-        {{ etablissement.adresse2 }}<br>
-        {{ etablissement.codePostal }}<br>
-        {{ etablissement.ville }}<br>
-        {{ etablissement.longitude }}<br>
-        {{ etablissement.latitude }}<br>
-        {{ etablissement.telephone }}<br>
-        {{ etablissement.email }}<br>
-        {% if etablissement.publier %}Publié{% else %}Non Publié{% endif %}<br>
+    <div class="row">
+        <div class="col s12 col m6 offset-m2 card admin_etab_card">
+            {% for avis  in avis_etablissement %}
+                <ul class="collapsible admin_commentaire" data-collapsible="expandable">
+                    <p>
+                        <b>Note</b> : {{ avis.note }}<br>
+                        <b>Commentaire</b> : <br>{{ avis.commentaire }}
+                    </p>
+                </ul>
+            {% endfor %}
 
-
-        <p class="admin_nav">
-            <a href="{{ path('etablissement_edit', { 'id': etablissement.id }) }}" class="admin_edit">Modifier</a>
-            <a href="{{ path('etablissement_index') }}" alt="Retour à la liste des établissements" class="admin_retour">&crarr;</a>
-        </p>
-
-            {{ form_start(delete_form) }}<input type="submit" value="Supprimer"
-                                                class="admin_delete">{{ form_end(delete_form) }}
+            <h4 class="admin_etab">{{ etablissement.nom }}</h4>
+            <img src="{{ asset('uploads/photos/') }}{{ etablissement.photo }}"><br>
+            {{ etablissement.adresse }}<br>
+            {{ etablissement.adresse2 }}<br>
+            {{ etablissement.codePostal }}<br>
+            {{ etablissement.ville }}<br>
+            {{ etablissement.longitude }}<br>
+            {{ etablissement.latitude }}<br>
+            {{ etablissement.telephone }}<br>
+            {{ etablissement.email }}<br>
+            {% if etablissement.publier %}Publié{% else %}Non Publié{% endif %}<br>
 
 
-
+            <div class="row admin_nav">
+                <div class="col s12">
+                    <a href="{{ path('etablissement_edit', { 'id': etablissement.id }) }}" class="admin_edit">Modifier</a>
+                    <a href="{{ path('etablissement_index') }}" class="admin_retour">&crarr;</a>
+                 {{ form_start(delete_form) }}
+                    <input type="submit" value="Supprimer" class="admin_delete">
+                 {{ form_end(delete_form) }}
+                </div>
+            </div>
+        </div>
     </div>
+
 {% endblock %}
