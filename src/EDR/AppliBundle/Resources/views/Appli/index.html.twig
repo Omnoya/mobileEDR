@@ -45,18 +45,22 @@
         {% endfor %}
     </div>
 </div>#}
-
+    <div class="row">
     <nav>
+        <div class="col s6">
         <div class="nav-wrapper">
-            <a href="#" class="brand-logo"><img src="{{ asset('bundles/edrappli/images/PlaceTo_Logo.png') }}" class="logo">Place to</a>
+            <a href="#" class="brand-logo"><img src="{{ asset('bundles/edrappli/images/PlaceTo_Logo.png') }}" class="logo"></a>
+            <p class="placeto">Place to</p>
+            </div>
         </div>
     </nav>
+        </div>
 
-    <div class="container">
-        <div class="row">
+    <div class="container depl">
+        <div class="row ">
             {% for categorie in categories %}
             <a href="{{ path('etab_category_show', {'category' : categorie.nom }) }}">
-                <div class="col s6 {{ categorie.icongoogle }} ">
+                <div class="col s5 marge {{ categorie.icongoogle }} ">
 
                 </div>
             </a>

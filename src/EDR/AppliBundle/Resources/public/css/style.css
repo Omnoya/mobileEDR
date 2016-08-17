@@ -352,39 +352,48 @@ html, body{
 
 .favorite{
     width: 278px;
-    height: 150px;
+    height: 136px;
     background: url("../images/carreClown.jpg");
-    padding: 2px;
     background-size: cover;
 }
 
 .wc{
     width: 278px;
-    height: 150px;
+    height: 136px;
     background: url("../images/carreTrapez.jpg");
-    padding: 2px;
     background-size: cover;
 }
 
 .group_add{
     width: 278px;
-    height: 150px;
+    height: 136px;
     background: url("../images/carreJuggler.jpg");
-    padding: 2px;
     background-size: cover;
 }
 
 .business_center{
     width: 278px;
-    height: 150px;
+    height: 136px;
     background: url("../images/carreIllusion.jpg");
-    padding: 2px;
     background-size: cover;
 }
 
-.logo img{
-    height: 100%;
-    width: 100%;
+.logo{
+    width: 73px;
+    margin-top: -26px;
+}
+
+.marge{
+    margin: 2px 4px 2px 4px;
+}
+
+.bas{
+    margin: 80px 0 0 0;
+}
+
+.depl{
+    margin-top: 90px;
+    margin-left: 40px;
 }
 
 /* ------------------------ */
@@ -409,7 +418,13 @@ html, body{
     margin: 2.5em auto 2.9375em auto;
 }
 
-.nav{}
+
+.placeto{
+    margin-left: 92px;
+    font-size: 14px;
+    margin-top: 14px;
+}
+
 .line-red {
     display: block;
     width: 4em;
