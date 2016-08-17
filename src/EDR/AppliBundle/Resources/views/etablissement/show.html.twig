@@ -30,15 +30,12 @@
             {% if etablissement.publier %}Publié{% else %}Non Publié{% endif %}<br>
 
 
-            <div class="row admin_nav">
-                <div class="col s12">
-                    <a href="{{ path('etablissement_edit', { 'id': etablissement.id }) }}" class="admin_edit">Modifier</a>
-                    <a href="{{ path('etablissement_index') }}" class="admin_retour">&crarr;</a>
-                 {{ form_start(delete_form) }}
-                    <input type="submit" value="Supprimer" class="admin_delete">
-                 {{ form_end(delete_form) }}
-                </div>
-            </div>
+           <p align="center"><a href="{{ path('etablissement_edit', { 'id': etablissement.id }) }}" class="admin_edit">Modifier</a></p>
+           <p align="center"><a href="{{ path('etablissement_index') }}" class="admin_retour">&crarr;</a></p>
+            {{ form_start(delete_form) }}<p align="center">
+               <input type="submit" value="Supprimer" class="admin_delete">
+               {{ form_end(delete_form) }}</p>
+
         </div>
     </div>
 

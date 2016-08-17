@@ -29,7 +29,7 @@
             {% if etablissement.publier %}Publié{% else %}Non Publié{% endif %}<br>
             <p class="admin_nav">
                 <a href="{{ path('etablissement_show', { 'id': etablissement.id }) }}" class="admin_show">Afficher</a>
-                <a href="{{ path('etablissement_edit', { 'id': etablissement.id }) }}" class="admin_edit" alt="Modifier" title="Modifier">Modifier</a>
+                <a href="{{ path('etablissement_edit', { 'id': etablissement.id }) }}" class="admin_edit" title="Modifier">Modifier</a>
             </p>
         </div>
     </div>
