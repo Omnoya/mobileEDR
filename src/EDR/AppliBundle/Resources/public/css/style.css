@@ -218,7 +218,40 @@ html, body{
 
 @media (max-width: 320px){
     h2.edrinscription{
-        font-size: 15px;
+        font-size: 12px;
+        padding: 5px 0 0 0;
+        width: 180px;
+    }
+
+    div.pos-rel{
+        margin-top: 130px;
+    }
+
+    h2{
+        margin: 0;
+    }
+
+    h4{
+        font-size: 20px;
+    }
+
+    input#username, input#password{
+        height: 10px;
+    }
+
+    #_submit{
+        width: 100%;
+    }
+
+    div.col.s12{
+        padding: 0 40px 0 40px;
+    }
+
+    .center-align{
+        margin: 5px 0 0 0;
+        font-size: 10px;
+        padding: 0 5px 0 5px;
+        display: block;
     }
 
     
@@ -305,6 +338,53 @@ html, body{
     text-align: center;
     margin-bottom: -30px;
 }
+
+/* ------------------------ */
+
+/*.row .col{
+    padding: 0;
+}
+
+.pad{
+    padding: 5px 5px 0 5px;
+
+}*/
+
+.favorite{
+    width: 278px;
+    height: 150px;
+    background: url("../images/carreClown.jpg");
+    padding: 2px;
+    background-size: cover;
+}
+
+.wc{
+    width: 278px;
+    height: 150px;
+    background: url("../images/carreTrapez.jpg");
+    padding: 2px;
+    background-size: cover;
+}
+
+.group_add{
+    width: 278px;
+    height: 150px;
+    background: url("../images/carreJuggler.jpg");
+    padding: 2px;
+    background-size: cover;
+}
+
+.business_center{
+    width: 278px;
+    height: 150px;
+    background: url("../images/carreIllusion.jpg");
+    padding: 2px;
+    background-size: cover;
+}
+
+
+/* ------------------------ */
+
 
 /* css pao */
 
