@@ -79,6 +79,7 @@ html, body{
     margin:auto;
     color: #FFFFFF;
     font-weight: bold;
+    font-size: 30px;
 }
 .admin-html {
     background: #4d90fe;
@@ -87,28 +88,47 @@ html, body{
     background: -moz-linear-gradient(left,#003399, #00001A); /* For Firefox 3.6 to 15 */
     background: linear-gradient(left,#003399, #00001A); /* Standard syntax */
     font-family: "URW Gothic L";
+    margin: auto;
 }
 .admin_menu {
     margin: auto;
+
     width: 90%;
+
     background-color: rgba(0,0,0, 0.4);
     margin-top: 10px;
     margin-bottom: 10px;
-    padding: 10px;
+    padding: 6px;
     text-align: center;
     color: #FFFFFF;
     border-radius: 2px;
+    margin-left: 10px;
+    margin-right: 10px;
+    height: 50px;
 }
-.admin_menu:hover {
+.admin_menu p{
+    text-align: center;
+    vertical-align: middle;
+}
+.admin_menu p:hover {
     margin: auto;
+
     width: 90%;
     background-color: rgba(255,255,240, 0.9);
     color: #000000;
+
     margin-top: 10px;
     margin-bottom: 10px;
-    padding: 10px;
+    padding: 6px;
     text-align: center;
+    color: #000000;
     border-radius: 2px;
+    margin-left: 10px;
+    margin-right: 10px;
+    height: 50px;
+}
+.admin_menu a:hover{
+    text-transform: uppercase;
 }
 .admin_footer {
     margin: auto;
@@ -136,6 +156,20 @@ html, body{
 .admin_new {
     background-color: #FFFFFF;
     box-shadow: black;
+    padding: 10px;
+    border-radius: 2px;
+    margin-top: 10px;
+    text-align: center;
+}
+
+.admin_commentaire {
+    border-radius: 4px;
+    padding: 4px;
+}
+.collapsible {
+    border: none;
+    background-color: #FFFFFF;
+    margin-top: 10px;
 }
 .admin_new a{
     color: #0D3B66;
@@ -189,8 +223,16 @@ html, body{
     text-align: center;
     color: #f6f6f6;
 }
-.admin_cat {
+.admin_cat, .admin_avis {
     width: 20%;
+    border-radius: 2px;
+    background-color: rgba(0, 102, 255, 0.5);
+    margin: auto;
+    padding: 10px;
+    text-align: center;
+}
+.admin_avis {
+    width: 40%;
     border-radius: 2px;
     background-color: rgba(0, 102, 255, 0.5);
     margin: auto;
@@ -202,6 +244,7 @@ html, body{
     margin: auto;
     padding: 10px;
     background-color: rgba(0, 102, 255, 0.4);
+    margin-top: 10px;
 }
 .admin_etab_card img{
     width: 50%;
@@ -258,7 +301,10 @@ html, body{
 }
 
 /********ADMIN FORM *******/
-
+.admin_field{
+    border-bottom: 2px solid #FFFFFF;
+    font-size: 14px;
+}
 
 /***********/
 /**CSS LOGIN**/
@@ -339,6 +385,7 @@ html, body{
     margin-bottom: -30px;
 }
 
+
 /* ------------------------ */
 
 /*.row .col{
@@ -400,6 +447,14 @@ html, body{
 
 
 /* css pao */
+
+/****************/
+/*USER REGISTER*/
+/***************/
+.input-field_register {
+    color: #FFFFFF;
+}
+
 
 
 .bg-wrapper {
@@ -827,3 +882,43 @@ html, body{
 }
 
 
+.user_h1 {
+    font-size: 30px;
+    text-transform: uppercase;
+    text-align: center;
+    font-family: "URW Gothic L";
+    font-weight: bold;
+}
+.register_validation {
+    border: 1px solid #000000;
+    padding: 10px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    font-family: "URW Gothic L";
+    margin: auto;
+    content: 'Valider';
+}
+.register_validation:hover {
+    padding: 10px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    font-family: "URW Gothic L";
+    color: #FFFFFF;
+    background-color: #000000;
+    margin: auto;
+}
+
+/***********************/
+/***MEDIA QUERIES******/
+/*********************/
+@media only handheld and (max-width: 250px) {
+    .user_register{
+        font-family: "Liberation Sans";
+
+    }
+    .user_h1 {
+        font-size: 20px;
+        text-transform: uppercase;
+        text-align: center;
+    }
+}

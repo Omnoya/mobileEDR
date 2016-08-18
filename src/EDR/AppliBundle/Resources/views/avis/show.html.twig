@@ -2,19 +2,20 @@
 
 {% block body %}
     <h3 class="admin_h3">Avis</h3>
+    <div class="admin_avis">
+        <p><b>Commentaire</b>: </p>
+        {{ avi.commentaire }}<br>
+        <p><b>Note</b>: {{ avi.note }}</p>
+        <p><b>Favori</b> : {% if avi.favoris %}Yes{% else %}No{% endif %}</p>
+        <p><b>Sauvegarde : </b>{% if avi.sauvegarde %}Yes{% else %}No{% endif %}</p>
 
-    {{ avi.commentaire }}
-    {{ avi.note }}
-    {% if avi.favoris %}Yes{% else %}No{% endif %}
-    {% if avi.sauvegarde %}Yes{% else %}No{% endif %}
-
-    <p class="admin_nav">
-        <a href="{{ path('avis_index') }}" alt="Retour à la liste des avis">&crarr;</a>
-
-        <a href="{{ path('avis_edit', { 'id': avi.id }) }}" class="admin_edit">Modifier</a>
-
-        {{ form_start(delete_form) }}
-        <input type="submit" value="Supprimer" class="admin_delete">
-        {{ form_end(delete_form) }}
-    </p>
+        <p class="admin_nav">
+            <a href="{{ path('avis_index') }}" alt="Retour à la liste des avis">&crarr;</a>
+            <a  href="{{ path('avis_edit', { 'id': avi.id }) }}" class="admin_edit">Modifier</a>
+            {{ form_start(delete_form) }}
+            <input type="submit" value="Supprimer" class="admin_delete">
+            {{ form_end(delete_form) }}
+        </p>
+    </div>
+    </div>
 {% endblock %}
