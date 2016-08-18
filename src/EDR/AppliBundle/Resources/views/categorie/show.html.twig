@@ -6,17 +6,15 @@
     <h3 class="admin_h3">Catégorie</h3>
 
     <div class="row">
-        <div class="col s12 col m10 offset-m2"
-        {{ categorie.nom }}
-        <p class="admin_nav">
-            <a href="{{ path('categorie_index') }}" alt="Retour à la liste des catégories" title="Retour à la liste des catégories" class="admin_retour"></a>
-
-            <a href="{{ path('categorie_edit', { 'id': categorie.id }) }}" class="admin_edit">Modifier</a>
-
-            {{ form_start(delete_form) }}
-            <input type="submit" value="Delete" class="admin_delete">
-            {{ form_end(delete_form) }}
-        </p>
+        <div class="col s12">
+            {{ categorie.nom }}
+            <div class="admin_nav">
+                <a href="{{ path('categorie_index') }}" class="admin_retour">&crarr;</a>
+                <a href="{{ path('categorie_edit', { 'id': categorie.id }) }}" class="admin_edit">Modifier</a>
+                {{ form_start(delete_form) }}
+                <input type="submit" value="Delete" class="admin_delete">
+                {{ form_end(delete_form) }}
+            </div>
         </div>
     </div>
 

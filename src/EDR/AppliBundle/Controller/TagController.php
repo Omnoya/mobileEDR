@@ -54,19 +54,6 @@ class TagController extends Controller
         ));
     }
 
-    /**
-     * Finds and displays a Tag entity.
-     *
-     */
-    public function showAction(Tag $tag)
-    {
-        $deleteForm = $this->createDeleteForm($tag);
-
-        return $this->render('EDRAppliBundle:tag:show.html.twig', array(
-            'tag' => $tag,
-            'delete_form' => $deleteForm->createView(),
-        ));
-    }
 
     /**
      * Displays a form to edit an existing Tag entity.

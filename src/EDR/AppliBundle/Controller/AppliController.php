@@ -27,6 +27,9 @@ class AppliController extends Controller
         return $this->render('EDRAppliBundle:Appli:index.html.twig', array(
             'categories' => $categories
         ));
-        
+    }
+
+    public function adminAccueilAction(){
+        return $this->render('EDRAppliBundle::layoutadmin.html.twig');
     }
 }

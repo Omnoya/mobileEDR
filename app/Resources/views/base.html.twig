@@ -64,9 +64,9 @@
 
 
     {% endif %}
-
-
-    <a href="{{ path('tag_index') }}">Acceder à l'admin</a>
+    <div style="text-align: center">
+        <a class="waves-effect waves-light btn" href="{{ path('accueil_admin') }}">Acceder à l'admin</a>
+    </div>
     {% block javascripts %}
         {# Ajoutez ces lignes JavaScript si vous comptez vous servir des fonctionnalités du bootstrap Twitter #}
         <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>

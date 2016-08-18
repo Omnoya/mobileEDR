@@ -3,11 +3,6 @@ tag_index:
     defaults: { _controller: "EDRAppliBundle:Tag:index" }
     methods:  GET
 
-tag_show:
-    path:     /{id}/show
-    defaults: { _controller: "EDRAppliBundle:Tag:show" }
-    methods:  GET
-
 tag_new:
     path:     /new
     defaults: { _controller: "EDRAppliBundle:Tag:new" }

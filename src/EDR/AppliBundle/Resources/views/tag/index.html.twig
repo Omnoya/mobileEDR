@@ -5,49 +5,33 @@
 
 {% block body %}
 
-<h3 class="admin_h3">Liste des tags</h3>
+    <h3 class="admin_h3">Liste des tags</h3>
 
-<div class="row admin_new">
-    <a href="{{ path('tag_new') }}" alt="Créer un nouveau tag" title="Créer un nouveau tag">
-        Créer un nouveau tag</a>
-</div>
-
-{% for flashMessage in app.session.flashbag.get('mesConfirm') %}
-
-    <div class="alert alert-success">
-        <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
-        {{ flashMessage }}
+    <div class="row admin_new">
+        <a href="{{ path('tag_new') }}">Créer un nouveau tag</a>
     </div>
 
-{% endfor %}
+    {% for flashMessage in app.session.flashbag.get('mesConfirm') %}
 
-            {% for tag in tags %}
-
-                    {#<td><a href="{{ path('tag_show', { 'id': tag.id }) }}">{{ tag.id }}</a></td>#}
-<div class="row">
-    <div class="col s12 col m10 offset-m2 admin_tag">
-                    <h6 class="admin_h6">{{ tag.nom }}</h6>
-        <p class="admin_nav">
-            <a href="{{ path('tag_edit', { 'id': tag.id }) }}" class="admin_edit">Modifier</a>
-            <a href="{{ path('tag_delete', { 'id': tag.id }) }}" alt="Supprimer" title="Supprimer" class="admin_delete"
-       data-toggle="confirmation" data-title="Open Google?">Supprimer</a>
-        </p>
-    </div>
-</div>
-    {#<li>
-        <a href="{{ path('tag_show', { 'id': tag.id }) }}" class="btn btn-info"
-           id="place-btn">
-
-            <i class="glyphicon glyphicon-eye-open"></i>
-            Voir
-        </a>
-    </li>#}
-
-
-
+        <div class="alert alert-success">
+            <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+            {{ flashMessage }}
+        </div>
 
     {% endfor %}
+    {% for tag in tags %}
 
+        <div class="row">
+            <div class="col s12 admin_tag">
+                <div class="row">
+                    <h6 class="admin_h6">{{ tag.nom }}</h6>
+                </div>
+                <div class="row admin_nav">
+                    <a href="{{ path('tag_edit', { 'id': tag.id }) }}" class="admin_edit">Modifier</a>
+                    <a href="{{ path('tag_delete', { 'id': tag.id }) }}" class="admin_delete">Supprimer</a>
+                </div>
+            </div>
+        </div>
 
-
-    {% endblock %}
+    {% endfor %}
+{% endblock %}

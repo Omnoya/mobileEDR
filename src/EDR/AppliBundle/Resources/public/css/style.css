@@ -18,6 +18,10 @@ html, body{
     height: 600px;
     width: 600px;
 }
+.map_recherche{
+    padding-right: 0px;
+    padding-left: 0px;
+}
 
 .controls {
     margin-top: 10px;
@@ -81,7 +85,7 @@ html, body{
     font-weight: bold;
     font-size: 30px;
 }
-.admin-html {
+.admin_body {
     background: #4d90fe;
     background: -webkit-linear-gradient(left,#003399, #00001A); /* For Safari 5.1 to 6.0 */
     background: -o-linear-gradient(left,#003399, #00001A); /* For Opera 11.1 to 12.0 */
@@ -92,9 +96,7 @@ html, body{
 }
 .admin_menu {
     margin: auto;
-
-    width: 90%;
-
+    width: auto;
     background-color: rgba(0,0,0, 0.4);
     margin-top: 10px;
     margin-bottom: 10px;
@@ -112,11 +114,7 @@ html, body{
 }
 .admin_menu p:hover {
     margin: auto;
-
-    width: 90%;
-    background-color: rgba(255,255,240, 0.9);
-    color: #000000;
-
+    width: auto;
     margin-top: 10px;
     margin-bottom: 10px;
     padding: 6px;
@@ -213,12 +211,11 @@ html, body{
     letter-spacing: 1px;
     color: #FFFFFF;
     text-align: center;
- }
+}
 .admin_nav {
-   text-align: center;
+    text-align: center;
 }
 .admin_form {
-    width: 50%;
     margin: auto;
     text-align: center;
     color: #f6f6f6;
@@ -240,14 +237,11 @@ html, body{
     text-align: center;
 }
 .admin_etab_card {
-    width: 90%;
+    width: 30%;
     margin: auto;
     padding: 10px;
     background-color: rgba(0, 102, 255, 0.4);
     margin-top: 10px;
-}
-.admin_etab_card img{
-    width: 50%;
 }
 .admin_etab {
     text-align: center;
@@ -257,6 +251,12 @@ html, body{
     padding: 10px;
     color: #FFFFFF;
 
+}
+
+/********ADMIN FORM *******/
+.admin_field{
+    border-bottom: 2px solid #FFFFFF;
+    font-size: 14px;
 }
 
 @media (max-width: 320px){
@@ -286,9 +286,9 @@ html, body{
         width: 100%;
     }
 
-    div.col.s12{
-        padding: 0 40px 0 40px;
-    }
+    /*div.col.s12{*/
+        /*padding: 0 40px 0 40px;*/
+    /*}*/
 
     .center-align{
         margin: 5px 0 0 0;
@@ -298,12 +298,6 @@ html, body{
     }
 
     
-}
-
-/********ADMIN FORM *******/
-.admin_field{
-    border-bottom: 2px solid #FFFFFF;
-    font-size: 14px;
 }
 
 /***********/
@@ -439,7 +433,7 @@ html, body{
 }
 
 .depl{
-    margin-top: 90px;
+
     margin-left: 40px;
 }
 
