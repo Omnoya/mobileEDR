@@ -1,11 +1,12 @@
 {# src/EDR/AppliBundle/Resources/views/layoutadmin.html.twig #}
+<!DOCTYPE html>
 <html class="admin-html">
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     {# création du bloc « title » avec « OC Plateforme » comme contenu par défaut #}
-    <title>{% block title %}EDR - Tableau de bord{% endblock %}</title>
+    <title>{% block title %}Place To - Tableau de bord{% endblock %}</title>
 
     {% block stylesheets %}
         {# On charge le CSS de bootstrap depuis le site directement #}
@@ -15,27 +16,48 @@
     {% endblock %}
 </head>
 
-<body>
-<h1 class="admin_h1">EDR - Tableau de bord</h1>
+<body class="admin_body">
 
+    <div class="row">
+        <div class="col s12 center">
+            <img src="{{ asset('bundles/edrappli/images/placeto_logo.png') }}">
+        </div>
+    </div>
+        <h1 class="admin_h1">Place To - Tableau de bord</h1>
+            <div class="container">
 {% block menu %}
 
-        <a href="{{ path('edr_appli_home') }}"><div class="row admin_menu"><i class="material-icons left">dashboard</i>Accueil</div></a>
-        <a href="{{ path('etablissement_index') }}"><div class="row admin_menu"><i class="material-icons left">settings</i>Gérer les établissements</div></a>
-        <a href="{{ path('categorie_index') }}"><div class="row admin_menu"><i class="material-icons left">note_add</i>Gérer les catégories</div></a>
-        <a href="{{ path('tag_index') }}"><div class="row admin_menu"><i class="material-icons left">label</i>Gérer les tags</div></a>
-        <a href="#"><div class="row admin_menu"><i class="material-icons left">perm_identity</i>Gérer les utilisateurs</div></a>
-        <a href="{{ path('avis_index') }}"><div class="row admin_menu"><i class="material-icons left">comment</i>Gérer les Avis</div></a>
+                <div class="row">
+                    <div class="col s12 m5 offset-m1 admin_menu">
+                        <p><a href="{{ path('edr_appli_home') }}">Accueil</a></p>
+                    </div>
+                    <div class="col s12 m5 admin_menu">
+                        <p><a href="{{ path('etablissement_index') }}">Gérer les Etablissements</a></p>
+                    </div>
+                    <div class="col s12 m5 offset-m1 admin_menu">
+                        <p><a href="{{ path('categorie_index') }}">Gérer les Catégories</a></p>
+                    </div>
+                    <div class="col s12 m5 admin_menu">
+                        <p><a href="{{ path('tag_index') }}">Gérer les Tags</a></p>
+                    </div>
+                    <div class="col s12 m5 offset-m1 admin_menu">
+                        <p><a href="#">Gérer les Utilisateurs</a></p>
+                    </div>
+                    <div class="col s12 m5 admin_menu">
+                        <p><a href="{{ path('avis_index') }}">Gérer les Avis</a></p>
+                    </div>
+                </div>
+
 
 {% endblock %}
 
         {% block body %}
 
         {% endblock %}
-
-
+{% block edrappli_body %} {% endblock %}
+    </div>
 <footer class="admin_footer">
-    <p>EDR Application © {{ 'now'|date('Y') }}</p>
+    <p>Place To © {{ 'now'|date('Y') }}</p>
 </footer>
 
 {% block javascripts %}
@@ -47,7 +69,7 @@
             crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.7/js/materialize.min.js"></script>
     <script>
-        $("button").click(function()) {
+        $("button").click(function()){
             $("p").toggle();
         });
     </script>
