@@ -35,18 +35,18 @@
 
 
 
-            <div class="row">
+            <div class="row admin_nav">
                 <div class="col s12 m4">
                     <a href="{{ path('etablissement_edit', { 'id': etablissement.id }) }}" class="admin_edit">Modifier</a>
                 </div>
             </div>
 
-            <div class="row">
+            <div class="row admin_nav">
                 <div class="col s12 m4">
                     <a href="{{ path('etablissement_index') }}" class="admin_retour">&crarr;</a>
                 </div>
             </div>
-            <div class="row">
+            <div class="row admin_nav">
                 <div class="col s12 m4">
                     {{ form_start(delete_form) }}
                     <input type="submit" value="Supprimer" class="admin_delete">
