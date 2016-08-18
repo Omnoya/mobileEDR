@@ -939,5 +939,5 @@ video { display: block; width: 100%; height: auto; }
 .fullsize-video-bg .inner > div { text-align: center; display: table-cell; vertical-align: middle; padding: 0 2em; }
 
 
-h1 { font-family: "Raleway", sans-serif; font-size: 3em; line-height: .9; font-weight: 900; letter-spacing: -.025em; text-transform: uppercase; margin-bottom: .5em; }
+h1 { font-family: "Raleway", sans-serif; font-size: 2em; line-height: .9; font-weight: 900; letter-spacing: -.025em; text-transform: uppercase; margin-bottom: .5em; }
 h1 + p { font-family: "Shadows Into Light Two", cursive; font-size: 1.5em;  }
