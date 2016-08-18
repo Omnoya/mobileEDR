@@ -538,6 +538,7 @@ html, body{
     border: none;
 }
 /* Section-1 Styles */
+/*
 #section-1 {
     height: 38em;
     color: #fff;
@@ -709,7 +710,7 @@ html, body{
 #section-1 .content-slider #banner4:checked ~ nav label:nth-of-type(4) .progressbar-fill {
     animation: progressBarFill 5s linear;
 }
-/* Animations */
+!* Animations *!
 @keyframes progressBarFill {
     from {
         margin-left: -100%;
@@ -718,7 +719,7 @@ html, body{
         margin-left: 0;
     }
 }
-/* Media Queries */
+!* Media Queries *!
 @media only screen and (max-width: 2500px) {
     body {
         font-size: 22px;
@@ -881,6 +882,7 @@ html, body{
     }
 }
 
+*/
 
 .user_h1 {
     font-size: 30px;
