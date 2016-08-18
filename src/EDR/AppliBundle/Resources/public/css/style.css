@@ -400,28 +400,28 @@ html, body{
 .favorite{
     width: 278px;
     height: 136px;
-    background: url("../images/carreClown.jpg");
+    background: url("../images/datingT.jpg");
     background-size: cover;
 }
 
 .wc{
     width: 278px;
     height: 136px;
-    background: url("../images/carreTrapez.jpg");
+    background: url("../images/amisT.jpg");
     background-size: cover;
 }
 
 .group_add{
     width: 278px;
     height: 136px;
-    background: url("../images/carreJuggler.jpg");
+    background: url("../images/familleT.jpg");
     background-size: cover;
 }
 
 .business_center{
     width: 278px;
     height: 136px;
-    background: url("../images/carreIllusion.jpg");
+    background: url("../images/proT.jpg");
     background-size: cover;
 }
 
