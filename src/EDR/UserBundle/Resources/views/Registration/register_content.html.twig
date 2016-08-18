@@ -2,79 +2,83 @@
 {% trans_default_domain 'FOSUserBundle' %}
 
 <title>{% block title %}EDR - S'enregistrer{% endblock %}</title>
-<section class="fullsize-video-bg">
-    <div class="inner">
-        <div>
-            <h1>Check in Background Account</h1>
-            <p>Choose your restaurant
-        </div>
-    </div>
-    <div id="video-viewport">
-        <video width="1920" height="1280" autoplay muted loop>
-            <source src="https://s3-us-west-2.amazonaws.com/coverr/mp4/Winter-Grass.mp4" type="video/mp4" />
-            <source src="https://s3-us-west-2.amazonaws.com/coverr/webm/Winter-Grass.webm" type="video/webm" />
-        </video>
-    </div>
-</section>
 
-<div id="content" class="col s12">
-    {# création du bloc « body » sans contenu par défaut #}
-    {% block body_register %}
-
-    {% endblock %}
-</div>
-
-
-<div class="container">
-    <div class="row">
-        <div class="col s12 center">
-            <img src="{{ asset('bundles/edrappli/images/placeto_logo.png') }}">
-        </div>
-    </div>
-    <h1 class="user_h1">Place To - S'enregistrer</h1>
-{{ form_start(form, {'method': 'post', 'action': path('fos_user_registration_register'), 'attr': {'class': 'fos_user_registration_register'}}) }}
-    <div class="row">
-        <div class="col s12 m12">
-            <div class="input-field user_register">
-                {{ form_label(form.email) }}
-                {{ form_widget(form.email) }}
-                {{ form_errors(form.email) }}
+<div class="register">
+    <section class="fullsize-video-bg">
+        <div class="inner">
+            <div>
+                <h1>Check in Background Account</h1>
+                <p>Choose your restaurant
             </div>
         </div>
-    </div>
-    <div class="row">
-        <div class="col s12 m12">
-            <div class="input-field user_register">
-                {{ form_label(form.username) }}
-                {{ form_widget(form.username) }}
-                {{ form_errors(form.username) }}
-            </div>
+        <div id="video-viewport">
+            <video width="1920" height="1280" autoplay muted loop>
+                <source src="https://s3-us-west-2.amazonaws.com/coverr/mp4/Winter-Grass.mp4" type="video/mp4" />
+                <source src="https://s3-us-west-2.amazonaws.com/coverr/webm/Winter-Grass.webm" type="video/webm" />
+            </video>
         </div>
-    </div>
-    <div class="row">
-        <div class="col s12 m12">
-            <div class="input-field user_register">
-                {{ form_label(form.plainPassword.first) }}
-                {{ form_widget(form.plainPassword.first) }}
-                {{ form_errors(form.plainPassword.first) }}
-            </div>
-        </div>
-    </div>
-    <div class="row">
-        <div class="col s12 m12">
-            <div class="input-field user_register">
-                {{ form_label(form.plainPassword.second) }}
-                {{ form_widget(form.plainPassword.second) }}
-                {{ form_errors(form.plainPassword.second) }}
-            </div>
-        </div>
-    </div>
-    <div class="row">
-        <div class="col s12 m12 center">
-            <input type="submit" value="{{ 'registration.submit'|trans }}" class="register_validation" />
-        </div>
+    </section>
+
+
+    <div id="content" class="col s12">
+        {# création du bloc « body » sans contenu par défaut #}
+        {% block body_register %}
+
+        {% endblock %}
     </div>
 
-{#{{ form_rest(form) }}#}
-{{ form_end(form) }}
+
+    <div class="container">
+        <div class="row">
+            <div class="col s12 center">
+                <img src="{{ asset('bundles/edrappli/images/placeto_logo.png') }}">
+            </div>
+        </div>
+        <h1 class="user_h1">Place To - S'enregistrer</h1>
+    {{ form_start(form, {'method': 'post', 'action': path('fos_user_registration_register'), 'attr': {'class': 'fos_user_registration_register'}}) }}
+        <div class="row">
+            <div class="col s12 m12">
+                <div class="input-field user_register">
+                    {{ form_label(form.email) }}
+                    {{ form_widget(form.email) }}
+                    {{ form_errors(form.email) }}
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col s12 m12">
+                <div class="input-field user_register">
+                    {{ form_label(form.username) }}
+                    {{ form_widget(form.username) }}
+                    {{ form_errors(form.username) }}
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col s12 m12">
+                <div class="input-field user_register">
+                    {{ form_label(form.plainPassword.first) }}
+                    {{ form_widget(form.plainPassword.first) }}
+                    {{ form_errors(form.plainPassword.first) }}
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col s12 m12">
+                <div class="input-field user_register">
+                    {{ form_label(form.plainPassword.second) }}
+                    {{ form_widget(form.plainPassword.second) }}
+                    {{ form_errors(form.plainPassword.second) }}
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col s12 m12 center">
+                <input type="submit" value="{{ 'registration.submit'|trans }}" class="register_validation" />
+            </div>
+        </div>
+
+    {#{{ form_rest(form) }}#}
+    {{ form_end(form) }}
+    </div>
 </div>
