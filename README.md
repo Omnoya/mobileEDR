@@ -10,7 +10,7 @@ git clone git@github.com:Omnoya/mobileEDR.git
 
 ### Sans ssh: 
 ```bash
-git clone git@github.com:Omnoya/mobileEDR.git
+git clone https://github.com/Omnoya/mobileEDR.git
 ```
 
 ```bash
